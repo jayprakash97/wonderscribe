@@ -43,7 +43,7 @@ st.markdown(
     }
     /* Set color for all text inside the sidebar */
     [data-testid="stSidebar"] * {
-        color: #7dd8ff !important;  /* Text color */
+        color: #8c52ff !important;  /* Text color */
     }
     </style>
     """,
