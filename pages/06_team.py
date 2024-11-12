@@ -110,13 +110,6 @@ members = [
         "email": "ndemoz@berkeley.edu",
     },
     {
-        "name": "Elias Tavarez",
-        "role": "ML Engineering, GenAI",
-        "bio": "bio...",
-        "image": "pages/images/Jay_Profile_pic.jpg",
-        "email": "etav@berkeley.edu",
-    },
-    {
         "name": "Wilford Bradford",
         "role": "EDA, Model Development",
         "bio": "bio...",
