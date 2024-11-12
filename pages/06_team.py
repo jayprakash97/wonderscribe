@@ -2,8 +2,7 @@ import streamlit as st
 import base64
 
 # Paths to the logos
-# logo = "pages/images/WonderScribeLogo.png"
-logo = "pages/images/Jay_Profile_pic.jpg"
+logo = "pages/images/WonderScribeLogo.png"
 
 ###########################
 # Add LOGO
@@ -84,14 +83,14 @@ st.markdown(
 members = [
     {
         "name": "Jay Prakash",
-        "role": "EDA, Model Development",
+        "role": "Product Management, Technical Architect",
         "bio": "bio...",
         "image": "pages/images/Jay_Profile_pic.jpg",
         "email": "jprakash@berkeley.edu",
     },
     {
         "name": "Jailynne Estevez",
-        "role": "SME, Model Development",
+        "role": "Program Management",
         "bio": "bio...",
         "image": "pages/images/Jay_Profile_pic.jpg",
         "email": "jestevez@berkeley.edu",
@@ -104,7 +103,7 @@ members = [
         "email": "mhaseeb@berkeley.edu",
     },
     {
-        "name": "Alex Hubbard",
+        "name": "Natsnet",
         "role": "SME, Model Development",
         "bio": "bio...",
         "image": "pages/images/Jay_Profile_pic.jpg",
