@@ -92,22 +92,22 @@ members = [
         "name": "Jailynne Estevez",
         "role": "Program Management",
         "bio": "bio...",
-        "image": "pages/images/Jay_Profile_pic.jpg",
+        "image": "pages/images/jailynne.png",
         "email": "jestevez@berkeley.edu",
     },
     {
         "name": "Mian Haseeb",
         "role": "Project Management, UI/UX",
         "bio": "bio...",
-        "image": "pages/images/Jay_Profile_pic.jpg",
+        "image": "pages/images/MianHaseeb.jfif",
         "email": "mhaseeb@berkeley.edu",
     },
     {
-        "name": "Natsnet",
+        "name": "Natsnet Demoz",
         "role": "SME, Model Development",
         "bio": "bio...",
-        "image": "pages/images/Jay_Profile_pic.jpg",
-        "email": "alex.hubbard@berkeley.edu",
+        "image": "pages/images/Natsnet Demoz.jfif",
+        "email": "ndemoz@berkeley.edu",
     },
     {
         "name": "Elias Tavarez",
@@ -117,11 +117,11 @@ members = [
         "email": "etav@berkeley.edu",
     },
     {
-        "name": "Ruiyu Zhou",
+        "name": "Wilford Bradford",
         "role": "EDA, Model Development",
         "bio": "bio...",
-        "image": "pages/images/Jay_Profile_pic.jpg",
-        "email": "rzhou9@berkeley.edu",
+        "image": "pages/images/WilfordBradford.jfif",
+        "email": "wbradford@berkeley.edu",
     },
 ]
 
