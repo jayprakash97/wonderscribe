@@ -55,7 +55,7 @@ st.markdown(
     """
     <style>
     .stApp {
-        background-color: #5f20eb;  /* #c0dc8f Light gray-green #d2e7ae; Purple=#8c52ff*/
+        background-color: #7dd8ff;  /* #c0dc8f Light gray-green #d2e7ae; Purple=#8c52ff, #5f20eb*/
     }
     .custom-label{
         color: #5ce1e6;   /* old color #3b8bc2; */
