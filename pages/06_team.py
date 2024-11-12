@@ -2,7 +2,7 @@ import streamlit as st
 import base64
 
 # Paths to the logos
-logo = "pages/WonderScribeLogo.png"
+logo = "pages/images/WonderScribeLogo.png"
 
 ###########################
 # Add LOGO
@@ -32,7 +32,7 @@ def add_logo(logo, width):
 
 
 # Call the add_logo function with the path to your local image
-add_logo(logo, "200px")
+add_logo(logo, "150px")
 
 st.markdown(
     """
