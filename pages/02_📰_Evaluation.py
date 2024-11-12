@@ -60,67 +60,22 @@ st.title("Welcome to WonderScribe Page")
 # age = st.number_input("Enter your age", min_value=0)
 
 #========== Function for evaluating RAG application ===========
+
+
 validation_query_response_list = {
-  0: {'query': 'Female Srila children Magical Kingdoms Fantacy Brushing the tooth Develop hygiene habbits 300',
+  0: {'query': 'Female, Srila, children, Magical Kingdoms, Fantacy, Brushing the tooth, Develop hygiene habbits, 300',
       'gold_response': 'In the enchanting Magical Kingdoms, where unicorns roamed and fairies danced, lived a young girl named Srila. Srilas days were filled with wonder and adventure, but there was one task she often neglected - brushing her teeth. One morning, as Srila was exploring the enchanted forest, she stumbled upon a curious creature. It was a tiny tooth fairy, with delicate wings and a sparkling wand. The tooth fairy fluttered around Srila, sprinkling a magical dust on her teeth. "What is this?" Srila asked, feeling a tingle in her mouth. "This is a special tooth-cleaning dust," the fairy explained. "It will keep your teeth strong and shiny, but you must remember to brush them every day."Srila promised to be more diligent about her dental hygiene. The tooth fairy smiled and vanished in a shower of glitter. From that day on, Srila made brushing her teeth a daily ritual. She used a soft-bristled brush and sweet-tasting toothpaste infused with fairy magic. Srila would sing songs and dance as she brushed, making it a fun and enjoyable activity. As Srilas teeth grew healthier and brighter, she noticed other changes too. Her breath stayed fresh, and she could enjoy all her favorite foods without any discomfort. The tooth fairy would visit occasionally, praising Srilas dedication and rewarding her with small treasures. '},
   1: {'query': 'Mike 400',
       'gold_response': ' '}
 }
 st.write("1")
 st.write(f"validation_query_response.: {validation_query_response_list[0]}")
-# Function to evaluate RAG system using ROUGE
-def rouge_scores(predicated_response, gold_response):
-  import evaluate
-  rouge = evaluate.load('rouge')
-  rouge_scores = rouge.compute(predictions=predicated_response, references=gold_response)
-  return rouge_scores
-
-def bleu_scores(predicated_response, gold_response):
-  import evaluate
-  bleu = evaluate.load('bleu')
-  bleu_scores = bleu.compute(predictions=predicated_response, references=gold_response)
-  return bleu_scores
-
-def bert_scores(predicated_response, gold_response):
-  import evaluate
-  bertscore = evaluate.load('bertscore')
-  bert_scores = bertscore.compute(predictions=predicated_response, references=gold_response, lang= 'en')
-  bert_scores['precision'] = sum(bert_scores['precision']) / len(bert_scores['precision'])
-  bert_scores['recall'] = sum(bert_scores['recall']) / len(bert_scores['recall'])
-  bert_scores['f1'] = sum(bert_scores['f1']) / len(bert_scores['f1'])
-  return bert_scores
 
 
-def image_decode(image_data_decode):
-    image_data = base64.b64decode(image_data_decode)
-    return image.open(BytesIO(image_data))
-
-
-
-with st.form("form_key"):
-    st.write("Craft personalized stories that bring adventure to life and ignite imagination and creativity")
-    gender = st.selectbox("Your Gender", options=["Male", "Female", "Don't want to share"])
-    main_character = st.text_input("What will be the name of the main character?", placeholder="Who will star in your story?")
-    audience = st.selectbox("Audience", options=["children", "young adult", "adult", "senior"])
-    story_setting = st.selectbox("Story Setthing", options=["Magical Kingdoms", "Underwater Kingdoms", "Pirate ships", "Exotic locations", "Imaginary world", "Digital words", "Others"])
-    story_type = st.selectbox("Story Type", options=["Fantacy", "Fairy Tales", "Mythology", "Bedtime stories", "Adventure", "Mystery", "Love", "Horror", ])
-    story_theme = st.text_input("What would be topic of the story?", placeholder="Leave brief idea of a story")
-    moral_lesson = st.text_input("What would be the moral of this story?", placeholder="Enter moral lesson from this story")
-    story_length = st.selectbox("Story Length (in words) ", options=["300", "400", "500"])
     
     submit_btn = st.form_submit_button("Submit")
 
-# st.write(f"""Your story summary:\n
-# Audience: {audience} \n
-# Main Character: {main_character} \n
-# Story Setting: {story_setting} \n
-# Story Type: {story_type} \n
-# Story Theme: {story_theme} \n
-# Moral Lesson: {moral_lesson} \n
-# Story Size (in words) : {story_length}
-# """)
 
-# story_theme_value = st.text_input( value=story_theme)
 
 # AWS API URL for POST request
 AWS_API_URL = "https://wacnqhon34.execute-api.us-east-1.amazonaws.com/dev/"
