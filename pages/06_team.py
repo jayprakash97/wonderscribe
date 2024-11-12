@@ -2,7 +2,8 @@ import streamlit as st
 import base64
 
 # Paths to the logos
-logo = "pages/images/WonderScribeLogo.png"
+# logo = "pages/images/WonderScribeLogo.png"
+logo = "pages/images/Jay_Profile_pic.jpg"
 
 ###########################
 # Add LOGO
