@@ -82,10 +82,10 @@ st.markdown(
 # Define group members
 members = [
     {
-        "name": "Victor Brew",
+        "name": "Jay Prakash",
         "role": "EDA, Model Development",
         "bio": "bio...",
-        "image": "./images/victor.png",
+        "image": "./images/jay.png",
         "email": "vbrew@berkeley.edu",
     },
     {
