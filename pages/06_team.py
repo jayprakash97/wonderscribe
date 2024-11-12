@@ -86,7 +86,7 @@ members = [
         "name": "Jay Prakash",
         "role": "EDA, Model Development",
         "bio": "bio...",
-        "image": "/pages/images/Jay_Profile_pic.jpg",
+        "image": "pages/images/Jay_Profile_pic.jpg",
         "email": "jprakash@berkeley.edu",
     },
     {
