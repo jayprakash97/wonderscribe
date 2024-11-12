@@ -32,7 +32,7 @@ def add_logo(logo, width):
 
 
 # Call the add_logo function with the path to your local image
-add_logo(logo, "150px")
+add_logo(logo, "100px")
 
 st.markdown(
     """
@@ -43,7 +43,7 @@ st.markdown(
     }
     /* Set color for all text inside the sidebar */
     [data-testid="stSidebar"] * {
-        color: #3b8bc2 !important;  /* Text color */
+        color: #7dd8ff !important;  /* Text color */
     }
     </style>
     """,
@@ -55,10 +55,10 @@ st.markdown(
     """
     <style>
     .stApp {
-        background-color: #d2e7ae;  /* #c0dc8f Light gray-green */
+        background-color: #8c52ff;  /* #c0dc8f Light gray-green #d2e7ae; */
     }
     .custom-label{
-        color: #3b8bc2;
+        color: #5ce1e6;   /* old color #3b8bc2; */
         font-size: 18px;  /* Set the font size for text input, number input, and text area */
         padding: 10px;    /* Optional: adjust padding for better appearance */
     }
@@ -75,7 +75,7 @@ st.markdown(
 
 # Customizing the title with HTML/CSS to make it larger and green
 st.markdown(
-    "<h1 style='color: #4b7170;font-size: 60px;'>About Us</h1>", unsafe_allow_html=True
+    "<h1 style='color: #5f20eb;font-size: 60px;'>About Us</h1>", unsafe_allow_html=True
 )
 
 
@@ -113,14 +113,14 @@ members = [
         "name": "Elias Tavarez",
         "role": "ML Engineering, GenAI",
         "bio": "bio...",
-        "image": "./images/elias.png",
+        # "image": "./images/elias.png",
         "email": "etav@berkeley.edu",
     },
     {
         "name": "Ruiyu Zhou",
         "role": "EDA, Model Development",
         "bio": "bio...",
-        #"image": "./images/ruiyu.jpeg",
+        # "image": "./images/ruiyu.jpeg",
         "email": "rzhou9@berkeley.edu",
     },
 ]
