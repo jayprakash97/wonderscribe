@@ -67,12 +67,12 @@ def main():
 
     story_texts = fetch_story_data(payload)
 
-    complete_story = ' '.join(story_texts)
+    predicated_response = ' '.join(story_texts)
 
     st.write("### Evaluation Scores ###")
-    st.write("Rouge Scores - ", rouge_scores(complete_story, gold_response))
-    st.write("Bleu  Scores - ", bleu_scores(complete_story, gold_response))
-    st.write("Bert  Scores - ", bert_scores(complete_story, gold_response))
+    st.write("Rouge Scores - ", rouge_scores(predicated_response, gold_response))
+    st.write("Bleu  Scores - ", bleu_scores(predicated_response, gold_response))
+    st.write("Bert  Scores - ", bert_scores(predicated_response, gold_response))
 
 if __name__ == "__main__":
     main()
