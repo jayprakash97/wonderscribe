@@ -8,34 +8,34 @@ import evaluate
 
 # Function to evaluate RAG system using ROUGE
 def rouge_scores(predicated_response, gold_response):
-    rouge = evaluate.load('rouge')
-    rouge_scores = rouge.compute(predictions=predicated_response, references=gold_response, use_stemmer=True)
-    return rouge_scores
+        rouge = evaluate.load('rouge')
+        rouge_scores = rouge.compute(predictions=predicated_response, references=gold_response, use_stemmer=True)
+        return rouge_scores
 
 def bleu_scores(predicated_response, gold_response):
-    bleu = evaluate.load('bleu')
-    bleu_scores = bleu.compute(predictions=predicated_response, references=gold_response)
-    return bleu_scores
+        bleu = evaluate.load('bleu')
+        bleu_scores = bleu.compute(predictions=predicated_response, references=gold_response)
+        return bleu_scores
 
 def bert_scores(predicated_response, gold_response):
-    bertscore = evaluate.load('bertscore')
-    bert_scores = bertscore.compute(predictions=predicated_response, references=gold_response, lang= 'en')
-    bert_scores['precision'] = sum(bert_scores['precision']) / len(bert_scores['precision'])
-    bert_scores['recall'] = sum(bert_scores['recall']) / len(bert_scores['recall'])
-    bert_scores['f1'] = sum(bert_scores['f1']) / len(bert_scores['f1'])
-    return bert_scores
+        bertscore = evaluate.load('bertscore')
+        bert_scores = bertscore.compute(predictions=predicated_response, references=gold_response, lang= 'en')
+        bert_scores['precision'] = sum(bert_scores['precision']) / len(bert_scores['precision'])
+        bert_scores['recall'] = sum(bert_scores['recall']) / len(bert_scores['recall'])
+        bert_scores['f1'] = sum(bert_scores['f1']) / len(bert_scores['f1'])
+        return bert_scores
 
-@st.cache_data 
+#@st.cache_data 
 def fetch_story_data(payload, _force_refresh=False):
-    if _force_refresh:
-        st.cache_data.clear()
+    # if _force_refresh:
+    #     st.cache_data.clear()
     AWS_API_URL = "https://wacnqhon34.execute-api.us-east-1.amazonaws.com/dev/"
     headers = {
         "Content-Type": "application/json"
     }
    
     json_data = payload
- 
+
     response = requests.post(AWS_API_URL, headers=headers, json=json_data)
     if response.status_code == 200:
         data = response.json() 
@@ -44,8 +44,8 @@ def fetch_story_data(payload, _force_refresh=False):
         return []
 
 def main():
-    if 'cache_cleared' not in st.session_state:
-        st.session_state.cache_cleared = False
+    # if 'cache_cleared' not in st.session_state:
+    #     st.session_state.cache_cleared = False
         
     validation_query_response_list = {
         0: {'query': 'Female,Srila,children,Magical Kingdoms,Fantacy,Brushing the tooth,Develop hygiene habbits,300',
