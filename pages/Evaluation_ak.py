@@ -8,19 +8,16 @@ import evaluate
 
 # Function to evaluate RAG system using ROUGE
 def rouge_scores(predicated_response, gold_response):
-    import evaluate
     rouge = evaluate.load('rouge')
-    rouge_scores = rouge.compute(predictions=predicated_response, references=gold_response)
+    rouge_scores = rouge.compute(predictions=predicated_response, references=gold_response, use_stemmer=True)
     return rouge_scores
 
 def bleu_scores(predicated_response, gold_response):
-    import evaluate
     bleu = evaluate.load('bleu')
     bleu_scores = bleu.compute(predictions=predicated_response, references=gold_response)
     return bleu_scores
 
 def bert_scores(predicated_response, gold_response):
-    import evaluate
     bertscore = evaluate.load('bertscore')
     bert_scores = bertscore.compute(predictions=predicated_response, references=gold_response, lang= 'en')
     bert_scores['precision'] = sum(bert_scores['precision']) / len(bert_scores['precision'])
