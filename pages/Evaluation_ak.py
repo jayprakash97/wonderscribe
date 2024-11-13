@@ -59,13 +59,13 @@ def main():
 
     payload = {
         "audience" : audience,
-        "story_type" : '',
+        "story_type" : genre,
         "main_character" : name,
         "story_theme" : genre, 
         "moral_lesson" : moral,
         "setting" : setting, 
         "word_count" : word_count,
-        "story_lang" : '',
+        "story_lang" : "English",
         "api_Path" : "getStory"
     }
 
