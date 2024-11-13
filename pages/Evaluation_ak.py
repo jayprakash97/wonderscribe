@@ -68,6 +68,9 @@ def main():
     story_texts = fetch_story_data(payload)
 
     predicated_response = ' '.join(story_texts)
+
+    st.write("predicated_response- ", predicated_response)
+    st.write("gold_response - ", old_response)
   
     st.write("### Evaluation Scores ###")
     st.write("Rouge Scores - ", rouge_scores(predicated_response, gold_response))
