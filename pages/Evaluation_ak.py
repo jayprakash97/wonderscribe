@@ -70,8 +70,8 @@ def main():
     predicated_response = ' '.join(story_texts)
 
     st.write("### Evaluation Scores ###")
-    rouge_scores = rouge_scores(predicated_response, gold_response)
-    st.write("Rouge Scores - ", rouge_scores)
+    # rouge_scores = rouge_scores(predicated_response, gold_response)
+    # st.write("Rouge Scores - ", rouge_scores)
     bleu_scores = bleu_scores(predicated_response, gold_response)
     st.write("Bleu  Scores - ", bleu_scores)
     bert_scores = bert_scores(predicated_response, gold_response)
