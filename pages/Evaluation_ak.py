@@ -8,16 +8,19 @@ import evaluate
 
 # Function to evaluate RAG system using ROUGE
 def rouge_scores(predicated_response, gold_response):
+    import evaluate
     rouge = evaluate.load('rouge')
     rouge_scores = rouge.compute(predictions=predicated_response, references=gold_response)
     return rouge_scores
 
 def bleu_scores(predicated_response, gold_response):
+    import evaluate
     bleu = evaluate.load('bleu')
     bleu_scores = bleu.compute(predictions=predicated_response, references=gold_response)
     return bleu_scores
 
 def bert_scores(predicated_response, gold_response):
+    import evaluate
     bertscore = evaluate.load('bertscore')
     bert_scores = bertscore.compute(predictions=predicated_response, references=gold_response, lang= 'en')
     bert_scores['precision'] = sum(bert_scores['precision']) / len(bert_scores['precision'])
@@ -50,11 +53,8 @@ def main():
            }
     }
 
-    st.write("####")
     query_string = validation_query_response_list[0]['query']
-    st.write(query_string)
     gold_response = validation_query_response_list[0]['gold_response']
-    st.write(gold_response)
     gender, name, audience, setting, genre, topic, moral, word_count = query_string.split(',')
 
     payload = {
@@ -73,13 +73,13 @@ def main():
 
     predicated_response = ' '.join(story_texts)
 
-    st.write("predicated_response- ", predicated_response)
-    st.write("gold_response - ", gold_response)
-  
     st.write("### Evaluation Scores ###")
-    st.write("Rouge Scores - ", rouge_scores(predicated_response, gold_response))
-    st.write("Bleu  Scores - ", bleu_scores(predicated_response, gold_response))
-    st.write("Bert  Scores - ", bert_scores(predicated_response, gold_response))
+    rouge_scores= rouge_scores(predicated_response, gold_response)
+    st.write(f"Rouge Scores - {rouge_scores}")
+    bleu_scores = bleu_scores(predicated_response, gold_response)
+    st.write(f"Bleu  Scores - {bleu_scores}")
+    bert_scores = bert_scores(predicated_response, gold_response)
+    st.write(f"Bert  Scores - {bert_scores}")
 
 if __name__ == "__main__":
     main()
