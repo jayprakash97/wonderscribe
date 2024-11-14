@@ -25,7 +25,12 @@ import evaluate
 def rouge_scores(predicted_response, gold_response):
     try:
         rouge = evaluate.load('rouge')
-        return rouge_scores
+        scores = rouge.compute(
+            predictions=[predicted_response],
+            references=[gold_response],
+            use_aggregator=True
+        )
+        return scores
     except Exception as e:
         return f"Error computing ROUGE score: {str(e)}"
 
