@@ -3,3 +3,7 @@ pandas
 numpy
 boto3
 evaluate
+rouge-score
+nltk
+bert-score
+transformers
