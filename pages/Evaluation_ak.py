@@ -4,23 +4,57 @@ import json
 import evaluate
 
 # Function to evaluate RAG system using ROUGE
-def rouge_scores(predicated_response, gold_response):
-    rouge = evaluate.load('rouge')
-    rouge_scores = rouge.compute(predictions=predicated_response, references=gold_response, use_stemmer=True)
-    return rouge_scores
+# def rouge_scores(predicated_response, gold_response):
+#     rouge = evaluate.load('rouge')
+#     rouge_scores = rouge.compute(predictions=predicated_response, references=gold_response, use_stemmer=True)
+#     return rouge_scores
 
-def bleu_scores(predicated_response, gold_response):
-    bleu = evaluate.load('bleu')
-    bleu_scores = bleu.compute(predictions=predicated_response, references=gold_response)
-    return bleu_scores
+# def bleu_scores(predicated_response, gold_response):
+#     bleu = evaluate.load('bleu')
+#     bleu_scores = bleu.compute(predictions=predicated_response, references=gold_response)
+#     return bleu_scores
 
-def bert_scores(predicated_response, gold_response):
-    bertscore = evaluate.load('bertscore')
-    bert_scores = bertscore.compute(predictions=predicated_response, references=gold_response, lang= 'en')
-    bert_scores['precision'] = sum(bert_scores['precision']) / len(bert_scores['precision'])
-    bert_scores['recall'] = sum(bert_scores['recall']) / len(bert_scores['recall'])
-    bert_scores['f1'] = sum(bert_scores['f1']) / len(bert_scores['f1'])
-    return bert_scores
+# def bert_scores(predicated_response, gold_response):
+#     bertscore = evaluate.load('bertscore')
+#     bert_scores = bertscore.compute(predictions=predicated_response, references=gold_response, lang= 'en')
+#     bert_scores['precision'] = sum(bert_scores['precision']) / len(bert_scores['precision'])
+#     bert_scores['recall'] = sum(bert_scores['recall']) / len(bert_scores['recall'])
+#     bert_scores['f1'] = sum(bert_scores['f1']) / len(bert_scores['f1'])
+#     return bert_scores
+
+def rouge_scores(predicted_response, gold_response):
+    try:
+        rouge = evaluate.load('rouge')
+        return rouge_scores
+    except Exception as e:
+        return f"Error computing ROUGE score: {str(e)}"
+
+def bleu_scores(predicted_response, gold_response):
+    try:
+        bleu = evaluate.load('bleu')
+        bleu_scores = bleu.compute(
+            predictions=[predicted_response], 
+            references=[[gold_response]]
+        )
+        return bleu_scores
+    except Exception as e:
+        return f"Error computing BLEU score: {str(e)}"
+
+def bert_scores(predicted_response, gold_response):
+    try:
+        bertscore = evaluate.load('bertscore')
+        bert_scores = bertscore.compute(
+            predictions=[predicted_response], 
+            references=[gold_response], 
+            lang='en'
+        )
+        # Average the scores
+        bert_scores['precision'] = sum(bert_scores['precision']) / len(bert_scores['precision'])
+        bert_scores['recall'] = sum(bert_scores['recall']) / len(bert_scores['recall'])
+        bert_scores['f1'] = sum(bert_scores['f1']) / len(bert_scores['f1'])
+        return bert_scores
+    except Exception as e:
+        return f"Error computing BERT score: {str(e)}"
  
 def fetch_story_data(payload):
     AWS_API_URL = "https://wacnqhon34.execute-api.us-east-1.amazonaws.com/dev/"
