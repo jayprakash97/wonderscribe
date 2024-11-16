@@ -102,13 +102,16 @@ def main():
     }
     
     story_texts = fetch_story_data(payload)
-    st.write(story_texts)
+    # st.write(story_texts)
 
     predicated_response = ' '.join(story_texts)
 
     st.write(f"predicated_response - {predicated_response}")
     
     st.write("### Evaluation Scores ###")
+    #st.write(f"gold_response - {gold_response}")
+
+    gold_response = "In the enchanting Magical Kingdoms, where unicorns roamed and fairies danced, lived a young girl named Srila. Srilas days were filled with wonder and adventure, but there was one task she often neglected - brushing her teeth. One morning, as Srila was exploring the enchanted forest, she stumbled upon a curious creature. It was a tiny tooth fairy, with delicate wings and a sparkling wand. The tooth fairy fluttered around Srila, sprinkling a magical dust on her teeth. What is this? Srila asked, feeling a tingle in her mouth. This is a special tooth-cleaning dust, the fairy explained. It will keep your teeth strong and shiny, but you must remember to brush them every day. Srila promised to be more diligent about her dental hygiene. The tooth fairy smiled and vanished in a shower of glitter. From that day on, Srila made brushing her teeth a daily ritual. She used a soft-bristled brush and sweet-tasting toothpaste infused with fairy magic. Srila would sing songs and dance as she brushed, making it a fun and enjoyable activity. As Srilas teeth grew healthier and brighter, she noticed other changes too. Her breath stayed fresh, and she could enjoy all her favorite foods without any discomfort. The tooth fairy would visit occasionally, praising Srilas dedication and rewarding her with small treasures."
     st.write(f"gold_response - {gold_response}")
     rouge_scores= rouge_scores(predicated_response, gold_response)
     st.write(f"Rouge Scores - {rouge_scores}")
