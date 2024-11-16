@@ -86,32 +86,32 @@ def main():
     query_string = validation_query_response_list[0]['query']
     gold_response = validation_query_response_list[0]['gold_response']
     gender, name, audience, setting, genre, topic, moral, word_count = query_string.split(',')
+    st.write(gender)
+    # payload = {
+    #     "audience" : audience,
+    #     "story_type" : genre,
+    #     "main_character" : name,
+    #     "story_theme" : genre, 
+    #     "moral_lesson" : moral,
+    #     "setting" : setting, 
+    #     "word_count" : word_count,
+    #     "story_lang" : "English",
+    #     "api_Path" : "getStory"
+    # }
 
-    payload = {
-        "audience" : audience,
-        "story_type" : genre,
-        "main_character" : name,
-        "story_theme" : genre, 
-        "moral_lesson" : moral,
-        "setting" : setting, 
-        "word_count" : word_count,
-        "story_lang" : "English",
-        "api_Path" : "getStory"
-    }
+    # story_texts = fetch_story_data(payload)
 
-    story_texts = fetch_story_data(payload)
+    # predicated_response = ' '.join(story_texts)
 
-    predicated_response = ' '.join(story_texts)
-
-    #st.write(f"predicated_response - {predicated_response}")
+    # #st.write(f"predicated_response - {predicated_response}")
     
-    st.write("### Evaluation Scores ###")
-    rouge_scores= rouge_scores(predicated_response, gold_response)
-    st.write(f"Rouge Scores - {rouge_scores}")
-    bleu_scores = bleu_scores(predicated_response, gold_response)
-    st.write(f"Bleu  Scores - {bleu_scores}")
-    bert_scores = bert_scores(predicated_response, gold_response)
-    st.write(f"Bert  Scores - {bert_scores}")
+    # st.write("### Evaluation Scores ###")
+    # rouge_scores= rouge_scores(predicated_response, gold_response)
+    # st.write(f"Rouge Scores - {rouge_scores}")
+    # bleu_scores = bleu_scores(predicated_response, gold_response)
+    # st.write(f"Bleu  Scores - {bleu_scores}")
+    # bert_scores = bert_scores(predicated_response, gold_response)
+    # st.write(f"Bert  Scores - {bert_scores}")
 
 if __name__ == "__main__":
     main()
