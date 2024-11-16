@@ -41,6 +41,7 @@ def bleu_scores(predicted_response, gold_response):
             predictions=[predicted_response], 
             references=[[gold_response]]
         )
+        st.write(bleu_scores)
         return bleu_scores
     except Exception as e:
         return f"Error computing BLEU score: {str(e)}"
