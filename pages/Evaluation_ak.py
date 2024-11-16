@@ -116,9 +116,8 @@ def main():
     st.write(f"gold_response - {gold_response}")
     cal_rouge_scores= rouge_scores(predicated_response, gold_response)
     st.write(f"Calculated Rouge Scores - {cal_rouge_scores}")
-    
     # cal_bleu_scores = bleu_scores(predicated_response, gold_response)
-    st.write(bleu_scoresbleu_scores(predicated_response, gold_response) )
+    st.write(bleu_scores(predicated_response, gold_response) )
     st.write(bert_scores(predicated_response, gold_response))
     # cal_bert_scores = bert_scores(predicated_response, gold_response)
     # st.write(f"Calculated Bert  Scores - {bert_scores}")
