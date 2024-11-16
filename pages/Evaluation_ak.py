@@ -87,7 +87,7 @@ def main():
     gold_response = validation_query_response_list[0]['gold_response']
     gender, name, audience, setting, genre, topic, moral, word_count = query_string.split(',')
     
-    st.write(f"{genre} {name}")
+    st.write(f"{audience} {genre} {name} {moral} {setting} {word_count} ")
 
     payload = {
         "audience" : audience,
