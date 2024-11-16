@@ -87,19 +87,22 @@ def main():
     gold_response = validation_query_response_list[0]['gold_response']
     gender, name, audience, setting, genre, topic, moral, word_count = query_string.split(',')
     st.write(gender)
-    # payload = {
-    #     "audience" : audience,
-    #     "story_type" : genre,
-    #     "main_character" : name,
-    #     "story_theme" : genre, 
-    #     "moral_lesson" : moral,
-    #     "setting" : setting, 
-    #     "word_count" : word_count,
-    #     "story_lang" : "English",
-    #     "api_Path" : "getStory"
-    # }
+    st.write(f"{genre} {name}")
 
-    # story_texts = fetch_story_data(payload)
+    payload = {
+        "audience" : audience,
+        "story_type" : genre,
+        "main_character" : name,
+        "story_theme" : genre, 
+        "moral_lesson" : moral,
+        "setting" : setting, 
+        "word_count" : word_count,
+        "story_lang" : "English",
+        "api_Path" : "getStory"
+    }
+    
+    story_texts = fetch_story_data(payload)
+    st.write(story_texts)
 
     # predicated_response = ' '.join(story_texts)
 
