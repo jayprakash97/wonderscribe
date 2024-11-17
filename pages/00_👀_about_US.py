@@ -45,7 +45,7 @@ st.title(" Welcome to WonderScribe")
 st.markdown(
     """
     <div class="custom-box">
-        We are a passionate team of authors, educators, and creatives on a mission to ignite young readers' imaginations
+        <p>We are a passionate team of authors, educators, and creatives on a mission to ignite young readers' imaginations
         everywhere. We believe in the power of stories to transport children to magical worlds, introduce them to 
         fascinating characters, and inspire endless possibilities.
         
@@ -55,7 +55,7 @@ st.markdown(
         
         We aim to make reading fun, interactive, and accessible to all children, no matter where they are. Through our
         innovative platform, we hope to foster a love of reading, spark creativity, and encourage every child to believe 
-        in the magic of their own stories.
+        in the magic of their own stories.</p>
         
         Join us on this exciting journey and watch your child's imagination soar!
     </div>
