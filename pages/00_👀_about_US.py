@@ -38,8 +38,8 @@ custom_css = """
 /* Position the logo in the top-left corner */
 img[alt="WonderScribeLogo"] {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 40px;
+    left: 40px;
     width: 150px; /* Adjust width if needed */
     z-index: 10;
 }
