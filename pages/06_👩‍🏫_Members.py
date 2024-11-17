@@ -39,7 +39,7 @@ st.markdown(
     <style>
     /* Style for the sidebar content */
     [data-testid="stSidebarContent"] {
-        background-color: white; /*#bac9b9; Sidebar background color */
+        background-color: #7dd8ff; /*#bac9b9; Sidebar background color */
     }
     /* Set color for all text inside the sidebar */
     [data-testid="stSidebar"] * {
