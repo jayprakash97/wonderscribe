@@ -57,7 +57,7 @@ st.markdown(
         innovative platform, we hope to foster a love of reading, spark creativity, and encourage every child to believe 
         in the magic of their own stories.</p>
         
-        Join us on this exciting journey and watch your child's imagination soar!</p>
+        Join us on this exciting journey and watch your child's imagination soar!
     </div>
     """,
     unsafe_allow_html=True,
