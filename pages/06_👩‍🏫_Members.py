@@ -58,7 +58,7 @@ st.markdown(
         background-color: #7dd8ff;  /* #c0dc8f Light gray-green #d2e7ae; Purple=#8c52ff, #5f20eb*/
     }
     .custom-label{
-        color: #5ce1e6;   /* old color #3b8bc2; */
+        color: #5f20eb;   /* old color #3b8bc2; #5ce1e6*/
         font-size: 18px;  /* Set the font size for text input, number input, and text area */
         padding: 10px;    /* Optional: adjust padding for better appearance */
     }
@@ -104,7 +104,7 @@ members = [
     },
     {
         "name": "Natsnet Demoz",
-        "role": "EDA, UI/UX Design, Model Development",
+        "role": "Data & Analytics, UI/UX Design, Model Development",
         "bio": "bio...",
         "image": "pages/images/Natsnet Demoz.jfif",
         "email": "ndemoz@berkeley.edu",
