@@ -55,9 +55,9 @@ st.markdown(
         
         We aim to make reading fun, interactive, and accessible to all children, no matter where they are. Through our
         innovative platform, we hope to foster a love of reading, spark creativity, and encourage every child to believe 
-        in the magic of their own stories.</p>
+        in the magic of their own stories.
         
-        Join us on this exciting journey and watch your child's imagination soar!
+        <p>Join us on this exciting journey and watch your child's imagination soar!
     </div>
     """,
     unsafe_allow_html=True,
