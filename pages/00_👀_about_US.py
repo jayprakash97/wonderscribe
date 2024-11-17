@@ -18,7 +18,7 @@ page_bg = """
 
 /* Optional: Adjust text color and other styles */
 [data-testid="stAppViewContainer"] .stMarkdown {
-    color: white;  /* Adjust text color for contrast */
+    color: black;  /* Adjust text color for contrast */
 }
 </style>
 """
