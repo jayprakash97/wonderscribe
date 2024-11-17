@@ -8,16 +8,23 @@ import streamlit as st
 #     st.write("")
 
 # Test Background color
-
-st.markdown("""
+# Custom CSS for linear gradient background
+page_bg = """
 <style>
 body {
-  background: #ff0099; 
-  background: -webkit-linear-gradient(to right, #ff0099, #493240); 
-  background: linear-gradient(to right, #ff0099, #493240); 
+    background: linear-gradient(135deg, #8c52ff, #5ce1e6);
+    background-attachment: fixed;
+    color: white;  /* Optional: adjust text color for better contrast */
 }
 </style>
-    """, unsafe_allow_html=True)
+"""
+
+# Apply the custom CSS
+st.markdown(page_bg, unsafe_allow_html=True)
+
+# Your Streamlit content here
+st.title("Welcome to My Streamlit App!")
+st.write("Enjoy the vibrant gradient background!")
  # +++++++
                               
 st.image("pages/images/WonderScribeLogo.png", width=150)
