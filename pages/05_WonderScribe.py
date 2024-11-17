@@ -84,6 +84,37 @@ def main():
     # Set the page configuration with a wide layout for a book-like feel
     st.set_page_config(page_title="Interactive Storybook", page_icon="📖", layout="wide")
     # Add custom CSS for the storybook theme
+
+    #***
+    st.markdown(
+    """
+    <style>
+    /* Style for the sidebar content */
+    [data-testid="stSidebarContent"] {
+        background-color: #7dd8ff; /*#7dd8ff; Sidebar background color */
+        
+    }
+    /* Set color for all text inside the sidebar */
+    [data-testid="stSidebar"] * {
+        color: #8c52ff !important;  /* Text color */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+# Change the background color
+st.markdown(
+    """
+    <style>
+    .stApp {
+        [data-testid="stAppViewContainer"] {
+        background: linear-gradient(135deg, #8c52ff, #5ce1e6);
+        background-attachment: fixed;
+        # background-color: #7dd8ff;  /* #c0dc8f Light gray-green #d2e7ae; Purple=#8c52ff, #5f20eb*/
+    }
+    #**#
+    
     st.markdown("""
     <style>
         /* Overall background styling */
