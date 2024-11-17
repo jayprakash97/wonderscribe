@@ -25,10 +25,6 @@ page_bg = """
 
 # Apply the custom CSS
 st.markdown(page_bg, unsafe_allow_html=True)
-
-# Your Streamlit content here
-st.title("Welcome to My Streamlit App!")
-st.write("Enjoy the vibrant gradient background!")
  # +++++++
                               
 st.image("pages/images/WonderScribeLogo.png", width=150)
