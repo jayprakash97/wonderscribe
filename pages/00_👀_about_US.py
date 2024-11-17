@@ -7,14 +7,18 @@ import streamlit as st
 # with col2:
 #     st.write("")
 
-# Test Background color
-# Custom CSS for linear gradient background
+# Custom CSS to apply the background gradient to the main container
 page_bg = """
 <style>
-body {
+/* Apply background gradient to the main container */
+[data-testid="stAppViewContainer"] {
     background: linear-gradient(135deg, #8c52ff, #5ce1e6);
     background-attachment: fixed;
-    color: white;  /* Optional: adjust text color for better contrast */
+}
+
+/* Optional: Adjust text color and other styles */
+[data-testid="stAppViewContainer"] .stMarkdown {
+    color: white;  /* Adjust text color for contrast */
 }
 </style>
 """
