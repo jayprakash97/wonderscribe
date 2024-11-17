@@ -40,8 +40,8 @@ st.markdown(page_bg, unsafe_allow_html=True)
                               
 st.image("pages/images/WonderScribeLogo.png", width=150)
 st.title(" Welcome to WonderScribe")
-st.write(
-"""
+#st.write(
+#"""
 # Add a box with styled content
 st.markdown(
     """
