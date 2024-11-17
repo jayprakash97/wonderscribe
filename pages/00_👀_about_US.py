@@ -7,7 +7,7 @@ import streamlit as st
 # with col2:
 #     st.write("")
 
-st.image("pages/WonderScribeLogo.png", width=150)
+st.image("pages/images/WonderScribeLogo.png", width=150)
 st.title(" Welcome to WonderScribe")
 st.write(
 """
