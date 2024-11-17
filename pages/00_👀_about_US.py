@@ -40,22 +40,16 @@ st.markdown(page_bg, unsafe_allow_html=True)
 st.title("Welcome to My Streamlit App!")
 st.write("Enjoy the vibrant gradient background!")
 
-# Add a box with styled content
-st.markdown(
-    """
-    <div class="custom-box">
-        <h3>This is a Structured Box</h3>
-        <p>Use this box to highlight specific information, organize content, or create visually distinct sections in your app.</p>
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
  # +++++++
                               
 st.image("pages/images/WonderScribeLogo.png", width=150)
 st.title(" Welcome to WonderScribe")
 st.write(
 """
+# Add a box with styled content
+st.markdown(
+    """
+<div class="custom-box">
 We are a passionate team of authors, educators, and creatives on a mission to ignite young readers' imaginations
 everywhere. We believe in the power of stories to transport children to magical words, introduce them to 
 fascinating characters, and inspire endless possibilities.
@@ -69,4 +63,8 @@ innovative platform, we hope to foster a love of reading, spark creativity, and 
 in the magic of their own stories
 
 Join us on this exciting journey and watch your child's imagination soar!
-""")
+"""
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
