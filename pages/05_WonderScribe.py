@@ -93,25 +93,6 @@ def main():
             color: #4e342e;
         }
 
-    # Test Custom CSS to apply the background gradient to the main container
-    page_bg = """
-    <style>
-    /* Apply background gradient to the main container */
-    [data-testid="stAppViewContainer"] {
-        background: linear-gradient(#8c52ff, #5ce1e6);
-        background-attachment: fixed;
-    }
-    
-    /* Optional: Adjust text color and other styles */
-    [data-testid="stAppViewContainer"] .stMarkdown {
-        color: white;  /* Adjust text color for contrast */
-    }
-    </style>
-    """
-    
-    # Apply the custom CSS
-    st.markdown(page_bg, unsafe_allow_html=True)
-        #test******
  
         /* Sidebar styling to resemble a table of contents */
         .css-1d391kg {
