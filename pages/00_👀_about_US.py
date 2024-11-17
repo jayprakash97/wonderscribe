@@ -7,24 +7,49 @@ import streamlit as st
 # with col2:
 #     st.write("")
 
-# Custom CSS to apply the background gradient to the main container
+# Custom CSS to apply the background gradient and create a box
 page_bg = """
 <style>
 /* Apply background gradient to the main container */
 [data-testid="stAppViewContainer"] {
-    background: linear-gradient(#8c52ff, #5ce1e6);
+    background: linear-gradient(135deg, #8c52ff, #5ce1e6);
     background-attachment: fixed;
 }
 
 /* Optional: Adjust text color and other styles */
 [data-testid="stAppViewContainer"] .stMarkdown {
-    color: black;  /* Adjust text color for contrast */
+    color: white;  /* Adjust text color for contrast */
+}
+
+/* Style for the content box */
+.custom-box {
+    background-color: #ffffff; /* Light background color for the box */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Spacing inside the box */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a raised effect */
+    color: black; /* Text color inside the box */
+    margin-top: 20px; /* Space above the box */
 }
 </style>
 """
 
 # Apply the custom CSS
 st.markdown(page_bg, unsafe_allow_html=True)
+
+# Streamlit content
+st.title("Welcome to My Streamlit App!")
+st.write("Enjoy the vibrant gradient background!")
+
+# Add a box with styled content
+st.markdown(
+    """
+    <div class="custom-box">
+        <h3>This is a Structured Box</h3>
+        <p>Use this box to highlight specific information, organize content, or create visually distinct sections in your app.</p>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
  # +++++++
                               
 st.image("pages/images/WonderScribeLogo.png", width=150)
