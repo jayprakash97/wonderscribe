@@ -33,6 +33,23 @@ page_bg = """
 </style>
 """
 
+custom_css = """
+<style>
+/* Position the logo in the top-left corner */
+img[alt="WonderScribeLogo"] {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 150px; /* Adjust width if needed */
+    z-index: 10;
+}
+
+/* Add padding to avoid overlap with the content */
+[data-testid="stAppViewContainer"] {
+    padding-top: 80px; /* Add padding to avoid logo overlapping */
+}
+</style>
+"""
 # Apply the custom CSS
 st.markdown(page_bg, unsafe_allow_html=True)
 
