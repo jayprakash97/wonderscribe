@@ -105,7 +105,7 @@ members = [
     },
     {
         "name": "Natsnet Demoz",
-        "role": "Data & Analytics, UI/UX Design, Model Development",
+        "role": "ML, Data & Analytics, UI/UX Design, Model Development",
         "bio": "bio...",
         "image": "pages/images/Natsnet Demoz.jfif",
         "email": "ndemoz@berkeley.edu",
