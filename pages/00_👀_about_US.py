@@ -7,6 +7,22 @@ import streamlit as st
 # with col2:
 #     st.write("")
 
+# Test Background color
+ background: #ff0099; 
+  background: -webkit-linear-gradient(to right, #ff0099, #493240); 
+  background: linear-gradient(to right, #ff0099, #493240);"
+
+st.markdown("""
+<style>
+body {
+  background: #ff0099; 
+  background: -webkit-linear-gradient(to right, #ff0099, #493240); 
+  background: linear-gradient(to right, #ff0099, #493240); 
+}
+</style>
+    """, unsafe_allow_html=True)
+ # +++++++
+                              
 st.image("pages/images/WonderScribeLogo.png", width=150)
 st.title(" Welcome to WonderScribe")
 st.write(
