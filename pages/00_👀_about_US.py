@@ -12,7 +12,7 @@ page_bg = """
 <style>
 /* Apply background gradient to the main container */
 [data-testid="stAppViewContainer"] {
-    background: linear-gradient(135deg, #8c52ff, #5ce1e6);
+    background: linear-gradient(#8c52ff, #5ce1e6);
     background-attachment: fixed;
 }
 
