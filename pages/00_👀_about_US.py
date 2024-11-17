@@ -30,11 +30,7 @@ page_bg = """
     color: black; /* Text color inside the box */
     margin-top: 20px; /* Space above the box */
 }
-</style>
-"""
 
-custom_css = """
-<style>
 /* Position the logo in the top-left corner */
 img[alt="WonderScribeLogo"] {
     position: absolute;
