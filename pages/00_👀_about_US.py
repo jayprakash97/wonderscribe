@@ -8,9 +8,6 @@ import streamlit as st
 #     st.write("")
 
 # Test Background color
- background: #ff0099; 
- background: -webkit-linear-gradient(to right, #ff0099, #493240); 
- background: linear-gradient(to right, #ff0099, #493240);"
 
 st.markdown("""
 <style>
