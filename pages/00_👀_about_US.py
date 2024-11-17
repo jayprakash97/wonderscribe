@@ -23,7 +23,7 @@ page_bg = """
 
 /* Style for the content box */
 .custom-box {
-    background-color: #ffffff; /* Light background color for the box */
+    background-color: #b7cfff; /* Light background color for the box */
     border-radius: 10px; /* Rounded corners */
     padding: 20px; /* Spacing inside the box */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a raised effect */
