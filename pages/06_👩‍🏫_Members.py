@@ -50,6 +50,22 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+#*****
+# Custom CSS to apply the background gradient and create a box
+page_bg = """
+<style>
+/* Apply background gradient to the main container */
+[data-testid="stAppViewContainer"] {
+    background: linear-gradient(135deg, #8c52ff, #5ce1e6);
+    background-attachment: fixed;
+}
+
+/* Optional: Adjust text color and other styles */
+[data-testid="stAppViewContainer"] .stMarkdown {
+    color: white;  /* Adjust text color for contrast */
+}
+#*****
+
 # Change the background color
 st.markdown(
     """
