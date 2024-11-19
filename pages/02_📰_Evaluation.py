@@ -162,6 +162,6 @@ def file_display():
       st.error(f"File was not found at path")
 
 if __name__ == "__main__":
-    main()
+    #main()
     file_display()
 
