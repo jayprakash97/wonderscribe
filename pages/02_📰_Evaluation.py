@@ -154,7 +154,7 @@ def main():
 
 def file_display():
     st.write("#### Display Excel File in Streamlit")
-    file_path = "/pages/images/file.xlsx"
+    file_path = "./file.xlsx"
     try:
       df = pd.read_excel(file_path)
       st.dataframe(df) 
