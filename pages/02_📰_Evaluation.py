@@ -150,10 +150,9 @@ def main():
         # cal_bert_scores = bert_scores(predicated_response, gold_response)
         # st.write(f"Calculated Bert  Scores - {bert_scores}")
 
-    # st.title("Display Excel File in Streamlit")
-    # df = pd.read_excel(uploaded_file)
-    # # Display the dataframe in Streamlit
-    # st.dataframe(df) 
+    st.title("Display Excel File in Streamlit")
+    df = pd.read_excel("Evaluation_MATRIX 1.xlsx")
+    st.dataframe(df) 
 
 if __name__ == "__main__":
     main()
