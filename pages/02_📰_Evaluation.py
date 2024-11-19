@@ -159,6 +159,6 @@ def file_display():
     st.dataframe(df) 
 
 if __name__ == "__main__":
-    main()
+    #main()
     file_display()
 
