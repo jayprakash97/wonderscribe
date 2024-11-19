@@ -153,8 +153,8 @@ def main():
         # st.write(f"Calculated Bert  Scores - {bert_scores}")
 
 def file_display():
-    st.write("#### Display Excel File in Streamlit")
-    file_path = "/pages/images/file.xlsx"
+    st.write("#### Evaluation Results :")
+    file_path = "pages/file.xlsx"
     try:
       df = pd.read_excel(file_path)
       st.dataframe(df) 
