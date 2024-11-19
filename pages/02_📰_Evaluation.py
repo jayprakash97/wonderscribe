@@ -154,10 +154,12 @@ def main():
 
 def file_display():
     st.write("#### Display Excel File in Streamlit")
-    #file = "wonderscribe/pages/images/file.xlsx"
-    file = "./file.xlsx"
-    df = pd.read_excel(file)
-    st.dataframe(df) 
+    file_path = "/pages/images/file.xlsx"
+    try:
+      df = pd.read_excel(file_path)
+      st.dataframe(df) 
+    except FileNotFoundError:
+      st.error(f"File was not found at path")
 
 if __name__ == "__main__":
     #main()
