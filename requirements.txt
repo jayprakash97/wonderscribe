@@ -7,3 +7,4 @@ rouge-score
 nltk
 bert-score
 transformers
+openpyxl
