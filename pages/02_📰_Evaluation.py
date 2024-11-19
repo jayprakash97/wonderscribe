@@ -146,7 +146,7 @@ def main():
         # cal_bert_scores = bert_scores(predicated_response, gold_response)
         # st.write(f"Calculated Bert  Scores - {bert_scores}")
 
-    st.title("Display Excel File in Streamlit")
+    st.write("#### Display Excel File in Streamlit")
     file = "pages/images/file.xlsx"
     df = pd.read_excel(file)
     st.dataframe(df) 
