@@ -147,7 +147,7 @@ def main():
         # st.write(f"Calculated Bert  Scores - {bert_scores}")
 
     st.title("Display Excel File in Streamlit")
-    file = "pages/images/Evaluation_MATRIX 1.xlsx"
+    file = "pages/images/file.xlsx"
     df = pd.read_excel(file)
     st.dataframe(df) 
 
