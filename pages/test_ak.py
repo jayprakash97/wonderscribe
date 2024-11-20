@@ -228,7 +228,7 @@ def main():
         if submit_btn and not form_is_valid:
             st.error("Please fix the validation errors before submitting")
             # st.title("Children's Story")
-        else submit_btn:
+        elif submit_btn and form_is_valid:
            # Creating a session varibale to maintain the state
            st.session_state.submit_btn = True
             
