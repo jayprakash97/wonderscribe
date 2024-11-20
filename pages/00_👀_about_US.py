@@ -63,22 +63,8 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
- # +++++++
 
-
-# Add the logo using HTML for precise positioning
-st.markdown(
-    """
-    <div class="top-left-logo">
-        <img src="pages/images/WonderScribeLogo.png" alt="WonderScribeLogo">
-    </div>
-    """,
-    unsafe_allow_html=True,
-)
-
-# +++++++
-
-#st.image("pages/images/WonderScribeLogo.png", width=150)
+st.image("pages/images/WonderScribeLogo.png", width=150)
 st.title(" Welcome to WonderScribe")
 #st.write(
 
