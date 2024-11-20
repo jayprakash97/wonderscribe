@@ -69,7 +69,7 @@ st.markdown(
     }
     p, li, span{
         color: #4b7170;
-        font-size: 48px;  /* Set default font size */
+        font-size: 18px;  /* Set default font size */
         /* font-weight: bold;   Make the text bold */
     }
 
