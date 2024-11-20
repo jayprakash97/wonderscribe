@@ -102,7 +102,8 @@ def main():
         /* Sidebar styling to resemble a table of contents */
         .css-1d391kg {
             #background-color: #e8e0d2 !important;
-            background-color: #7dd8ff !important;
+            background-color: #7dd8ff; /*#7dd8ff; Sidebar background color */
+            #background-color: #7dd8ff !important;
             border-right: 2px solid #bfa989;
         }
  
