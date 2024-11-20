@@ -218,8 +218,8 @@ def main():
                 st.error(error_message)
                 st.stop()  # Stop further execution if there are validation errors
             
-            # If no validation errors, proceed with form submission
-            st.session_state.submit_btn = True  
+           # If no validation errors, proceed with form submission
+           st.session_state.submit_btn = True  
             
         # st.sidebar.title("📚 Table of Contents")
         menu_options = ["About", "Storybook"]
