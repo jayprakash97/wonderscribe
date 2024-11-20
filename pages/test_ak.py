@@ -74,12 +74,8 @@ def fetch_and_decode_images(captions, _force_refresh=False):
         json_data = payload2
         response = requests.post(AWS_API_URL, headers=headers, json=json_data)
         if response.status_code == 200:
-            image = "pages/images/invalid_img.jpg"
             data = response.json()
-            if data["image_data_decode1"] == "INVALID_PROMPT":
-                decoded_images.append(image)
-            else:
-                decoded_images.append(data["image_data_decode1"])
+            decoded_images.append(data["image_data_decode1"])
     return decoded_images
  
  
