@@ -169,7 +169,9 @@ def main():
         }
     </style>
     """, unsafe_allow_html=True)
- 
+
+    gender = ""
+    main_character =""
     with st.form("form_key"):
         st.write("Craft personalized stories that bring adventure to life and ignite imagination and creativity")
         gender = st.selectbox("Your Gender", options=["Male", "Female", "Non Binary", "Don't want to share"])
