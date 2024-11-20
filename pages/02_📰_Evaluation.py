@@ -153,7 +153,7 @@ def main():
         # st.write(f"Calculated Bert  Scores - {bert_scores}")
 
 def file_display():
-    st.write("#### Evaluation Results :")
+    st.write("#### RAG Model Evaluation Results :")
     file_path = "pages/file.xlsx"
     try:
       df = pd.read_excel(file_path)
