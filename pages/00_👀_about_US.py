@@ -1,5 +1,5 @@
 import streamlit as st
-
+st.image("pages/images/WonderScribeLogo.png", width=150)
 # col1, col2  = st.columns(2, vertical_alignment="center")
 # # col1, col2 = st.columns(2, horizontal_alignment="left")
 # with col1:
@@ -66,7 +66,7 @@ st.markdown(
 )
  # +++++++
                               
-st.image("pages/images/WonderScribeLogo.png", width=150)
+#st.image("pages/images/WonderScribeLogo.png", width=150)
 st.title(" Welcome to WonderScribe")
 #st.write(
 
