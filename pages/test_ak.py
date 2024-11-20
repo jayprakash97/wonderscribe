@@ -171,46 +171,55 @@ def main():
         }
     </style>
     """, unsafe_allow_html=True)
+
+    if 'validation_errors' not in st.session_state:
+        st.session_state.validation_errors = []
  
     with st.form("form_key"):
         st.write("Craft personalized stories that bring adventure to life and ignite imagination and creativity")
         gender = st.selectbox("Your Gender", options=["Male", "Female", "Non Binary", "Don't want to share"])
         main_character = st.text_input("What will be the name of the main character?", placeholder="Who will star in your story?")
-        if main_character:
-            if len(main_character.strip()) < 2:
-                st.error("Main character name must be at least 2 characters long")
-            if not main_character.replace(" ", "").isalpha():
-                st.error("Main character name should only contain letters")
         audience = st.selectbox("Audience", options=["children", "young adult", "adult", "senior"])
         story_setting = st.selectbox("Story Setthing", options=["Magical Kingdoms", "Underwater Kingdoms", "Pirate ships", "Exotic locations", "Imaginary world", "Digital words", "Others"])
         story_type = st.selectbox("Story Type", options=["Fantasy", "Fairy Tales", "Mythology", "Bedtime stories", "Adventure", "Mystery", "Love", "Horror", ])
         story_theme = st.text_input("What would be topic of the story?", placeholder="Leave brief idea of a story")
-        if story_theme:
-            if len(story_theme.strip()) < 10:
-                st.error("Story theme must be at least 10 characters long")
         moral_lesson = st.text_input("What would be the moral of this story?", placeholder="Enter moral lesson from this story")
-        if moral_lesson:
-            if len(moral_lesson.strip()) < 10:
-                st.error("Moral lesson must be at least 10 characters long")
         story_length = st.selectbox("Story Length (in words) ", options=["300", "400", "500"])
         story_lang = st.selectbox("Story lang", options=["English", "Spanish", "French", "Mandarin","German", "Hindi","Vietnamese", "Tagalog", "Urdu", "Arabic", "Italian"])
 
-        form_is_valid = True
-        if not main_character or len(main_character.strip()) < 2 or not main_character.replace(" ", "").isalpha():
-            form_is_valid = False
-        if not story_theme or len(story_theme.strip()) < 10:
-            form_is_valid = False
-        if not moral_lesson or len(moral_lesson.strip()) < 10:
-            form_is_valid = False
         submit_btn = st.form_submit_button("Submit")
  
     try:
-        if submit_btn and not form_is_valid:
-            st.error("Please fix the validation errors before submitting")
-            # st.title("Children's Story")
-        else:
-           # Creating a session varibale to maintain the state
-           st.session_state.submit_btn = True
+        if submit_btn:
+           # Clear previous validation errors
+           st.session_state.validation_errors = []
+
+           # Validate main character
+            if not main_character or len(main_character.strip()) < 2:
+                st.session_state.validation_errors.append("Main character name must be at least 2 characters long")
+            elif not main_character.replace(" ", "").isalpha():
+                st.session_state.validation_errors.append("Main character name should only contain letters")
+            
+            # Validate story theme
+            if not story_theme or len(story_theme.strip()) < 10:
+                st.session_state.validation_errors.append("Story theme must be at least 10 characters long")
+            elif len(story_theme.split()) < 3:
+                st.session_state.validation_errors.append("Story theme should contain at least 3 words")
+            
+            # Validate moral lesson
+            if not moral_lesson or len(moral_lesson.strip()) < 10:
+                st.session_state.validation_errors.append("Moral lesson must be at least 10 characters long")
+            elif len(moral_lesson.split()) < 3:
+                st.session_state.validation_errors.append("Moral lesson should contain at least 3 words")
+            
+            # Display all validation errors if any
+            if st.session_state.validation_errors:
+                error_message = "Please fix the following errors:\n" + "\n".join(f"• {error}" for error in st.session_state.validation_errors)
+                st.error(error_message)
+                st.stop()  # Stop further execution if there are validation errors
+            
+            # If no validation errors, proceed with form submission
+            st.session_state.submit_btn = True  
             
         # st.sidebar.title("📚 Table of Contents")
         menu_options = ["About", "Storybook"]
