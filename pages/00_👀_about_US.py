@@ -8,6 +8,38 @@ logo = "pages/images/WonderScribeLogo.png"
 # with col2:
 #     st.write("")
 
+
+#+++++++++
+
+logo = "pages/images/WonderScribeLogo.png"
+
+###########################
+# Add LOGO
+###########################
+
+
+def add_logo(logo, width):
+    # Read the image and convert it to Base64
+    with open(logo, "rb") as f:
+        data = base64.b64encode(f.read()).decode("utf-8")
+
+    # Inject CSS with Base64-encoded image into the sidebar
+    st.markdown(
+        f"""
+        <style>
+            [data-testid="stSidebarNav"] {{
+                background-image: url("data:image/png;base64,{data}");
+                background-repeat: no-repeat;
+                padding-top: 150px;
+                background-position: 10px 10px;
+                background-size: {width};
+            }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+#++++++++
+
 # Custom CSS to apply the background gradient and create a box
 page_bg = """
 <style>
