@@ -360,7 +360,13 @@ def main():
      
                 st.title("📖 My Storybook")
                 #image = Image.open(current_page["image"])
-                image = image_decode(current_page["image"])
+
+                message_test = ""
+                st.write("test -", current_page["image"])
+                if current_page["image"]=="INVALID_PROMPT":
+                    message_test = "Invalid Prompt"
+                else:
+                    image = image_decode(current_page["image"])
                 
                 #st.write(current_page["audio"])
                 # st.audio(current_page["audio"], format='audio/mp3')
@@ -375,7 +381,10 @@ def main():
                 with col2:
                     # Use custom HTML and CSS for image with the desired style
                     #st.markdown(f'<img src="{current_page["image"]}" alt="{current_page["caption"]}" class="storybook-image">', unsafe_allow_html=True)
-                    st.image(image, caption=current_page["caption"], use_column_width=True)
+                    if current_page["image"]:
+                        st.image(image, caption=current_page["caption"], use_column_width=True)
+                    else:
+                        st.warning(f"Image not available for this page due to {message_test}")
      
                 # Create Previous and Next buttons for navigation
                 col1, col2, col3 = st.columns([1, 2, 1])
