@@ -76,7 +76,7 @@ def fetch_and_decode_images(captions, _force_refresh=False):
         if response.status_code == 200:
             image = "pages/images/invalid_img.jpg"
             data = response.json()
-            if data["image_data_decode1"] == "":
+            if data["image_data_decode1"] == "INVALID_PROMPT":
                 decoded_images.append(image)
             else:
                 decoded_images.append(data["image_data_decode1"])
