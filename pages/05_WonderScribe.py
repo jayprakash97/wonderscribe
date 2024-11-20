@@ -139,7 +139,7 @@ def main():
             border: 3px solid #bfa989;
             box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
             font-family: 'Merriweather', serif;
-            font-size: 18px;
+            font-size: 38px;
             line-height: 1.6;
             text-align: justify;
         }
