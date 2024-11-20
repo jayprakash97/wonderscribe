@@ -23,6 +23,17 @@ s3client = boto3.client(
 def image_decode(image_data_decode):
         image_data = base64.b64decode(image_data_decode)
         return Image.open(BytesIO(image_data))
+
+def encode_image_to_base64(image_path):
+    try:
+        with open(image_path, "rb") as image_file:
+            # Read the binary data and encode to base64
+            encoded_string = base64.b64encode(image_file.read())
+            # Convert bytes to string for easier handling
+            return encoded_string.decode('utf-8')
+    except Exception as e:
+        print(f"Error encoding image: {e}")
+        return None
  
 @st.cache_data 
 def fetch_story_data(payload, _force_refresh=False):
@@ -75,7 +86,11 @@ def fetch_and_decode_images(captions, _force_refresh=False):
         response = requests.post(AWS_API_URL, headers=headers, json=json_data)
         if response.status_code == 200:
             data = response.json()
-            decoded_images.append(data["image_data_decode1"])
+            if data.get("image_data_decode1") == "INVALID_PROMPT":
+                invalid_image = "pages/images/invalid_img.jpg"
+                decoded_images.append(encode_image_to_base64(invalid_image))
+            else:
+                decoded_images.append(data["image_data_decode1"])
     return decoded_images
  
  
