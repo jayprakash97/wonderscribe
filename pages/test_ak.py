@@ -89,7 +89,6 @@ def fetch_and_decode_images(captions, _force_refresh=False):
             if data["image_data_decode1"] == "INVALID_PROMPT":
                 st.write("image_data_decode1 - ",data["image_data_decode1"])
                 invalid_image = "pages/images/invalid_img.jpg"
-                st.write("incode image - ",encode_image_to_base64(invalid_image))
                 decoded_images.append(encode_image_to_base64(invalid_image))
             else:
                 decoded_images.append(data["image_data_decode1"])
