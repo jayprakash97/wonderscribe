@@ -272,10 +272,10 @@ def main():
             # story_texts, captions = fetch_story_data(payload)
             decoded_images = fetch_and_decode_images(captions)
 
-            if (len(story_texts) < 7 or len(captions) < 7 or 
-                len(decoded_images) < 7 or len(storyfiles) < 7):
-                st.error("Unable to generate complete story. Please try again.")
-                #st.stop()
+            # if (len(story_texts) < 7 or len(captions) < 7 or 
+            #     len(decoded_images) < 7 or len(storyfiles) < 7):
+            #     st.error("Unable to generate complete story. Please try again.")
+            #     #st.stop()
          
             audioStoryFiles = []
             for storyFile in storyfiles:
@@ -340,6 +340,8 @@ def main():
                     "audio": audioStoryFiles[6]
                 }
             ]
+
+            st.write("## Stroty pages - ",story_pages)
  
             #st.markdown(story_pages[0]["image"])
             # Initialize session state for the current story page index
