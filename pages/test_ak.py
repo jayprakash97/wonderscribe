@@ -274,8 +274,8 @@ def main():
 
             if (len(story_texts) < 7 or len(captions) < 7 or 
                 len(decoded_images) < 7 or len(storyfiles) < 7):
-                #st.error("Unable to generate complete story. Please try again.")
-                st.stop()
+                st.error("Unable to generate complete story. Please try again.")
+                #st.stop()
          
             audioStoryFiles = []
             for storyFile in storyfiles:
