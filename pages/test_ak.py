@@ -87,7 +87,6 @@ def fetch_and_decode_images(captions, _force_refresh=False):
         if response.status_code == 200:
             data = response.json()
             if data["image_data_decode1"] == "INVALID_PROMPT":
-                st.write("image_data_decode1 - ",data["image_data_decode1"])
                 invalid_image = "pages/images/invalid_img.jpg"
                 decoded_images.append(encode_image_to_base64(invalid_image))
             else:
@@ -359,8 +358,6 @@ def main():
                     "audio": audioStoryFiles[6]
                 }
             ]
-
-            st.write("## Stroty pages - ",story_pages)
  
             #st.markdown(story_pages[0]["image"])
             # Initialize session state for the current story page index
