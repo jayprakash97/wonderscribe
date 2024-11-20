@@ -271,6 +271,11 @@ def main():
             story_texts, captions, storyfiles = fetch_story_data(payload)
             # story_texts, captions = fetch_story_data(payload)
             decoded_images = fetch_and_decode_images(captions)
+
+            if (len(story_texts) < 7 or len(captions) < 7 or 
+                len(decoded_images) < 7 or len(storyfiles) < 7):
+                #st.error("Unable to generate complete story. Please try again.")
+                st.stop()
          
             audioStoryFiles = []
             for storyFile in storyfiles:
