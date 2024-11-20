@@ -197,7 +197,7 @@ def main():
             if not main_character.strip():
                 main_character = "Lily"
                 gender = "Female"
-    
+
             # Validate story theme
             if not story_theme.strip():
                 has_error = True
