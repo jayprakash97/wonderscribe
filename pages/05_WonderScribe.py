@@ -235,22 +235,13 @@ def main():
             #     st.session_state.current_page = "Storybook"
     
     
-            if submit_btn:   # st.sidebar.button("Reset Cache"):
-                st.cache_data.clear()
-                st.session_state.cache_cleared = True
-                st.success("Cache has been cleared! Refresh the page to fetch new data.")
-                st.session_state.submit_btn = True
-                st.session_state.page_index = 0
-              
-    
-    
-            # if st.session_state.current_page == "About":
-            #     st.title("Welcome to the Storybook App")
-            #     st.markdown("""
-            #             This interactive storybook app allows you to journey through a magical story, page by page, with beautiful illustrations accompanying the text.
-            #            """)
-    
-            
+            #if submit_btn:   # st.sidebar.button("Reset Cache"):
+            st.cache_data.clear()
+            st.session_state.cache_cleared = True
+            st.success("Cache has been cleared! Refresh the page to fetch new data.")
+            st.session_state.submit_btn = True
+            st.session_state.page_index = 0
+           
             # Content for the 'Storybook' section
     
             if st.session_state.submit_btn and st.session_state.current_page == "Storybook": 
