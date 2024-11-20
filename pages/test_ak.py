@@ -187,8 +187,48 @@ def main():
         submit_btn = st.form_submit_button("Submit")
  
     try:
-        # st.title("Children's Story")
-        if submit_btn:
+
+        # Main character name validation
+        main_character = st.text_input("What will be the name of the main character?", placeholder="Who will star in your story?")
+        if main_character:
+            if len(main_character.strip()) < 2:
+                st.error("Main character name must be at least 2 characters long")
+            if not main_character.replace(" ", "").isalpha():
+                st.error("Main character name should only contain letters")
+        
+        # Audience validation is handled by selectbox
+        # Story Setting validation is handled by selectbox
+        # Story Type validation is handled by selectbox
+        
+        # Story theme validation
+        story_theme = st.text_input("What would be topic of the story?", placeholder="Leave brief idea of a story")
+        if story_theme:
+            if len(story_theme.strip()) < 10:
+                st.error("Story theme must be at least 10 characters long")
+        
+        # Moral lesson validation
+        moral_lesson = st.text_input("What would be the moral of this story?", placeholder="Enter moral lesson from this story")
+        if moral_lesson:
+            if len(moral_lesson.strip()) < 10:
+                st.error("Moral lesson must be at least 10 characters long")
+        
+        # Story Length validation is handled by selectbox
+        # Story Language validation is handled by selectbox
+        
+        # Add a check before form submission
+        form_is_valid = True
+        if not main_character or len(main_character.strip()) < 2 or not main_character.replace(" ", "").isalpha():
+            form_is_valid = False
+        if not story_theme or len(story_theme.strip()) < 10:
+            form_is_valid = False
+        if not moral_lesson or len(moral_lesson.strip()) < 10:
+            form_is_valid = False
+
+        submit_btn = st.form_submit_button("Submit")
+        if submit_btn and not form_is_valid:
+            st.error("Please fix the validation errors before submitting")
+            # st.title("Children's Story")
+        else submit_btn:
            # Creating a session varibale to maintain the state
            st.session_state.submit_btn = True
             
