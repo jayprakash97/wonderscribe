@@ -1,3 +1,5 @@
+
+
 import streamlit as st
 from PIL import Image
 import requests
@@ -17,6 +19,7 @@ s3client = boto3.client(
     # aws_access_key_id="",
     # aws_secret_access_key=""
 )
+
 def image_decode(image_data_decode):
         image_data = base64.b64decode(image_data_decode)
         return Image.open(BytesIO(image_data))
@@ -168,9 +171,7 @@ def main():
         }
     </style>
     """, unsafe_allow_html=True)
-
-    gender = ""
-    main_character =""
+ 
     with st.form("form_key"):
         st.write("Craft personalized stories that bring adventure to life and ignite imagination and creativity")
         gender = st.selectbox("Your Gender", options=["Male", "Female", "Non Binary", "Don't want to share"])
@@ -187,207 +188,176 @@ def main():
  
     try:
         # st.title("Children's Story")
-        st.write(st.session_state.submit_btn)
         if submit_btn:
-            st.session_state.submit_btn = True
-           # Initialize an error flag and error message list
-            has_error = False
-            error_messages = []
-    
-            # Validate main character name
-            if not main_character.strip():
-                main_character = "Lily"
-                gender = "Female"
-
-            # Validate story theme
-            if not story_theme.strip():
-                has_error = True
-                error_messages.append("Please enter a story theme")
-            elif len(story_theme.strip()) < 10:
-                has_error = True
-                error_messages.append("Story theme should be at least 10 characters long")
-    
-            # Validate moral lesson
-            if not moral_lesson.strip():
-                has_error = True
-                error_messages.append("Please enter a moral lesson")
-            elif len(moral_lesson.strip()) < 10:
-                has_error = True
-                error_messages.append("Moral lesson should be at least 10 characters long")
-    
-            # Display error messages if any
-            if has_error:
-                for error in error_messages:
-                    st.error(error)
-        else:
-            # Proceed with story generation
-            # Creating a session varibale to maintain the state
-            st.session_state.submit_btn = True
-            # st.sidebar.title("📚 Table of Contents")
-            menu_options = ["About", "Storybook"]
-    
-            # st.write( st.session_state )
-            # st.write( st.session_state.submit_btn )
+           # Creating a session varibale to maintain the state
+           st.session_state.submit_btn = True
             
-            st.session_state.current_page = "Storybook"
-            # if 'current_page' not in st.session_state:
-            #     st.session_state.current_page = "About"  # Default page
-     
-            # if st.sidebar.button("About"):
-            #     st.session_state.current_page = "About"
-            # if st.sidebar.button("Storybook"):
-            #     st.session_state.current_page = "Storybook"
-    
-    
-            if submit_btn:   # st.sidebar.button("Reset Cache"):
-                st.cache_data.clear()
-                st.session_state.cache_cleared = True
-                st.success("Cache has been cleared! Refresh the page to fetch new data.")
-                st.session_state.submit_btn = True
-                st.session_state.page_index = 0
-           
-            # Content for the 'Storybook' section
-    
-            if st.session_state.submit_btn and st.session_state.current_page == "Storybook": 
-                payload = {
-                    "audience" : audience,
-                    "story_type" : story_type,
-                    "main_character" : main_character,
-                    "story_theme" : story_theme, # 'Brushing the tooth',
-                    "moral_lesson" : moral_lesson,
-                    "setting" : story_setting, 
-                    "word_count" : story_length,
-                     "story_lang" : story_lang,
-                     "api_Path" : "getStory"
-                   }
-         
-                story_texts, captions, storyfiles = fetch_story_data(payload)
-                # story_texts, captions = fetch_story_data(payload)
-                decoded_images = fetch_and_decode_images(captions)
-             
-                audioStoryFiles = []
-                for storyFile in storyfiles:
-                    output = s3client.generate_presigned_url('get_object',
-                                                        Params={'Bucket': 'wonderstorytexttoaudiofile',
-                                                                'Key': storyFile},
-                                                        ExpiresIn=3600)
-                    audioStoryFiles.append(output)
-    
-             
-                # Reset the cache_cleared flag. Don't clear the cache
-                st.session_state.cache_cleared = False
-               
-                story_pages = [
-                    {
-                        "text": story_texts[0],
-                        #"image": "img1.png",
-                        "image": decoded_images[0],
-                        "caption": captions[0],
-                        "audio": audioStoryFiles[0]
-                    },
-                    {
-                        "text": story_texts[1],
-                        #"image": "img2.png",
-                        "image": decoded_images[1],
-                        "caption": captions[1],
-                        "audio": audioStoryFiles[1]
-                    },
-                    {
-                        "text": story_texts[2],
-                        #"image": "img3.png",
-                        "image": decoded_images[2],
-                        "caption": captions[2],
-                        "audio": audioStoryFiles[2]
-                    },
-                    {
-                        "text": story_texts[3],
-                        #"image": "img4.png",
-                        "image": decoded_images[3],
-                        "caption": captions[3],
-                        "audio": audioStoryFiles[3]
-                    },
-                    {
-                        "text": story_texts[4],
-                        #"image": "img4.png",
-                        "image": decoded_images[4],
-                        "caption": captions[4],
-                        "audio": audioStoryFiles[4]
-                    },
-                    {
-                        "text": story_texts[5],
-                        #"image": "img4.png",
-                        "image": decoded_images[5],
-                        "caption": captions[5],
-                        "audio": audioStoryFiles[5]
-                    },
-                    {
-                        "text": story_texts[6],
-                        #"image": "img4.png",
-                        "image": decoded_images[6],
-                        "caption": captions[6],
-                        "audio": audioStoryFiles[6]
-                    }
-                ]
-     
-                #st.markdown(story_pages[0]["image"])
-                # Initialize session state for the current story page index
-                if 'page_index' not in st.session_state:
-                    st.session_state.page_index = 0
-     
-                # Functions for navigating between pages
-                def next_page():
-                    if st.session_state.page_index < len(story_pages) - 1:
-                        st.session_state.page_index += 1
-                        st.session_state.submit_btn = True
-     
-                def prev_page():
-                    if st.session_state.page_index > 0:
-                        st.session_state.page_index -= 1
-                        st.session_state.submit_btn = True
-     
-                # Get the current page's content
-                current_page = story_pages[st.session_state.page_index]
-     
-                st.title("📖 My Storybook")
-                #image = Image.open(current_page["image"])
+        # st.sidebar.title("📚 Table of Contents")
+        menu_options = ["About", "Storybook"]
 
-                message_test = ""
-                if current_page["image"] == "INVALID_PROMPT":
-                    message_test = "Invalid Prompt"
-                else:
-                    image = image_decode(current_page["image"])
-                
-                #st.write(current_page["audio"])
-                # st.audio(current_page["audio"], format='audio/mp3')
-                # Create two columns: one for the story text, one for the image
-                col1, col2 = st.columns(2)
+        # st.write( st.session_state )
+        # st.write( st.session_state.submit_btn )
+        
+        st.session_state.current_page = "Storybook"
+        # if 'current_page' not in st.session_state:
+        #     st.session_state.current_page = "About"  # Default page
+ 
+        # if st.sidebar.button("About"):
+        #     st.session_state.current_page = "About"
+        # if st.sidebar.button("Storybook"):
+        #     st.session_state.current_page = "Storybook"
+
+
+        if submit_btn:   # st.sidebar.button("Reset Cache"):
+            st.cache_data.clear()
+            st.session_state.cache_cleared = True
+            st.success("Cache has been cleared! Refresh the page to fetch new data.")
+            st.session_state.submit_btn = True
+            st.session_state.page_index = 0
+          
+
+
+        # if st.session_state.current_page == "About":
+        #     st.title("Welcome to the Storybook App")
+        #     st.markdown("""
+        #             This interactive storybook app allows you to journey through a magical story, page by page, with beautiful illustrations accompanying the text.
+        #            """)
+
+        
+        # Content for the 'Storybook' section
+
+        if st.session_state.submit_btn and st.session_state.current_page == "Storybook": 
+            payload = {
+                "audience" : audience,
+                "story_type" : story_type,
+                "main_character" : main_character,
+                "story_theme" : story_theme, # 'Brushing the tooth',
+                "moral_lesson" : moral_lesson,
+                "setting" : story_setting, 
+                "word_count" : story_length,
+                 "story_lang" : story_lang,
+                 "api_Path" : "getStory"
+               }
      
-                with col1:
-                    #st.markdown(f'<div class="storybook-text">{current_page["text"]}</div>', unsafe_allow_html=True)
-                    #st.markdown(f'<div class="storybook-text" style="height: {image.height}px;"><p>{current_page["text"]}</p></div>', unsafe_allow_html=True)
-                    st.markdown(f'<div class="storybook-text"><p>{current_page["text"]}</p></div>', unsafe_allow_html=True)
-                    st.audio(current_page["audio"], format='audio/mp3')
-                with col2:
-                    # Use custom HTML and CSS for image with the desired style
-                    #st.markdown(f'<img src="{current_page["image"]}" alt="{current_page["caption"]}" class="storybook-image">', unsafe_allow_html=True)
-                    if current_page["image"]:
-                        st.image(image, caption=current_page["caption"], use_column_width=True)
-                    else:
-                        st.warning(f"Image not available for this page due to {message_test}")
-     
-                # Create Previous and Next buttons for navigation
-                col1, col2, col3 = st.columns([1, 2, 1])
-    
-                st.write("Page No:", st.session_state.page_index + 1)
-                with col1:
-                    if st.session_state.page_index > 0:
-                        st.button("Previous", on_click=prev_page)
-                        st.session_state.submit_btn = True
-     
-                with col3:
-                    if st.session_state.page_index < len(story_pages) - 1:
-                        st.button("Next", on_click=next_page)
-                        st.session_state.submit_btn = True
+            story_texts, captions, storyfiles = fetch_story_data(payload)
+            # story_texts, captions = fetch_story_data(payload)
+            decoded_images = fetch_and_decode_images(captions)
+         
+            audioStoryFiles = []
+            for storyFile in storyfiles:
+                output = s3client.generate_presigned_url('get_object',
+                                                    Params={'Bucket': 'wonderstorytexttoaudiofile',
+                                                            'Key': storyFile},
+                                                    ExpiresIn=3600)
+                audioStoryFiles.append(output)
+
+         
+            # Reset the cache_cleared flag. Don't clear the cache
+            st.session_state.cache_cleared = False
+         
+            story_pages = [
+                {
+                    "text": story_texts[0],
+                    #"image": "img1.png",
+                    "image": decoded_images[0],
+                    "caption": captions[0],
+                    "audio": audioStoryFiles[0]
+                },
+                {
+                    "text": story_texts[1],
+                    #"image": "img2.png",
+                    "image": decoded_images[1],
+                    "caption": captions[1],
+                    "audio": audioStoryFiles[1]
+                },
+                {
+                    "text": story_texts[2],
+                    #"image": "img3.png",
+                    "image": decoded_images[2],
+                    "caption": captions[2],
+                    "audio": audioStoryFiles[2]
+                },
+                {
+                    "text": story_texts[3],
+                    #"image": "img4.png",
+                    "image": decoded_images[3],
+                    "caption": captions[3],
+                    "audio": audioStoryFiles[3]
+                },
+                {
+                    "text": story_texts[4],
+                    #"image": "img4.png",
+                    "image": decoded_images[4],
+                    "caption": captions[4],
+                    "audio": audioStoryFiles[4]
+                },
+                {
+                    "text": story_texts[5],
+                    #"image": "img4.png",
+                    "image": decoded_images[5],
+                    "caption": captions[5],
+                    "audio": audioStoryFiles[5]
+                },
+                {
+                    "text": story_texts[6],
+                    #"image": "img4.png",
+                    "image": decoded_images[6],
+                    "caption": captions[6],
+                    "audio": audioStoryFiles[6]
+                }
+            ]
+ 
+            #st.markdown(story_pages[0]["image"])
+            # Initialize session state for the current story page index
+            if 'page_index' not in st.session_state:
+                st.session_state.page_index = 0
+ 
+            # Functions for navigating between pages
+            def next_page():
+                if st.session_state.page_index < len(story_pages) - 1:
+                    st.session_state.page_index += 1
+                    st.session_state.submit_btn = True
+ 
+            def prev_page():
+                if st.session_state.page_index > 0:
+                    st.session_state.page_index -= 1
+                    st.session_state.submit_btn = True
+ 
+            # Get the current page's content
+            current_page = story_pages[st.session_state.page_index]
+ 
+            st.title("📖 My Storybook")
+            #image = Image.open(current_page["image"])
+            image = image_decode(current_page["image"])
+            
+            #st.write(current_page["audio"])
+            # st.audio(current_page["audio"], format='audio/mp3')
+            # Create two columns: one for the story text, one for the image
+            col1, col2 = st.columns(2)
+ 
+            with col1:
+                #st.markdown(f'<div class="storybook-text">{current_page["text"]}</div>', unsafe_allow_html=True)
+                #st.markdown(f'<div class="storybook-text" style="height: {image.height}px;"><p>{current_page["text"]}</p></div>', unsafe_allow_html=True)
+                st.markdown(f'<div class="storybook-text"><p>{current_page["text"]}</p></div>', unsafe_allow_html=True)
+                st.audio(current_page["audio"], format='audio/mp3')
+            with col2:
+                # Use custom HTML and CSS for image with the desired style
+                #st.markdown(f'<img src="{current_page["image"]}" alt="{current_page["caption"]}" class="storybook-image">', unsafe_allow_html=True)
+                st.image(image, caption=current_page["caption"], use_column_width=True)
+ 
+            # Create Previous and Next buttons for navigation
+            col1, col2, col3 = st.columns([1, 2, 1])
+
+            st.write("Page No:", st.session_state.page_index + 1)
+            with col1:
+                if st.session_state.page_index > 0:
+                    st.button("Previous", on_click=prev_page)
+                    st.session_state.submit_btn = True
+ 
+            with col3:
+                if st.session_state.page_index < len(story_pages) - 1:
+                    st.button("Next", on_click=next_page)
+                    st.session_state.submit_btn = True
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
  
