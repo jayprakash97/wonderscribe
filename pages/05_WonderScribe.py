@@ -275,14 +275,17 @@ def main():
              
                 # Reset the cache_cleared flag. Don't clear the cache
                 st.session_state.cache_cleared = False
-
-                st.write(" 1 = ", decoded_images[0])
-                st.write(" 2 = ", decoded_images[1])
-                st.write(" 3 = ", decoded_images[2])
-                st.write(" 4 = ", decoded_images[3])
-                st.write(" 5 = ", decoded_images[4])
-                st.write(" 6 = ", decoded_images[5])
-                st.write(" 7 = ", decoded_images[6])
+                try:
+                    st.write(" 1 = ", decoded_images[0])
+                    st.write(" 2 = ", decoded_images[1])
+                    st.write(" 3 = ", decoded_images[2])
+                    st.write(" 4 = ", decoded_images[3])
+                    st.write(" 5 = ", decoded_images[4])
+                    st.write(" 6 = ", decoded_images[5])
+                    st.write(" 7 = ", decoded_images[6])
+                except IndexError:
+                      st.error(f"File was not found at path")
+                
              
                 story_pages = [
                     {
