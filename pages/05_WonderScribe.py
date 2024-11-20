@@ -188,7 +188,7 @@ def main():
     try:
         # st.title("Children's Story")
         if submit_btn:
-           st.session_state.submit_btn = True
+            st.session_state.submit_btn = True
            # Initialize an error flag and error message list
             has_error = False
             error_messages = []
