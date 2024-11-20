@@ -64,7 +64,7 @@ st.markdown(
     .custom-label{
         # color: #5f20eb, #8c52ft;   /* old color #3b8bc2; #5ce1e6*/
         color: #8C52FF;
-        font-size: 18px;  /* Set the font size for text input, number input, and text area */
+        font-size: 38px;  /* Set the font size for text input, number input, and text area */
         padding: 10px;    /* Optional: adjust padding for better appearance */
     }
     p, li, span{
