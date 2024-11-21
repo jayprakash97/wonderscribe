@@ -89,7 +89,7 @@ members = [
     {
         "name": "Jay Prakash",
         "role": "Product Management, GenAI, AWS architecure",
-        "bio": "bio...",
+        "bio": "Jay is the technical backbone of WonderScribe, leading the development of the platform’s robust AWS architecture. With expertise in cloud-based solutions and Generative AI, Jay ensures the platform's seamless integration of services like API Gateway, Lambda, and Bedrock. His focus on scalability and efficiency has been instrumental in building a secure and reliable foundation for WonderScribe's innovative storytelling capabilities.",
         "image": "pages/images/Jay_Profile_pic.jpg",
         "email": "jprakash@berkeley.edu",
     },
