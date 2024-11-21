@@ -1,7 +1,7 @@
 import streamlit as st
 
 
-st.set_page_config(page_title="Test", layout="wide")
+st.set_page_config(page_title="Test",  page_icon="🏠", layout="wide")
 
 # Custom CSS to apply the background gradient and create a box
 page_bg = """
