@@ -10,7 +10,7 @@ import requests
 import boto3
 from botocore.exceptions import NoCredentialsError, ClientError
 
-#st.set_page_config(page_title="WonderScribe", page_icon="📖", layout="wide")
+st.set_page_config(page_title="Interactive Storybook", page_icon="📖", layout="wide")
 
 # Custom CSS to apply the background gradient and create a box
 page_bg = """
@@ -157,7 +157,6 @@ def main():
         st.session_state.cache_cleared = False
       
     # Set the page configuration with a wide layout for a book-like feel
-    st.set_page_config(page_title="Interactive Storybook", page_icon="📖", layout="wide")
     # Add custom CSS for the storybook theme
     
     st.markdown("""
