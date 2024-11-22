@@ -33,7 +33,7 @@ def add_logo(logo, width):
 
 
 # Call the add_logo function with the path to your local image
-add_logo(logo, "200px")
+add_logo(logo, "300px")
 
 st.markdown(
     """
