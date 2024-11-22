@@ -6,53 +6,45 @@ st.image("pages/images/Updated_WonderS_logo.png", width= 300)
 
 #*****
 
-import streamlit as st
-
-# Title with custom CSS
-original_title = '<h1 style="font-family: serif; color:white; font-size: 20px;">Streamlit CSS Styling✨</h1>'
-st.markdown(original_title, unsafe_allow_html=True)
-
-# Set the background image (Replace with your GitHub raw URL or a hosted URL)
-background_image_url = "https://raw.githubusercontent.com/your-username/repo-name/branch-name/path/to/WonderScribe_bk2_page_1.jpg"
+# Use the GitHub raw URL for the image
+background_image_url = "https://raw.githubusercontent.com/your-username/repo-name/branch-name/WonderScribe_bk2_page_1.jpg"
 
 # CSS for setting the background image
 background_image = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
     background-image: url("{background_image_url}");
-    background-size: 100vw 100vh;  /* Cover the entire viewport */
+    background-size: cover;  /* Cover the entire viewport */
     background-position: center;  
     background-repeat: no-repeat;
+    background-attachment: fixed;  /* Keeps the image fixed during scroll */
 }}
 </style>
 """
 
+# Apply the background CSS
 st.markdown(background_image, unsafe_allow_html=True)
 
-# Transparent input field styling
+# Streamlit content
+st.title("Streamlit with Background Image")
+st.write("This Streamlit app uses an image from the same GitHub repository as the background.")
+st.text_input("Enter something:", placeholder="Input box with transparent background")
+
+# Optional styling for input box
 input_style = """
 <style>
 input[type="text"] {{
     background-color: transparent;
-    color: #a19eae;  /* Text color inside the input box */
+    color: white;  /* Adjust text color for visibility */
     font-size: 16px;
     border: none;
-    border-bottom: 1px solid #a19eae;  /* Underline for the input box */
-}}
-div[data-baseweb="base-input"] {{
-    background-color: transparent !important;
+    border-bottom: 1px solid white;  /* Add underline to input */
 }}
 </style>
 """
 
-# Apply the input style
 st.markdown(input_style, unsafe_allow_html=True)
 
-# Input field
-st.text_input("", placeholder="Streamlit CSS Input Example")
-
-# Add additional content
-st.write("This Streamlit app demonstrates a transparent input field and a background image.")
 
 
 
