@@ -8,7 +8,8 @@ st.image("pages/images/Updated_WonderS_logo.png", width= 300)
 
 
 # Use the raw URL of your GitHub-hosted image
-background_image_url = "https://github.com/Natsnet/WS_Back_img/blob/main/WonderScribe_bk2_page_1.jpg"
+#background_image_url = "https://github.com/Natsnet/WS_Back_img/blob/main/WonderScribe_bk2_page_1.jpg"
+background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk2_page_1.jpg"
 
 # CSS to set the background image
 background_css = f"""
