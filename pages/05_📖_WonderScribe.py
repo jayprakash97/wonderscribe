@@ -11,7 +11,7 @@ from PIL import Image
 import requests
 import boto3
 from botocore.exceptions import NoCredentialsError, ClientError
-
+st.image("pages/images/Updated_WonderS_logo.png", width= 300)
 #st.set_page_config(page_title="WonderScribe", page_icon="📖", layout="wide")
 
 s3client = boto3.client(
@@ -400,4 +400,3 @@ if __name__ == "__main__":
         st.session_state.submit_btn = False
     main()
 
-st.image("pages/images/Updated_WonderS_logo.png", width= 300)
