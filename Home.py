@@ -66,9 +66,9 @@ st.markdown(
     <style>
     .stApp {
         [data-testid="stAppViewContainer"] {
-        #background: linear-gradient(135deg, #8c52ff, #5ce1e6);
+        background: linear-gradient(135deg, #8c52ff, #5ce1e6);
         background-attachment: fixed;
-        background-color: #7dd8ff;  /* #c0dc8f Light gray-green #d2e7ae; Purple=#8c52ff, #5f20eb*/
+        #background-color: #7dd8ff;  /* #c0dc8f Light gray-green #d2e7ae; Purple=#8c52ff, #5f20eb*/
     }
     .custom-label{
         # color: #5f20eb, #8c52ft;   /* old color #3b8bc2; #5ce1e6*/
