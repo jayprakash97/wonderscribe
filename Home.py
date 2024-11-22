@@ -17,3 +17,50 @@ in the magic of their own stories
 Join us on this exciting journey and watch your child's imagination soar!
 """)
 #st.sidebar.title("📚 Table of Contents")
+
+
+add_logo(logo, "100px")
+
+st.markdown(
+    """
+    <style>
+    /* Style for the sidebar content */
+    [data-testid="stSidebarContent"] {
+        background-color: #7dd8ff; /*#7dd8ff; Sidebar background color */
+        
+    }
+    /* Set color for all text inside the sidebar */
+    [data-testid="stSidebar"] * {
+        color: #8c52ff !important;  /* Text color */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+# Change the background color
+st.markdown(
+    """
+    <style>
+    .stApp {
+        [data-testid="stAppViewContainer"] {
+        background: linear-gradient(135deg, #8c52ff, #5ce1e6);
+        background-attachment: fixed;
+        # background-color: #7dd8ff;  /* #c0dc8f Light gray-green #d2e7ae; Purple=#8c52ff, #5f20eb*/
+    }
+    .custom-label{
+        # color: #5f20eb, #8c52ft;   /* old color #3b8bc2; #5ce1e6*/
+        color: #8C52FF;
+        font-size: 18px;  /* Set the font size for text input, number input, and text area */
+        padding: 10px;    /* Optional: adjust padding for better appearance */
+    }
+    p, li, span{
+        color: #4b7170;
+        font-size: 18px;  /* Set default font size */
+        /* font-weight: bold;   Make the text bold */
+    }
+
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
