@@ -22,7 +22,7 @@ def add_logo(logo, width):
             [data-testid="stSidebarNav"] {{
                 background-image: url("data:image/png;base64,{data}");
                 background-repeat: no-repeat;
-                padding-top: 200px;
+                padding-top: 150px;
                 background-position: 10px 10px;
                 background-size: {width};
             }}
