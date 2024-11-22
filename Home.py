@@ -19,8 +19,6 @@ Join us on this exciting journey and watch your child's imagination soar!
 #st.sidebar.title("📚 Table of Contents")
 
 
-add_logo(logo, "100px")
-
 st.markdown(
     """
     <style>
