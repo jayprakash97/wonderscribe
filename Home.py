@@ -6,25 +6,16 @@ st.image("pages/images/Updated_WonderS_logo.png", width= 300)
 
 #*****
 
-# List of image paths (URLs or local paths)
-background_images = [
-    "pages/images/WonderScribe_bk1_page_1.jpg",
-    "pages/images/WonderScribe_bk2_page_1.jpg",
-    "pages/images/WonderScribe_bk_blue_page_1.jpg"
-]
+import streamlit as st
 
-# Function to select an image (simple selection, or cycle based on user choice)
-def get_background_image(index):
-    return background_images[index % len(background_images)]
-
-# Set the background image (example uses the first image)
-selected_image = get_background_image(0)
+# Path to the background image
+background_image = "pages/images/WonderScribe_bk2_page_1.jpg"
 
 # Custom CSS for transparent background with the selected image
 background_css = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
-    background-image: url("{selected_image}");
+    background-image: url("{background_image}");
     background-size: cover;  /* Cover the entire viewport */
     background-position: center;  
     background-repeat: no-repeat;
@@ -40,31 +31,11 @@ background_css = f"""
 st.markdown(background_css, unsafe_allow_html=True)
 
 # Streamlit content
-st.title("Transparent Background with Images")
+st.title("Transparent Background with Image")
 st.write("This Streamlit app demonstrates setting a PDF-extracted image as a transparent background.")
-st.write("You can cycle through images or set them programmatically.")
 
-# Dropdown to select background image
-image_index = st.selectbox(
-    "Choose a background image:",
-    options=list(range(len(background_images))),
-    format_func=lambda x: f"Background {x + 1}"
-)
-
-# Update the background image dynamically
-selected_image = get_background_image(image_index)
-background_css_dynamic = f"""
-<style>
-[data-testid="stAppViewContainer"] > .main {{
-    background-image: url("{selected_image}");
-    background-size: cover;
-    background-position: center;  
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}}
-</style>
-"""
-st.markdown(background_css_dynamic, unsafe_allow_html=True)
+# Additional content to verify layout
+st.write("You can further customize the transparency and image layout as needed.")
 
 #*****
 
