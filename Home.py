@@ -4,6 +4,43 @@ st.set_page_config(page_title="WonderScribe", page_icon="📖", layout="wide")
 
 #st.image("pages/images/Updated_WonderS_logo.png", width= 300)
 
+
+#******
+# Paths to the logos
+logo = "pages/images/Updated_WonderS_logo.png"
+#st.image("pages/images/Updated_WonderS_logo.png", width= 300)
+
+###########################
+# Add LOGO
+###########################
+
+
+def add_logo(logo, width):
+    # Read the image and convert it to Base64
+    with open(logo, "rb") as f:
+        data = base64.b64encode(f.read()).decode("utf-8")
+
+    # Inject CSS with Base64-encoded image into the sidebar
+    st.markdown(
+        f"""
+        <style>
+            [data-testid="stSidebarNav"] {{
+                background-image: url("data:image/png;base64,{data}");
+                background-repeat: no-repeat;
+                padding-top: 250px;
+                background-position: 10px 10px;
+                background-size: {width};
+            }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+# Call the add_logo function with the path to your local image
+add_logo(logo, "250px")
+#******
+
 st.title("Welcome to WonderScribe")
 st.write(
 """
@@ -65,39 +102,3 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-
-#******
-# Paths to the logos
-logo = "pages/images/Updated_WonderS_logo.png"
-#st.image("pages/images/Updated_WonderS_logo.png", width= 300)
-
-###########################
-# Add LOGO
-###########################
-
-
-def add_logo(logo, width):
-    # Read the image and convert it to Base64
-    with open(logo, "rb") as f:
-        data = base64.b64encode(f.read()).decode("utf-8")
-
-    # Inject CSS with Base64-encoded image into the sidebar
-    st.markdown(
-        f"""
-        <style>
-            [data-testid="stSidebarNav"] {{
-                background-image: url("data:image/png;base64,{data}");
-                background-repeat: no-repeat;
-                padding-top: 250px;
-                background-position: 10px 10px;
-                background-size: {width};
-            }}
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-
-
-# Call the add_logo function with the path to your local image
-add_logo(logo, "250px")
-#******
