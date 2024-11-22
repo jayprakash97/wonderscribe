@@ -11,7 +11,7 @@ from PIL import Image
 import requests
 import boto3
 from botocore.exceptions import NoCredentialsError, ClientError
-st.image("pages/images/Updated_WonderS_logo.png", width= 300)
+
 #st.set_page_config(page_title="WonderScribe", page_icon="📖", layout="wide")
 
 s3client = boto3.client(
@@ -19,7 +19,7 @@ s3client = boto3.client(
     # aws_access_key_id="",
     # aws_secret_access_key=""
 )
-
+st.image("pages/images/Updated_WonderS_logo.png", width= 300)
 def image_decode(image_data_decode):
         image_data = base64.b64decode(image_data_decode)
         return Image.open(BytesIO(image_data))
