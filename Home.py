@@ -5,32 +5,30 @@ st.set_page_config(page_title="WonderScribe", page_icon="📖", layout="wide")
 st.image("pages/images/Updated_WonderS_logo.png", width= 300)
 
 #*****
-import streamlit as st
 
-# Path to the background image (in the same GitHub repo, e.g., in the `images` folder)
+
+# Use the raw URL of your GitHub-hosted image
 background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk2_page_1.jpg"
 
-# CSS for setting the background image
+# CSS to set the background image
 background_css = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
     background-image: url("{background_image_url}");
-    background-size: cover;  /* Stretch to cover the full viewport */
-    background-position: center;  /* Center the image */
-    background-repeat: no-repeat;  /* No tiling */
-    background-attachment: fixed;  /* Keep background fixed during scroll */
+    background-size: cover;  /* Cover the full viewport */
+    background-position: center;  
+    background-repeat: no-repeat;  /* Do not repeat the image */
+    background-attachment: fixed;  /* Keep the background fixed during scroll */
 }}
 </style>
 """
 
-# Apply the background CSS
+# Apply the CSS
 st.markdown(background_css, unsafe_allow_html=True)
 
 # Streamlit content
-st.title("Simple Background Setup")
-st.write("This is a Streamlit app with a single background image set using CSS.")
-
-
+st.title("Streamlit App with GitHub-Hosted Background Image")
+st.write("This Streamlit app uses a background image hosted on GitHub.")
 
 
 
