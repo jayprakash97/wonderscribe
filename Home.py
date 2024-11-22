@@ -8,7 +8,7 @@ st.image("pages/images/Updated_WonderS_logo.png", width= 300)
 import streamlit as st
 
 # Path to the background image (in the same GitHub repo, e.g., in the `images` folder)
-background_image_url = "https://raw.githubusercontent.com/your-username/repo-name/branch-name/images/WonderScribe_bk2_page_1.jpg"
+background_image_url = "pages/images/WonderScribe_bk2_page_1.jpg"
 
 # CSS for setting the background image
 background_css = f"""
