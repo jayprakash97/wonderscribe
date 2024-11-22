@@ -2,7 +2,8 @@ import streamlit as st
 
 st.set_page_config(page_title="WonderScribe", page_icon="📖", layout="wide")
 
-st.image("pages/images/WonderScribeLogo.png", width=150)
+st.image("pages/images/Updated_WonderS_logo.png", width=150)
+
 st.title("Welcome to WonderScribe")
 st.write(
 """
