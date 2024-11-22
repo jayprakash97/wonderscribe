@@ -19,7 +19,7 @@ s3client = boto3.client(
     # aws_access_key_id="",
     # aws_secret_access_key=""
 )
-st.image("pages/images/Updated_WonderS_logo.png", width= 300)
+#st.image("pages/images/Updated_WonderS_logo.png", width= 300)
 def image_decode(image_data_decode):
         image_data = base64.b64decode(image_data_decode)
         return Image.open(BytesIO(image_data))
