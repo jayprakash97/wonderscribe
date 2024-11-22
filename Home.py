@@ -5,45 +5,31 @@ st.set_page_config(page_title="WonderScribe", page_icon="📖", layout="wide")
 st.image("pages/images/Updated_WonderS_logo.png", width= 300)
 
 #*****
+import streamlit as st
 
-# Use the GitHub raw URL for the image
-background_image_url = "https://raw.githubusercontent.com/your-username/repo-name/branch-name/WonderScribe_bk2_page_1.jpg"
+# Path to the background image (in the same GitHub repo, e.g., in the `images` folder)
+background_image_url = "https://raw.githubusercontent.com/your-username/repo-name/branch-name/images/WonderScribe_bk2_page_1.jpg"
 
 # CSS for setting the background image
-background_image = f"""
+background_css = f"""
 <style>
 [data-testid="stAppViewContainer"] > .main {{
     background-image: url("{background_image_url}");
-    background-size: cover;  /* Cover the entire viewport */
-    background-position: center;  
-    background-repeat: no-repeat;
-    background-attachment: fixed;  /* Keeps the image fixed during scroll */
+    background-size: cover;  /* Stretch to cover the full viewport */
+    background-position: center;  /* Center the image */
+    background-repeat: no-repeat;  /* No tiling */
+    background-attachment: fixed;  /* Keep background fixed during scroll */
 }}
 </style>
 """
 
 # Apply the background CSS
-st.markdown(background_image, unsafe_allow_html=True)
+st.markdown(background_css, unsafe_allow_html=True)
 
 # Streamlit content
-st.title("Streamlit with Background Image")
-st.write("This Streamlit app uses an image from the same GitHub repository as the background.")
-st.text_input("Enter something:", placeholder="Input box with transparent background")
+st.title("Simple Background Setup")
+st.write("This is a Streamlit app with a single background image set using CSS.")
 
-# Optional styling for input box
-input_style = """
-<style>
-input[type="text"] {{
-    background-color: transparent;
-    color: white;  /* Adjust text color for visibility */
-    font-size: 16px;
-    border: none;
-    border-bottom: 1px solid white;  /* Add underline to input */
-}}
-</style>
-"""
-
-st.markdown(input_style, unsafe_allow_html=True)
 
 
 
