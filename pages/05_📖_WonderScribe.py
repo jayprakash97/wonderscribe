@@ -13,7 +13,7 @@ import boto3
 from botocore.exceptions import NoCredentialsError, ClientError
 
 #st.set_page_config(page_title="WonderScribe", page_icon="📖", layout="wide")
-st.image("pages/images/Updated_WonderS_logo.png", width= 300)
+
 s3client = boto3.client(
     's3'
     # aws_access_key_id="",
@@ -359,7 +359,7 @@ def main():
  
             # Get the current page's content
             current_page = story_pages[st.session_state.page_index]
- 
+ 	
             st.title("📖 My Storybook")
             #image = Image.open(current_page["image"])
             image = image_decode(current_page["image"])
@@ -399,3 +399,5 @@ if __name__ == "__main__":
     if "submit_btn" not in st.session_state:
         st.session_state.submit_btn = False
     main()
+
+st.image("pages/images/Updated_WonderS_logo.png", width= 300)
