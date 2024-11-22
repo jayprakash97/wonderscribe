@@ -4,9 +4,7 @@ st.set_page_config(page_title="WonderScribe", page_icon="📖", layout="wide")
 
 st.image("pages/images/Updated_WonderS_logo.png", width= 300)
 
-#*****
-
-
+#***** Transparent background image
 # Use the raw URL of your GitHub-hosted image
 #background_image_url = "https://github.com/Natsnet/WS_Back_img/blob/main/WonderScribe_bk2_page_1.jpg"
 background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk2_page_1.jpg"
@@ -26,13 +24,6 @@ background_css = f"""
 
 # Apply the CSS
 st.markdown(background_css, unsafe_allow_html=True)
-
-# Streamlit content
-st.title("Streamlit App with GitHub-Hosted Background Image")
-st.write("This Streamlit app uses a background image hosted on GitHub.")
-
-
-
 #*****
 
 st.title("Welcome to WonderScribe")
@@ -56,7 +47,7 @@ st.markdown(
     <style>
     /* Style for the sidebar content */
     [data-testid="stSidebarContent"] {
-        #background-color: #7dd8ff; /*#7dd8ff; Sidebar background color */
+        background-color: #7dd8ff; /*#7dd8ff; Sidebar background color */
         
     }
     # color #8c52ff
