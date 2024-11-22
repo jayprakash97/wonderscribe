@@ -8,8 +8,8 @@ st.image("pages/images/Updated_WonderS_logo.png", width= 300)
 
 import streamlit as st
 
-# Path to the background image
-background_image = "pages/images/WonderScribe_bk2_page_1.jpg"
+# Use the correct path to the image
+background_image = "static/WonderScribe_bk2_page_1.jpg"  # Ensure the file is in a 'static' directory
 
 # Custom CSS for transparent background with the selected image
 background_css = f"""
@@ -33,9 +33,8 @@ st.markdown(background_css, unsafe_allow_html=True)
 # Streamlit content
 st.title("Transparent Background with Image")
 st.write("This Streamlit app demonstrates setting a PDF-extracted image as a transparent background.")
+st.write("Ensure the image path is correct for proper rendering.")
 
-# Additional content to verify layout
-st.write("You can further customize the transparency and image layout as needed.")
 
 #*****
 
