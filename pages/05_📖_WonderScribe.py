@@ -12,10 +12,8 @@ import requests
 import boto3
 from botocore.exceptions import NoCredentialsError, ClientError
 
-st.image("pages/images/Updated_WonderS_logo.png", width= 300)
-
 #st.set_page_config(page_title="WonderScribe", page_icon="📖", layout="wide")
-
+st.image("pages/images/Updated_WonderS_logo.png", width= 300)
 s3client = boto3.client(
     's3'
     # aws_access_key_id="",
