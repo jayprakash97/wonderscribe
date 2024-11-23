@@ -137,37 +137,45 @@ def main():
         }
 
  
-        /* Sidebar styling to resemble a table of contents */
-        .css-1d391kg {
-            #background-color: #e8e0d2 !important;
-            #background-color: #7dd8ff; /*#7dd8ff; Sidebar background color */
-            #background-color: #7dd8ff !important;
-            border-right: 2px solid #bfa989;
-        }
- 
-        /* Sidebar Title */
-        .css-1544g2n {
-            color: #4e342e !important;
-            font-size: 1.5em;
-            font-family: 'Merriweather', serif;
-            font-weight: bold;
-        }
- 
-        /* Menu buttons in the sidebar */
-        .css-1vbd788 {
-            background-color: #d4c1a7;
-            border-radius: 10px;
-            border: 2px solid #bfa989;
-            padding: 10px;
-            font-size: 1.2em;
-            color: #4e342e !important;
-            margin-bottom: 15px;
-        }
- 
-        .css-1vbd788:hover {
-            background-color: #e0d3b8;
-            color: #4e342e !important;
-        }
+	# Apply the corrected CSS
+	sidebar_css = """
+	<style>
+	/* Sidebar styling */
+	[data-testid="stSidebar"] {
+	background-color: #7dd8ff; /* Light blue */
+	border-right: 2px solid #bfa989;
+	}
+	
+	/* Sidebar Title */
+	[data-testid="stSidebar"] h1 {
+	color: #4e342e; /* Dark brown */
+	font-size: 1.5em;
+	font-family: 'Merriweather', serif;
+	font-weight: bold;
+	}
+	
+	/* Menu buttons in the sidebar */
+	[data-testid="stSidebar"] button {
+	background-color: #d4c1a7; /* Beige */
+	border-radius: 10px;
+	border: 2px solid #bfa989;
+	padding: 10px;
+	font-size: 1.2em;
+	color: #4e342e; /* Dark brown */
+	margin-bottom: 15px;
+	}
+	
+	/* Hover effect for menu buttons */
+	[data-testid="stSidebar"] button:hover {
+	background-color: #e0d3b8; /* Lighter beige */
+	color: #4e342e; /* Dark brown */
+	}
+	</style>
+	"""
+	
+	# Inject the CSS into the Streamlit app
+	st.markdown(sidebar_css, unsafe_allow_html=True)
+
  
         /* Main content area - text background with borders */
         .storybook-text {
