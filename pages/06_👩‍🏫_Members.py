@@ -31,9 +31,9 @@ background_css = f"""
 }}
 
 /* Sidebar customization */
-#[data-testid="stSidebar"] {{
-    #background-color: #7dd8ff; /* Light blue */
-    #border-right: 2px solid #bfa989; /* Border on the right */
+[data-testid="stSidebar"] {{
+    background-color: #7dd8ff; /* Light blue */
+    border-right: 2px solid #bfa989; /* Border on the right */
 }}
 
 [data-testid="stSidebar"] * {{
@@ -88,35 +88,35 @@ members = [
     {
         "name": "Jay Prakash",
         "role": "Product Management, GenAI, AWS Architecture",
-        "bio": "Jay is the technical backbone of WonderScribe, leading the development of the platform’s robust AWS architecture. With expertise in cloud-based solutions and Generative AI, Jay ensures the platform's seamless integration of services like API Gateway, Lambda, and Bedrock. His focus on scalability and efficiency has been instrumental in building a secure and reliable foundation for WonderScribe's innovative storytelling capabilities.",
+        "bio": "Jay is the technical backbone of WonderScribe, leading the development of the platform’s robust AWS architecture. With expertise in cloud-based solutions and Generative AI, Jay ensures the platform's seamless integration of services like API Gateway, Lambda, and Bedrock.",
         "image": "pages/images/Jay_Profile_pic.jpg",
         "email": "jprakash@berkeley.edu",
     },
     {
         "name": "Jailynne Estevez",
         "role": "Program Management, UI/UX Design, Presentation Development",
-        "bio": "Jailynne brings creativity and precision to WonderScribe, playing a key role in crafting a user-friendly and engaging platform for children and parents. She has helped design an intuitive interface that ensures a seamless storytelling experience while also leading the development of presentations, scripts, and pitches to effectively showcase the project’s value.",
+        "bio": "Jailynne brings creativity and precision to WonderScribe, playing a key role in crafting a user-friendly and engaging platform for children and parents.",
         "image": "pages/images/jailynne.png",
         "email": "jestevez@berkeley.edu",
     },
     {
         "name": "Mian Haseeb",
         "role": "ML Engineering, GenAI",
-        "bio": "Mian is the visionary behind WonderScribe, originally conceiving the idea to revolutionize storytelling through the power of Generative AI. He leads the integration of cutting-edge generative AI models, fine-tuning the RAG framework to deploy advanced text and image generation models.",
+        "bio": "Mian is the visionary behind WonderScribe, originally conceiving the idea to revolutionize storytelling through the power of Generative AI. He drives the integration of cutting-edge generative AI models.",
         "image": "pages/images/MianHaseeb.jfif",
         "email": "mhaseeb@berkeley.edu",
     },
     {
         "name": "Natsnet Demoz",
         "role": "ML, Data & Analytics, UI/UX Design, Model Development",
-        "bio": "Natsnet’s dual focus on data exploration and design brings WonderScribe’s creative vision to life. She leads exploratory data analysis, ensuring the platform leverages child-friendly and culturally diverse datasets.",
+        "bio": "Natsnet’s dual focus on data exploration and design brings WonderScribe’s creative vision to life. She ensures the platform leverages child-friendly and culturally diverse datasets.",
         "image": "pages/images/Natsnet Demoz.jfif",
         "email": "ndemoz@berkeley.edu",
     },
     {
         "name": "Wilford Bradford",
         "role": "SME, Model Development",
-        "bio": "Wil lends his expertise as a subject matter expert to refine WonderScribe’s storytelling framework. His work focuses on aligning the platform’s AI capabilities with user expectations, ensuring every story element resonates with children and their imaginations.",
+        "bio": "Wil lends his expertise as a subject matter expert to refine WonderScribe’s storytelling framework. His work focuses on aligning the platform’s AI capabilities with user expectations.",
         "image": "pages/images/WilfordBradford.jfif",
         "email": "wbradford@berkeley.edu",
     },
@@ -124,20 +124,13 @@ members = [
 
 # Display team members
 for member in members:
-    st.markdown(
-        f"""
-        <div class="custom-box">
-            <div style="display: flex; align-items: center;">
-                <img src="{member['image']}" alt="{member['name']}" style="width: 150px; border-radius: 10px; margin-right: 20px;" />
-                <div>
-                    <h3 style="margin: 0;">{member['name']}</h3>
-                    <p><strong>Role:</strong> {member['role']}</p>
-                    <p><strong>Bio:</strong> {member['bio']}</p>
-                    <p><strong>Email:</strong> <a href="mailto:{member['email']}" style="color: #5f20eb;">{member['email']}</a></p>
-                </div>
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+    col1, col2 = st.columns([1, 3])  # Adjust column width for better layout
+    with col1:
+        # Use st.image for displaying local images
+        st.image(member["image"], use_column_width=True, caption=f"{member['name']}")
+    with col2:
+        st.markdown(f"### {member['name']}")
+        st.markdown(f"**Role:** {member['role']}")
+        st.markdown(f"**Bio:** {member['bio']}")
+        st.markdown(f"**Email:** [{member['email']}](mailto:{member['email']})")
     st.write("---")
