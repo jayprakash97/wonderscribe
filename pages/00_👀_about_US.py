@@ -9,15 +9,13 @@ background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/ma
 # CSS for gradient and background image
 background_css = f"""
 <style>
-/* Apply a gradient background overlaid with the background image */
+/* Apply the background image to the main app container */
 [data-testid="stAppViewContainer"] {{
-    background-image: linear-gradient(135deg, rgba(140, 82, 255, 0.8), rgba(92, 225, 230, 0.8)), 
-                      url("{background_image_url}");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    padding: 20px; /* Add padding to the container */
+    background-image: url("{background_image_url}");
+    background-size: cover;  /* Ensure it covers the full viewport */
+    background-position: center;  /* Center the image */
+    background-repeat: no-repeat;  /* Do not repeat the image */
+    background-attachment: fixed;  /* Keep the background fixed during scrolling */
 }}
 
 /* Add a semi-transparent box for content */
