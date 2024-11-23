@@ -140,15 +140,15 @@ def fetch_and_decode_images(captions, _force_refresh=False):
 # Main app
 def main():
 
+    st.title("📖 Welcome to WonderScribe!")
+    st.write("Craft personalized stories that bring adventure to life.")
+    
     if 'cache_cleared' not in st.session_state:
         st.session_state.cache_cleared = False
 
     if 'validation_errors' not in st.sesion_state:
         st.session_state.validation_errors = []
         
-    st.title("📖 Welcome to WonderScribe!")
-    st.write("Craft personalized stories that bring adventure to life.")
-
     with st.form("form_key"):
         st.write("Craft personalized stories that bring adventure to life.")
         gender = st.selectbox("Your Gender", ["Male", "Female", "Non Binary", "Don't want to share"])
