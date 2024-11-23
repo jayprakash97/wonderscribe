@@ -142,79 +142,73 @@ def main():
 	<style>
 	/* Sidebar styling */
 	[data-testid="stSidebar"] {
-	background-color: #7dd8ff; /* Light blue */
-	border-right: 2px solid #bfa989;
+	    background-color: #7dd8ff; /* Light blue */
+	    border-right: 2px solid #bfa989;
 	}
 	
 	/* Sidebar Title */
 	[data-testid="stSidebar"] h1 {
-	color: #4e342e; /* Dark brown */
-	font-size: 1.5em;
-	font-family: 'Merriweather', serif;
-	font-weight: bold;
+	    color: #4e342e; /* Dark brown */
+	    font-size: 1.5em;
+	    font-family: 'Merriweather', serif;
+	    font-weight: bold;
 	}
 	
 	/* Menu buttons in the sidebar */
 	[data-testid="stSidebar"] button {
-	background-color: #d4c1a7; /* Beige */
-	border-radius: 10px;
-	border: 2px solid #bfa989;
-	padding: 10px;
-	font-size: 1.2em;
-	color: #4e342e; /* Dark brown */
-	margin-bottom: 15px;
+	    background-color: #d4c1a7; /* Beige */
+	    border-radius: 10px;
+	    border: 2px solid #bfa989;
+	    padding: 10px;
+	    font-size: 1.2em;
+	    color: #4e342e; /* Dark brown */
+	    margin-bottom: 15px;
 	}
 	
 	/* Hover effect for menu buttons */
 	[data-testid="stSidebar"] button:hover {
-	background-color: #e0d3b8; /* Lighter beige */
-	color: #4e342e; /* Dark brown */
+	    background-color: #e0d3b8; /* Lighter beige */
+	    color: #4e342e; /* Dark brown */
+	}
+	
+	/* Main content area - text background with borders */
+	.storybook-text {
+	    background-color: #faf3e7;
+	    padding: 30px;
+	    border-radius: 15px;
+	    border: 3px solid #bfa989;
+	    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+	    font-family: 'Merriweather', serif;
+	    font-size: 18px;
+	    line-height: 1.6;
+	    text-align: justify;
+	}
+	
+	/* Image styling */
+	.storybook-image {
+	    border-radius: 15px;
+	    border: 3px solid #bfa989;
+	    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+	    max-width: 100%;
+	    height: auto;
+	}
+	
+	/* Styling for the page navigation buttons */
+	.stButton > button {
+	    background-color: #d4c1a7;
+	    color: #4e342e;
+	    border: 2px solid #bfa989;
+	    border-radius: 8px;
+	    padding: 10px 20px;
+	    font-size: 1.2em;
+	}
+	
+	.stButton > button:hover {
+	    background-color: #e0d3b8;
+	    color: #4e342e;
 	}
 	</style>
 	"""
-	
-	# Inject the CSS into the Streamlit app
-	st.markdown(sidebar_css, unsafe_allow_html=True)
-
- 
-        /* Main content area - text background with borders */
-        .storybook-text {
-            background-color: #faf3e7;
-            padding: 30px;
-            border-radius: 15px;
-            border: 3px solid #bfa989;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-            font-family: 'Merriweather', serif;
-            font-size: 18px;
-            line-height: 1.6;
-            text-align: justify;
-        }
- 
-        /* Image styling */
-        .storybook-image {
-            border-radius: 15px;
-            border: 3px solid #bfa989;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-            max-width: 100%;
-            height: auto;
-        }
- 
-        /* Styling for the page navigation buttons */
-        .stButton > button {
-            background-color: #d4c1a7;
-            color: #4e342e;
-            border: 2px solid #bfa989;
-            border-radius: 8px;
-            padding: 10px 20px;
-            font-size: 1.2em;
-        }
- 
-        .stButton > button:hover {
-            background-color: #e0d3b8;
-            color: #4e342e;
-        }
-    </style>
-    """, unsafe_allow_html=True)
  
     with st.form("form_key"):
         st.write("Craft personalized stories that bring adventure to life and ignite imagination and creativity")
