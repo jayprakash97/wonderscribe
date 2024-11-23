@@ -13,7 +13,8 @@ from botocore.exceptions import NoCredentialsError, ClientError
 st.set_page_config(page_title="Interactive Storybook", page_icon="📖", layout="wide")
 
 # Background image URL
-background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk_blue_page_1.jpg"
+#background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk_blue_page_1.jpg"
+background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk2_page_1.jpg"
 # CSS for setting the background
 background_css = f"""
 <style>
