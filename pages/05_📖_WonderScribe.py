@@ -18,22 +18,6 @@ from botocore.exceptions import NoCredentialsError, ClientError
 # Background image URL (ensure this is the raw link from GitHub)
 background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk1_page_1.jpg"
 
-# CSS for setting the background image
-background_css = f"""
-<style>
-/* Apply the background image to the main app container */
-[data-testid="stAppViewContainer"] {{
-    background-image: url("{background_image_url}");
-    background-size: cover;  /* Ensure it covers the full viewport */
-    background-position: center;  /* Center the image */
-    background-repeat: no-repeat;  /* Do not repeat the image */
-    background-attachment: fixed;  /* Keep the background fixed during scrolling */
-}}
-</style>
-"""
-# Apply the CSS
-st.markdown(background_css, unsafe_allow_html=True)
-
 # CSS for the transparent background image
 background_css = f"""
 <style>
@@ -48,6 +32,7 @@ background_css = f"""
     background-color: rgba(255, 255, 255, 0.8);  /* Add a light overlay (adjust rgba values as needed) */
 }}
 </style>
+"""
 
 s3client = boto3.client(
     's3'
