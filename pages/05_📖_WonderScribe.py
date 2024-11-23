@@ -210,10 +210,98 @@ def main():
         st.session_state.cache_cleared = False
 
     #=================
-    #=================
+        # Set the page configuration with a wide layout for a book-like feel
+    # Add custom CSS for the storybook theme
+    
+    st.markdown("""
+    <style>
+        /* Overall background styling */
+        body {
+            #background-color: #f5f0e1;
+            font-family: 'Merriweather', serif;
+            #color: #4e342e;
+            [data-testid="stAppViewContainer"] {
+            background: linear-gradient(135deg,#8c52ff, #5ce1e6);
+            background-attachment: fixed;
+            # background-color: #7dd8ff;  /* #c0dc8f Light gray-green #d2e7ae; Purple=#8c52ff, #5f20eb*/
+        }
 
-    if 'validation_errors' not in st.sesion_state:
+ 
+        /* Sidebar styling to resemble a table of contents */
+        .css-1d391kg {
+            #background-color: #e8e0d2 !important;
+            background-color: #7dd8ff; /*#7dd8ff; Sidebar background color */
+            #background-color: #7dd8ff !important;
+            border-right: 2px solid #bfa989;
+        }
+ 
+        /* Sidebar Title */
+        .css-1544g2n {
+            color: #4e342e !important;
+            font-size: 1.5em;
+            font-family: 'Merriweather', serif;
+            font-weight: bold;
+        }
+ 
+        /* Menu buttons in the sidebar */
+        .css-1vbd788 {
+            background-color: #d4c1a7;
+            border-radius: 10px;
+            border: 2px solid #bfa989;
+            padding: 10px;
+            font-size: 1.2em;
+            color: #4e342e !important;
+            margin-bottom: 15px;
+        }
+ 
+        .css-1vbd788:hover {
+            background-color: #e0d3b8;
+            color: #4e342e !important;
+        }
+ 
+        /* Main content area - text background with borders */
+        .storybook-text {
+            background-color: #faf3e7;
+            padding: 30px;
+            border-radius: 15px;
+            border: 3px solid #bfa989;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+            font-family: 'Merriweather', serif;
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: justify;
+        }
+ 
+        /* Image styling */
+        .storybook-image {
+            border-radius: 15px;
+            border: 3px solid #bfa989;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            height: auto;
+        }
+ 
+        /* Styling for the page navigation buttons */
+        .stButton > button {
+            background-color: #d4c1a7;
+            color: #4e342e;
+            border: 2px solid #bfa989;
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+        }
+ 
+        .stButton > button:hover {
+            background-color: #e0d3b8;
+            color: #4e342e;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+
+    if 'validation_errors' not in st.session_state:
         st.session_state.validation_errors = []
+
+    #=================
         
     with st.form("form_key"):
         st.write("Craft personalized stories that bring adventure to life.")
