@@ -352,7 +352,7 @@ def main():
             st.session_state.submit_btn = True
 
         menu_options = ["About", "Storybook"]
-        st.session_state.current_page = 'Storybook"
+        st.session_state.current_page = "Storybook"
 
         if submit_btn:
             st.cache_data.clear()
