@@ -78,7 +78,6 @@ def encode_image_to_base64(image_path):
         with open(image_path, "rb") as image_file:
         # Read the binary data and encode to base64
         encoded_string = base64.b64encode(image_file.read())
-
         #convert bytes to string for easier handling
         return encoded_string.decode('utf-8')
         
