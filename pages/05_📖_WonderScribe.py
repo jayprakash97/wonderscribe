@@ -13,7 +13,11 @@ import boto3
 from botocore.exceptions import NoCredentialsError, ClientError
 
 #st.set_page_config(page_title="WonderScribe", page_icon="📖", layout="wide")
+# Custom CSS to apply the background gradient and create a box
 st.image("pages/images/Updated_WonderS_logo.png", width= 300)
+page_bg = """
+<style>
+
 s3client = boto3.client(
     's3'
     # aws_access_key_id="",
