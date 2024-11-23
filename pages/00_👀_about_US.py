@@ -1,74 +1,62 @@
 import streamlit as st
-# col1, col2  = st.columns(2, vertical_alignment="center")
-# # col1, col2 = st.columns(2, horizontal_alignment="left")
-# with col1:
-#     st.image("pages/WS_Logo.png", width=150)
-# with col2:
-#     st.write("")
 
-# Custom CSS to apply the background gradient and create a box
-st.image("pages/images/Updated_WonderS_logo.png", width= 300)
-page_bg = """
+# Set page configuration
+st.set_page_config(page_title="About WonderScribe", page_icon="📖", layout="wide")
+
+# Background image URL
+background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk1_page_1.jpg"
+
+# CSS for gradient and background image
+background_css = f"""
 <style>
-/* Apply background gradient to the main container */
-[data-testid="stAppViewContainer"] {
-    background: linear-gradient(135deg, #8c52ff, #5ce1e6);
+/* Apply a gradient background overlaid with the background image */
+[data-testid="stAppViewContainer"] {{
+    background-image: linear-gradient(135deg, rgba(140, 82, 255, 0.8), rgba(92, 225, 230, 0.8)), 
+                      url("{background_image_url}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     background-attachment: fixed;
-}
+    padding: 20px; /* Add padding to the container */
+}}
 
-/* Optional: Adjust text color and other styles */
-[data-testid="stAppViewContainer"] .stMarkdown {
-    color: white;  /* Adjust text color for contrast */
-}
-
-/* Style for the content box */
-.custom-box {
-    background-color: #eaf1ff; /* Light background color for the box */
+/* Add a semi-transparent box for content */
+.custom-box {{
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
     border-radius: 10px; /* Rounded corners */
-    padding: 20px; /* Spacing inside the box */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a raised effect */
-    color: black; /* Text color inside the box */
+    padding: 20px; /* Space inside the box */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    color: black; /* Text color */
     margin-top: 20px; /* Space above the box */
-}
+}}
 
-/* Position the logo in the top-left corner */
-img[alt="WonderScribeLogo"] {
-    position: absolute;
-    top: 40px;
-    left: 40px;
-    width: 150px; /* Adjust width if needed */
-    z-index: 10;
-}
+/* Sidebar customization */
+[data-testid="stSidebar"] {{
+    background-color: #7dd8ff; /* Light blue */
+    border-right: 2px solid #bfa989; /* Border on the right */
+}}
 
-/* Add padding to avoid overlap with the content */
-[data-testid="stAppViewContainer"] {
-    padding-top: 80px; /* Add padding to avoid logo overlapping */
-}
+[data-testid="stSidebar"] * {{
+    color: #8c52ff; /* Purple text for sidebar */
+}}
+
+/* Adjust text color for readability on the gradient */
+[data-testid="stAppViewContainer"] .stMarkdown {{
+    color: white;
+}}
 </style>
 """
-# Apply the custom CSS
-st.markdown(page_bg, unsafe_allow_html=True)
-st.markdown(
-    """
-    <style>
-    /* Style for the sidebar content */
-    [data-testid="stSidebarContent"] {
-        #background-color: #7dd8ff; /*#7dd8ff; Sidebar background color */
-        
-    }
-    /* Set color for all text inside the sidebar */
-    [data-testid="stSidebar"] * {
-        color: #8c52ff !important;  /* Text color */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
 
-#st.image("pages/images/Updated_WonderS_logo.png", width= 300)
-st.title(" Welcome to WonderScribe")
-#st.write(
+# Apply CSS styles
+st.markdown(background_css, unsafe_allow_html=True)
 
+# Display the WonderScribe logo
+st.image("pages/images/Updated_WonderS_logo.png", width=300)
+
+# Page title
+st.title("Welcome to WonderScribe")
+
+# Content with semi-transparent box
 st.markdown(
     """
     <div class="custom-box">
@@ -76,15 +64,15 @@ st.markdown(
         everywhere. We believe in the power of stories to transport children to magical worlds, introduce them to 
         fascinating characters, and inspire endless possibilities.</p>
         
-       At WonderScribe, we use cutting-edge technology, including AI and advanced language models, to create a unique
+       <p>At WonderScribe, we use cutting-edge technology, including AI and advanced language models, to create a unique
         storytelling experience. Our platform allows kids to become co-authors of their adventures, customizing tales
-        to reflect their dreams, personalities, and imaginations.
+        to reflect their dreams, personalities, and imaginations.</p>
         
-        We aim to make reading fun, interactive, and accessible to all children, no matter where they are. Through our
+        <p>We aim to make reading fun, interactive, and accessible to all children, no matter where they are. Through our
         innovative platform, we hope to foster a love of reading, spark creativity, and encourage every child to believe 
-        in the magic of their own stories.
+        in the magic of their own stories.</p>
         
-        Join us on this exciting journey and watch your child's imagination soar!
+        <p>Join us on this exciting journey and watch your child's imagination soar!</p>
     </div>
     """,
     unsafe_allow_html=True,
