@@ -31,9 +31,9 @@ background_css = f"""
 }}
 
 /* Sidebar customization */
-[data-testid="stSidebar"] {{
-    background-color: #7dd8ff; /* Light blue */
-    border-right: 2px solid #bfa989; /* Border on the right */
+#[data-testid="stSidebar"] {{
+    #background-color: #7dd8ff; /* Light blue */
+    #border-right: 2px solid #bfa989; /* Border on the right */
 }}
 
 [data-testid="stSidebar"] * {{
@@ -42,7 +42,7 @@ background_css = f"""
 
 /* Adjust text color for readability */
 [data-testid="stAppViewContainer"] .stMarkdown {{
-    color: white;
+    color: gray;
 }}
 </style>
 """
