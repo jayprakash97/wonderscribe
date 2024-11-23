@@ -49,7 +49,6 @@ background_css = f"""
     background-color: rgba(255, 255, 255, 0.8);  /* Add a light overlay (adjust rgba values as needed) */
 }}
 </style>
-"""
 
 s3client = boto3.client(
     's3'
