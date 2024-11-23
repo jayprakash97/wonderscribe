@@ -14,7 +14,7 @@ st.set_page_config(page_title="Interactive Storybook", page_icon="📖", layout=
 
 # Background image URL
 #background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk_blue_page_1.jpg"
-background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk2_page_1.jpg"
+#background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk2_page_1.jpg"
 # CSS for setting the background
 background_css = f"""
 <style>
@@ -34,7 +34,7 @@ background_css = f"""
 sidebar_css = """
 <style>
 [data-testid="stSidebar"] {
-    background-color: #7dd8ff;
+    #background-color: #7dd8ff;
     border-right: 2px solid #bfa989;
 }
 
