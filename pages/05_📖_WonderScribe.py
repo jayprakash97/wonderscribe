@@ -60,7 +60,7 @@ sidebar_css = """
 }
 </style>
 """
-==============
+# ==============
 # Custom CSS to apply the background gradient and create a box
 page_bg = """
 <style>
@@ -100,13 +100,33 @@ img[alt="WonderScribeLogo"] {
 }
 </style>
 """
-==============
+# ==============
 # Apply CSS
 st.markdown(background_css, unsafe_allow_html=True)
 st.markdown(sidebar_css, unsafe_allow_html=True)
 
-============
-============
+# ============
+# Apply the custom CSS
+st.markdown(page_bg, unsafe_allow_html=True)
+st.markdown(
+    """
+    <style>
+    /* Style for the sidebar content */
+    [data-testid="stSidebarContent"] {
+        background-color: #7dd8ff; /*#7dd8ff; Sidebar background color */
+        
+    }
+    /* Set color for all text inside the sidebar */
+    [data-testid="stSidebar"] * {
+        color: #8c52ff !important;  /* Text color */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+st.image("pages/images/WonderScribeLogo.png", width=150)
+# ============
 
 # S3 Client setup
 s3client = boto3.client("s3")
@@ -183,11 +203,14 @@ def fetch_and_decode_images(captions, _force_refresh=False):
 # Main app
 def main():
 
-    st.title("📖 Welcome to WonderScribe!")
-    st.write("Craft personalized stories that bring adventure to life.")
+    # st.title("📖 Welcome to WonderScribe!")
+    # st.write("Craft personalized stories that bring adventure to life.")
     
     if 'cache_cleared' not in st.session_state:
         st.session_state.cache_cleared = False
+
+    #=================
+    #=================
 
     if 'validation_errors' not in st.sesion_state:
         st.session_state.validation_errors = []
