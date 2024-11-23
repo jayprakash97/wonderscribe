@@ -28,6 +28,25 @@ background_css = f"""
 
 # Apply the CSS
 st.markdown(background_css, unsafe_allow_html=True)
+# CSS for the transparent background image
+background_css = f"""
+<style>
+[data-testid="stAppViewContainer"] > .main {{
+    background-image: url("{background_image_url}");
+    background-size: cover;  /* Cover the full viewport */
+    background-position: center;  
+    background-repeat: no-repeat;
+    background-attachment: fixed;  /* Keep the background fixed during scroll */
+    filter: opacity(0.5);  /* Adjust transparency (0.0 is fully transparent, 1.0 is fully visible) */
+}}
+[data-testid="stAppViewContainer"] {{
+    background-color: rgba(255, 255, 255, 0.8);  /* Add a light overlay (adjust rgba values as needed) */
+}}
+</style>
+"""
+
+# Apply the CSS
+st.markdown(background_css, unsafe_allow_html=True)
 
 # Page Title
 st.title("Welcome to WonderScribe")
@@ -53,7 +72,7 @@ st.markdown(
     <style>
     /* Sidebar Styling */
     [data-testid="stSidebarContent"] {
-        background-color: #7dd8ff;  /* Light blue */
+        #background-color: #7dd8ff;  /* Light blue */
     }
     [data-testid="stSidebar"] * {
         color: #b3ccff !important;  /* Light text color */
