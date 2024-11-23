@@ -357,7 +357,7 @@ def main():
         if submit_btn:
             st.cache_data.clear()
             st.session_state.cache_cleared = True
-            st.succcess("Cache has been cleared! Refresh the page to fetch new data.")
+            st.success("Cache has been cleared! Refresh the page to fetch new data.")
             st.session_state.submit_btn = True
             st.session_state.page_index = 0
 
