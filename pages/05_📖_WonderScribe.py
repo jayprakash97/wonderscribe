@@ -223,4 +223,6 @@ def main():
                 st.image(image_decode(decoded_images[idx]), use_column_width=True)
 
 if __name__ == "__main__":
+    if "submit_btn" not in st.session_state:
+        st.session_state.submit_btn = False
     main()
