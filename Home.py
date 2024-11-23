@@ -9,9 +9,6 @@ st.image("pages/images/Updated_WonderS_logo.png", width=300)
 # Background image URL (ensure this is the raw link from GitHub)
 background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk2_page_1.jpg"
 
-# Debugging: Display the background image URL
-st.markdown(f"Background Image URL: {background_image_url}")
-
 # CSS for setting the background image
 background_css = f"""
 <style>
