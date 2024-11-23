@@ -94,6 +94,7 @@ def fetch_story_data(payload, _force_refresh=False):
         st.cache_data.clear()
     AWS_API_URL = "https://wacnqhon34.execute-api.us-east-1.amazonaws.com/dev/"
     headers = {"Content-Type": "application/json"}
+
     response = requests.post(AWS_API_URL, headers=headers, json=payload)
     if response.status_code == 200:
         data = response.json()
@@ -108,53 +109,92 @@ def fetch_and_decode_images(captions, _force_refresh=False):
     AWS_API_URL = "https://wacnqhon34.execute-api.us-east-1.amazonaws.com/dev/"
     headers = {"Content-Type": "application/json"}
     decoded_images = []
+    
     for index, caption in enumerate(captions):
-        payload = {
-            "api_Path": "getImage",
-            "storyPrompt": caption,
-            "previousPrompt": captions[index - 1] if index > 0 else "",
-        }
-        response = requests.post(AWS_API_URL, headers=headers, json=payload)
+        if index == 0:
+            payload2 = {
+                "api_Path": "getImage",
+                "storyPrompt": caption,
+                "previousPrompt": ''
+            }
+        else:
+            payload2 = {
+                "api_Path": "getImage",
+                "storyPrompt": caption,
+                "previousPrompt": captions[index - 1]     # if index > 0 else "",
+            }
+            
+        json_data = payload2            
+        response = requests.post(AWS_API_URL, headers=headers, json=json_data)
+        
         if response.status_code == 200:
             data = response.json()
-            decoded_images.append(data["image_data_decode1"])
+
+            if data["image_data_decode1"] == "INVALID_PROMPT":
+                invalid_image = "pages/images/invalid_img.jpg"
+                decoded_images.append(encoded_image_to_base64(invalid_image))
+            else:
+                decoded_images.append(data["image_data_decode1"])
     return decoded_images
 
 # Main app
 def main():
+
+    if 'cache_cleared' not in st.session_state:
+        st.session_state.cache_cleared = False
+
+    if 'validation_errors' not in st.sesion_state:
+        st.session_state.validation_errors = []
+        
     st.title("📖 Welcome to WonderScribe!")
     st.write("Craft personalized stories that bring adventure to life.")
 
     with st.form("form_key"):
+        st.write("Craft personalized stories that bring adventure to life.")
         gender = st.selectbox("Your Gender", ["Male", "Female", "Non Binary", "Don't want to share"])
         main_character = st.text_input("Main Character Name", placeholder="Enter the name of the main character")
         audience = st.selectbox("Audience", ["Children", "Young Adult", "Adult", "Senior"])
-        story_setting = st.selectbox(
-            "Story Setting", 
-            ["Magical Kingdoms", "Underwater Kingdoms", "Pirate Ships", "Imaginary Worlds", "Other"]
-        )
-        story_type = st.selectbox("Story Type", ["Fantasy", "Fairy Tales", "Adventure", "Mystery", "Love"])
-        story_theme = st.text_input("Story Theme", placeholder="Enter the theme of your story")
-        moral_lesson = st.text_input("Moral Lesson", placeholder="Enter a moral lesson")
-        story_length = st.selectbox("Story Length (words)", ["300", "400", "500"])
-        story_lang = st.selectbox(
-            "Story Language", 
-            ["English", "Spanish", "French", "German", "Mandarin"]
-        )
+        story_setting = st.selectbox("Story Setting", options=["Magical Kingdoms", "Underwater Kingdoms", "Pirate Ships", "Exotic locations", "Imaginary Worlds", "Digital words", "Other"])
+        story_type = st.selectbox("Story Type", options=["Fantasy", "Fairy Tales", "Mythology", "Bedtime stories", "Adventure", "Mystery", "Love", "Horror"])
+        story_theme = st.text_input("What would be the topic of the story?", placeholder="Enter brief idea of a story")
+        moral_lesson = st.text_input("What would be the moral of this story?", placeholder="Enter a moral lesson from this story")
+        story_length = st.selectbox("Story Length (in words)", options=["300", "400", "500","700"])
+        story_lang = st.selectbox("Story Language", options=["English", "Spanish", "French", "German", "Mandarin", "Hindi", "Urdu", "Arabic", "Italian", "Vietnamese","Tagalog"])
 
-        submit_btn = st.form_submit_button("Generate Story")
+        submit_btn = st.form_submit_button("submit")
 
     if submit_btn:
-        # Validate inputs
-        errors = []
-        if not main_character or len(main_character) < 2:
-            errors.append("Main character name must be at least 2 characters.")
-        if not story_theme or len(story_theme) < 10:
-            errors.append("Story theme must be at least 10 characters.")
-        if errors:
-            for error in errors:
-                st.error(error)
-            st.stop()
+        # Clear previous validation errors
+        st.session_state.validation_errors = []
+        
+        # Validate main character
+        if not main_character or len(main_character.strip()) < 2:
+            st.session_state.validation_errors.append("Main character name must be at least two characters long")
+            # errors.append("Main character name must be at least 2 characters.")
+        elif not main_character.replace(" ", "").isalpha():
+            st.session_state.validation_errors.append("Main character name should only contain letters")
+
+        # Validate story theme
+        if not story_theme or len(story_theme.strip()) < 10:
+            st.session_state.validation_errors.append("Story theme must be at least 10 characters long.")
+        elif story_theme.split()) < 2:
+            st.session_state.validation_errors.append("Story theme should contain at least two words.")
+
+        # Validate moral lesson
+        if not moral_lesson or len(moral_lesson.strip()) < 10:
+            st.session_state.validation_errors.append("Moral lesson must be at least 10 characters long.")
+        elif moral_lesson.split()) < 2:
+            st.session_state.validation_errors.append("Moral lesson should contain at least two words.")
+
+        # Display all validation errors if any
+    
+        if st.session_state.validation_errors:
+            error_message = "Please fix the following errors:\n" + "\n".join(f".{error}" for error in st.session_state.validation_errors)
+            st.error(error_message)
+            st.stop() # Stop further execution if there are validation errors
+
+        # if no validation errors, proceed with form submission
+        st.session_state.submit_btn = True
 
         # Create payload
         payload = {
