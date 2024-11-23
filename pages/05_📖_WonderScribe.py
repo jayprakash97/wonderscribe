@@ -31,7 +31,6 @@ background_css = f"""
 }}
 </style>
 """
-
 # Apply the CSS
 st.markdown(background_css, unsafe_allow_html=True)
 
