@@ -317,55 +317,70 @@ def main():
 
         submit_btn = st.form_submit_button("submit")
 
-    if submit_btn:
-        # Clear previous validation errors
-        st.session_state.validation_errors = []
+    try:
+        if submit_btn:
+            # Clear previous validation errors
+            st.session_state.validation_errors = []
         
-        # Validate main character
-        if not main_character or len(main_character.strip()) < 2:
-            st.session_state.validation_errors.append("Main character name must be at least two characters long")
-            # errors.append("Main character name must be at least 2 characters.")
-        elif not main_character.replace(" ", "").isalpha():
-            st.session_state.validation_errors.append("Main character name should only contain letters")
+            # Validate main character
+            if not main_character or len(main_character.strip()) < 2:
+                st.session_state.validation_errors.append("Main character name must be at least two characters long")
+                # errors.append("Main character name must be at least 2 characters.")
+            elif not main_character.replace(" ", "").isalpha():
+                st.session_state.validation_errors.append("Main character name should only contain letters")
 
-        # Validate story theme
-        if not story_theme or len(story_theme.strip()) < 10:
-            st.session_state.validation_errors.append("Story theme must be at least 10 characters long.")
-        elif len(story_theme.split()) < 2:
-            st.session_state.validation_errors.append("Story theme should contain at least two words.")
+            # Validate story theme
+            if not story_theme or len(story_theme.strip()) < 10:
+                st.session_state.validation_errors.append("Story theme must be at least 10 characters long.")
+            elif len(story_theme.split()) < 2:
+                st.session_state.validation_errors.append("Story theme should contain at least two words.")
 
-        # Validate moral lesson
-        if not moral_lesson or len(moral_lesson.strip()) < 10:
-            st.session_state.validation_errors.append("Moral lesson must be at least 10 characters long.")
-        elif len(moral_lesson.split()) < 2:
-            st.session_state.validation_errors.append("Moral lesson should contain at least two words.")
+            # Validate moral lesson
+            if not moral_lesson or len(moral_lesson.strip()) < 10:
+                st.session_state.validation_errors.append("Moral lesson must be at least 10 characters long.")
+            elif len(moral_lesson.split()) < 2:
+                st.session_state.validation_errors.append("Moral lesson should contain at least two words.")
 
-        # Display all validation errors if any
+            # Display all validation errors if any
     
-        if st.session_state.validation_errors:
-            error_message = "Please fix the following errors:\n" + "\n".join(f".{error}" for error in st.session_state.validation_errors)
-            st.error(error_message)
-            st.stop() # Stop further execution if there are validation errors
+            if st.session_state.validation_errors:
+                error_message = "Please fix the following errors:\n" + "\n".join(f".{error}" for error in st.session_state.validation_errors)
+                st.error(error_message)
+                st.stop() # Stop further execution if there are validation errors
 
-        # if no validation errors, proceed with form submission
-        st.session_state.submit_btn = True
+            # if no validation errors, proceed with form submission
+            st.session_state.submit_btn = True
 
-        # Create payload
-        payload = {
-            "api_Path": "getStory",
-            "audience": audience,
-            "story_type": story_type,
-            "main_character": main_character,
-            "story_theme": story_theme,
-            "moral_lesson": moral_lesson,
-            "setting": story_setting,
-            "word_count": story_length,
-            "story_lang": story_lang,
-        }
+        menu_options = ["About", "Storybook"]
+        st.session_state.current_page = 'Storybook"
+
+        if submit_btn:
+            st.cache_data.clear()
+            st.session_state.cache_cleared = True
+            st.succcess("Cache has been cleared! Refresh the page to fetch new data.")
+            st.session_state.submit_btn = True
+            st.session_state.page_index = 0
+
+        if st.session_state.submit_btn and st.session_state.current_page == "Storybook":
+            # Create payload
+            payload = {
+                "audience": audience,
+                "story_type": story_type,
+                "main_character": main_character,
+                "story_theme": story_theme,
+                "moral_lesson": moral_lesson,
+                "setting": story_setting,
+                "word_count": story_length,
+                "story_lang": story_lang,
+                "api_Path": "getStory"
+                }
 
         # Fetch data
         story_texts, captions, storyfiles = fetch_story_data(payload)
         decoded_images = fetch_and_decode_images(captions)
+
+        #===============
+        #===============
 
         # Display story
         for idx, text in enumerate(story_texts):
