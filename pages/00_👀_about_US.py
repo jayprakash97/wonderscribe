@@ -11,7 +11,7 @@ background_css = f"""
 <style>
 /* Apply a gradient background overlaid with the background image */
 [data-testid="stAppViewContainer"] {{
-    #background-image: linear-gradient(135deg, rgba(140, 82, 255, 0.8), rgba(92, 225, 230, 0.8)), 
+    background-image: linear-gradient(135deg, rgba(140, 82, 255, 0.8), rgba(92, 225, 230, 0.8)), 
                       url("{background_image_url}");
     background-size: cover;
     background-position: center;
