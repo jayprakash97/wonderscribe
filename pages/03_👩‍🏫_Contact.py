@@ -57,9 +57,9 @@ st.markdown(background_css, unsafe_allow_html=True)
 page_bg = """
 <style>
 /* Apply background gradient to the main container */
-[data-testid="stAppViewContainer"] {
-    background: linear-gradient(135deg, #8c52ff, #5ce1e6);
-    background-attachment: fixed;
+#[data-testid="stAppViewContainer"] {
+   # background: linear-gradient(135deg, #8c52ff, #5ce1e6);
+    #background-attachment: fixed;
 }
 
 /* Optional: Adjust text color and other styles */
@@ -98,8 +98,8 @@ st.markdown(
     """
     <style>
     /* Style for the sidebar content */
-    [data-testid="stSidebarContent"] {
-        background-color: #7dd8ff; /*#7dd8ff; Sidebar background color */
+    #[data-testid="stSidebarContent"] {
+       # background-color: #7dd8ff; /*#7dd8ff; Sidebar background color */
         
     }
     /* Set color for all text inside the sidebar */
