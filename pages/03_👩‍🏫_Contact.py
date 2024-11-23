@@ -14,6 +14,45 @@ from botocore.exceptions import NoCredentialsError, ClientError
 
 st.set_page_config(page_title="Contact", page_icon="👩‍🏫", layout="wide")
 
+
+# Background image URL (ensure this is the raw link from GitHub)
+background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk2_page_1.jpg"
+
+# CSS for setting the background image
+background_css = f"""
+<style>
+/* Apply the background image to the main app container */
+[data-testid="stAppViewContainer"] {{
+    background-image: url("{background_image_url}");
+    background-size: cover;  /* Ensure it covers the full viewport */
+    background-position: center;  /* Center the image */
+    background-repeat: no-repeat;  /* Do not repeat the image */
+    background-attachment: fixed;  /* Keep the background fixed during scrolling */
+}}
+</style>
+"""
+
+# Apply the CSS
+st.markdown(background_css, unsafe_allow_html=True)
+# CSS for the transparent background image
+background_css = f"""
+<style>
+[data-testid="stAppViewContainer"] > .main {{
+    background-image: url("{background_image_url}");
+    background-size: cover;  /* Cover the full viewport */
+    background-position: center;  
+    background-repeat: no-repeat;
+    background-attachment: fixed;  /* Keep the background fixed during scroll */
+    filter: opacity(0.5);  /* Adjust transparency (0.0 is fully transparent, 1.0 is fully visible) */
+}}
+[data-testid="stAppViewContainer"] {{
+    background-color: rgba(255, 255, 255, 0.8);  /* Add a light overlay (adjust rgba values as needed) */
+}}
+</style>
+"""
+
+# Apply the CSS
+st.markdown(background_css, unsafe_allow_html=True)
 # Custom CSS to apply the background gradient and create a box
 page_bg = """
 <style>
