@@ -1,5 +1,3 @@
-
-
 import streamlit as st
 from PIL import Image
 import requests
@@ -15,6 +13,7 @@ st.set_page_config(page_title="Interactive Storybook", page_icon="📖", layout=
 # Background image URL
 background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk_blue_page_1.jpg"
 #background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk2_page_1.jpg"
+
 # CSS for setting the background
 background_css = f"""
 <style>
@@ -73,6 +72,21 @@ s3client = boto3.client("s3")
 def image_decode(image_data_decode):
     image_data = base64.b64decode(image_data_decode)
     return Image.open(BytesIO(image_data))
+
+def encode_image_to_base64(image_path):
+    try:
+        with open(image_path, "rb") as image_file:
+
+        # Read the binary data and encode to base64
+        encoded_string = base64.b64encode(image_file.read())
+
+        #convert bytes to string for easier handling
+        return encoded_string.decode('utf-8')
+        
+    except exception as e:
+        print(f"Error encoding image: {e}")
+        return None
+        
 
 # Fetch story data
 @st.cache_data
