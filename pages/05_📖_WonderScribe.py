@@ -177,13 +177,13 @@ def main():
         # Validate story theme
         if not story_theme or len(story_theme.strip()) < 10:
             st.session_state.validation_errors.append("Story theme must be at least 10 characters long.")
-        elif story_theme.split()) < 2:
+        elif len(story_theme.split()) < 2:
             st.session_state.validation_errors.append("Story theme should contain at least two words.")
 
         # Validate moral lesson
         if not moral_lesson or len(moral_lesson.strip()) < 10:
             st.session_state.validation_errors.append("Moral lesson must be at least 10 characters long.")
-        elif moral_lesson.split()) < 2:
+        elif len(moral_lesson.split()) < 2:
             st.session_state.validation_errors.append("Moral lesson should contain at least two words.")
 
         # Display all validation errors if any
