@@ -111,7 +111,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-st.image("pages/images/WonderScribeLogo.png", width=150)
+st.image("pages/images/Updated_WonderS_logo.png", width=150)
 
 st.title("Contact with WonderScribe Team")
 
