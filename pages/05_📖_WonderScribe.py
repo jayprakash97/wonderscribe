@@ -60,7 +60,9 @@ sidebar_css = """
 }
 </style>
 """
+==============
 
+==============
 # Apply CSS
 st.markdown(background_css, unsafe_allow_html=True)
 st.markdown(sidebar_css, unsafe_allow_html=True)
