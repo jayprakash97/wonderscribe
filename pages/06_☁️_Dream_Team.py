@@ -39,9 +39,20 @@ background_css = f"""
 [data-testid="stAppViewContainer"] .stMarkdown {{
     color: gray;
 }}
+
+/* Ensure all images have a 1:1 aspect ratio */
+.square-image {{
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%; /* Maintain 1:1 ratio */
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px; /* Optional rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}}
 </style>
 """
-
 # Apply CSS styles
 st.markdown(background_css, unsafe_allow_html=True)
 
@@ -116,12 +127,16 @@ members = [
     },
 ]
 
-# Display team members
+# Display team members with 1:1 aspect ratio for images
 for member in members:
     col1, col2 = st.columns([1, 3])  # Adjust column width for better layout
     with col1:
-        # Use st.image for displaying local images without captions
-        st.image(member["image"], use_column_width=True)  # Removed the caption argument
+        st.markdown(
+            f"""
+            <div class="square-image" style="background-image: url('{member['image']}');"></div>
+            """,
+            unsafe_allow_html=True,
+        )
     with col2:
         st.markdown(f"### {member['name']}")
         st.markdown(f"**Role:** {member['role']}")
