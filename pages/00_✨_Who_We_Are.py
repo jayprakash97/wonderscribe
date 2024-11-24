@@ -43,7 +43,7 @@ background_css = f"""
 st.markdown(background_css, unsafe_allow_html=True)
 
 # Function to add the logo to the top of the sidebar
-def add_logo_to_sidebar_top(logo_path, width="200px"):
+def add_logo_to_sidebar_top(logo_path, width="250px"):
     with open(logo_path, "rb") as f:
         encoded_logo = base64.b64encode(f.read()).decode("utf-8")
     st.sidebar.markdown(
@@ -53,12 +53,12 @@ def add_logo_to_sidebar_top(logo_path, width="200px"):
                 content: '';
                 display: block;
                 background-image: url("data:image/png;base64,{encoded_logo}");
-                background-size: {width};
+                background-size: contain; /* Ensure the logo scales proportionally */
                 background-repeat: no-repeat;
                 background-position: top center;
-                height: 150px; /* Adjust height of the logo */
-                padding-top: 20px; /* Space above the logo */
-                margin-bottom: 30px; /* Space below the logo to avoid overlap */
+                height: 200px; /* Increase height to fit the full logo */
+                padding-top: 20px; /* Add space above the logo */
+                margin-bottom: 20px; /* Add space below the logo */
             }}
         </style>
         """,
