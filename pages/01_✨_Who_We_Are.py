@@ -69,7 +69,10 @@ def add_logo_to_sidebar_top(logo_path, width="250px"):
 add_logo_to_sidebar_top("pages/images/Updated_WonderS_logo.png", width="250px")
 
 # Page title
-st.title("WonderScribe, where stories come to life!")
+st.markdown(
+    "<h1 style='color: #5481c4; text-align: center; font-size: 3em;'>WonderScribe, where stories come to life!</h1>",
+    unsafe_allow_html=True,
+)
 
 # Content wrapped in a div with class "custom-box"
 st.markdown(
