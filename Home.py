@@ -4,7 +4,7 @@ import base64
 # Set up the page configuration
 st.set_page_config(page_title="WonderScribe", page_icon="📖", layout="wide")
 
-# Background image URL (ensure this is the raw link from GitHub)
+# Background image URL
 background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk2_page_1.jpg"
 
 # CSS for setting the background image
@@ -20,8 +20,6 @@ background_css = f"""
 }}
 </style>
 """
-
-# Apply the CSS
 st.markdown(background_css, unsafe_allow_html=True)
 
 # Function to add the logo to the sidebar
@@ -35,9 +33,9 @@ def add_logo_to_sidebar(logo_path, width="250px"):
                 content: '';
                 display: block;
                 background-image: url("data:image/png;base64,{encoded_logo}");
-                background-size: {width};
+                background-size: {width}; /* Adjust the size of the logo */
                 background-repeat: no-repeat;
-                background-position: top center;
+                background-position: top center; /* Center the logo at the top */
                 height: 200px; /* Adjust height to fit the logo */
                 padding-top: 20px;
                 margin-bottom: 20px;
@@ -48,8 +46,9 @@ def add_logo_to_sidebar(logo_path, width="250px"):
     )
 
 # Add the WonderScribe logo to the sidebar
-add_logo_to_sidebar("pages/images/Updated_WonderS_logo.png", width="200px")  # Adjust width as needed
+add_logo_to_sidebar("pages/images/Updated_WonderS_logo.png", width="200px")
 
+# Remove the st.image call to ensure the logo is not on the main page
 # Page Title
 st.title("Welcome to WonderScribe")
 
