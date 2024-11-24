@@ -56,28 +56,41 @@ st.image("pages/images/Updated_WonderS_logo.png", width=300)
 st.title("Welcome to WonderScribe")
 
 # Content with semi-transparent box
+# Define styles using Streamlit's `st.markdown` CSS injection
 st.markdown(
     """
     <style>
         .custom-box {
             background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
             padding: 20px;
-            margin: 20px auto; /* Center and provide spacing */
-            max-width: 800px; /* Limit the width for better readability */
-            border-radius: 10px; /* Rounded corners */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            margin: 20px auto;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             font-family: Arial, sans-serif;
-            color: #333; /* Dark gray text color for readability */
-            line-height: 1.6; /* Improved text spacing for readability */
+            color: #333;
+            line-height: 1.6;
+            text-align: left;
         }
-        h1, h3 {
-            text-align: center; /* Center-align headings */
+        .custom-box h1 {
+            text-align: center;
+            font-size: 2rem;
         }
-        ul {
-            margin-left: 20px; /* Indentation for list items */
+        .custom-box h3 {
+            text-align: center;
+            font-size: 1.5rem;
+        }
+        .custom-box ul {
+            margin-left: 20px;
         }
     </style>
+    """,
+    unsafe_allow_html=True,
+)
 
+# Content wrapped in a div with class "custom-box"
+st.markdown(
+    """
     <div class="custom-box">
         <h1>Welcome to WonderScribe, where stories come to life!</h1>
         <p>We are a passionate team of innovators on a mission to empower young imaginations through the magic of storytelling. At WonderScribe, we believe that every child has a story to tell, and our platform makes it possible for children to become the authors, illustrators, and narrators of their own adventures.</p>
