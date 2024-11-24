@@ -104,7 +104,7 @@ members = [
         "name": "Natsnet Demoz",
         "role": "Data & Analytics, UI/UX Design, Model Development",
         "bio": "Natsnet’s dual focus on data exploration and design brings WonderScribe’s creative vision to life. She leads exploratory data analysis, ensuring the platform leverages child-friendly and culturally diverse datasets. Additionally, her contributions to user interface design make WonderScribe an intuitive and engaging platform for children and parents alike. Her ability to merge data insights with user-centric design is a key driver of the project’s success.",
-        "image": "pages/images/Natsnet Demoz.jfif",
+        "image": "pages/images/Natsnet Demoz.jpg",
         "email": "ndemoz@berkeley.edu",
     },
     {
