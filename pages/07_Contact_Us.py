@@ -19,7 +19,7 @@ background_css = f"""
 
 /* Custom CSS for increasing font size in form labels */
 label {{
-    font-size: 20px; /* Increase font size for form labels */
+    font-size: 35px; /* Increase font size for form labels */
     font-weight: bold; /* Optional: make labels bold */
     color: #333; /* Optional: set label text color */
 }}
