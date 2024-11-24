@@ -31,11 +31,6 @@ background_css = f"""
 }}
 
 /* Sidebar customization */
-#[data-testid="stSidebar"] {{
-    #background-color: #7dd8ff; /* Light blue */
-    #border-right: 2px solid #bfa989; /* Border on the right */
-}}
-
 [data-testid="stSidebar"] * {{
     color: #8c52ff; /* Purple text for sidebar */
 }}
@@ -50,24 +45,23 @@ background_css = f"""
 # Apply CSS styles
 st.markdown(background_css, unsafe_allow_html=True)
 
-# Paths to the logos
-logo = "pages/images/Updated_WonderS_logo.png"
-
 # Function to add the logo to the sidebar
-def add_logo(logo, width):
-    # Read the image and convert it to Base64
-    with open(logo, "rb") as f:
-        data = base64.b64encode(f.read()).decode("utf-8")
-    # Inject CSS with Base64-encoded image into the sidebar
-    st.markdown(
+def add_logo_to_sidebar(logo_path, width="200px"):
+    with open(logo_path, "rb") as f:
+        encoded_logo = base64.b64encode(f.read()).decode("utf-8")
+    st.sidebar.markdown(
         f"""
         <style>
-            [data-testid="stSidebarNav"] {{
-                background-image: url("data:image/png;base64,{data}");
+            [data-testid="stSidebar"]::before {{
+                content: '';
+                display: block;
+                background-image: url("data:image/png;base64,{encoded_logo}");
+                background-size: {width}; /* Adjust the size of the logo */
                 background-repeat: no-repeat;
-                padding-top: 250px;
-                background-position: 10px 10px;
-                background-size: {width};
+                background-position: top center; /* Center the logo at the top */
+                height: 152px; /* Adjust height to fit the logo */
+                padding-top: 20px;
+                margin-bottom: 20px;
             }}
         </style>
         """,
@@ -75,7 +69,7 @@ def add_logo(logo, width):
     )
 
 # Add the WonderScribe logo
-add_logo(logo, "250px")
+add_logo_to_sidebar("pages/images/Updated_WonderS_logo.png", width="200px")
 
 # Page Title
 st.markdown(
@@ -134,4 +128,3 @@ for member in members:
         st.markdown(f"**Bio:** {member['bio']}")
         st.markdown(f"**Email:** [{member['email']}](mailto:{member['email']})")
     st.write("---")
-
