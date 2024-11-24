@@ -58,20 +58,32 @@ st.title("Welcome to WonderScribe")
 # Content with semi-transparent box
 st.markdown(
     """
+    <style>
+        .custom-box {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            font-family: Arial, sans-serif;
+            color: #333; /* Dark gray text color for readability */
+            line-height: 1.6; /* Improved text spacing for readability */
+        }
+    </style>
+
     <div class="custom-box">
-        <p>We are a passionate team of authors, educators, and creatives on a mission to ignite young readers' imaginations
-        everywhere. We believe in the power of stories to transport children to magical worlds, introduce them to 
-        fascinating characters, and inspire endless possibilities.</p>
+        <h1>Welcome to WonderScribe, where stories come to life!</h1>
+        <p>We are a passionate team of innovators on a mission to empower young imaginations through the magic of storytelling. At WonderScribe, we believe that every child has a story to tell, and our platform makes it possible for children to become the authors, illustrators, and narrators of their own adventures.</p>
         
-       <p>At WonderScribe, we use cutting-edge technology, including AI and advanced language models, to create a unique
-        storytelling experience. Our platform allows kids to become co-authors of their adventures, customizing tales
-        to reflect their dreams, personalities, and imaginations.</p>
+        <p>Using cutting-edge generative AI, we create a unique, interactive storytelling experience that brings together text, images, and audio to craft personalized, immersive tales. With WonderScribe, kids and parents can co-create stories that reflect their dreams, personalities, and cultures, fostering creativity, literacy, and self-expression in a fun and engaging way.</p>
         
-        <p>We aim to make reading fun, interactive, and accessible to all children, no matter where they are. Through our
-        innovative platform, we hope to foster a love of reading, spark creativity, and encourage every child to believe 
-        in the magic of their own stories.</p>
+        <h3>We aim to make storytelling:</h3>
+        <ul>
+            <li><strong>Interactive:</strong> Children don’t just read stories—they create them.</li>
+            <li><strong>Inclusive:</strong> Our platform celebrates diverse narratives and cultures, ensuring every child feels represented.</li>
+            <li><strong>Accessible:</strong> Designed for children everywhere, regardless of their background or language.</li>
+        </ul>
         
-        <p>Join us on this exciting journey and watch your child's imagination soar!</p>
+        <p>Join us on this exciting journey as we reimagine the world of storytelling, one personalized tale at a time. Let WonderScribe inspire your child’s imagination and unlock the power of their creativity!</p>
     </div>
     """,
     unsafe_allow_html=True,
