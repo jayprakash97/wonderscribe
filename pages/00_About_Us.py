@@ -53,7 +53,7 @@ st.markdown(background_css, unsafe_allow_html=True)
 st.image("pages/images/Updated_WonderS_logo.png", width=300)
 
 # Page title
-st.title("Welcome to WonderScribe")
+st.title("Welcome to WonderScribe, where stories come to life!")
 
 # Content with semi-transparent box
 # Define styles using Streamlit's `st.markdown` CSS injection
@@ -92,7 +92,6 @@ st.markdown(
 st.markdown(
     """
     <div class="custom-box">
-        <h1>Welcome to WonderScribe, where stories come to life!</h1>
         <p>We are a passionate team of innovators on a mission to empower young imaginations through the magic of storytelling. At WonderScribe, we believe that every child has a story to tell, and our platform makes it possible for children to become the authors, illustrators, and narrators of their own adventures.</p>
         
         <p>Using cutting-edge generative AI, we create a unique, interactive storytelling experience that brings together text, images, and audio to craft personalized, immersive tales. With WonderScribe, kids and parents can co-create stories that reflect their dreams, personalities, and cultures, fostering creativity, literacy, and self-expression in a fun and engaging way.</p>
