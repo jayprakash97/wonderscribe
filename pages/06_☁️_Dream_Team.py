@@ -40,7 +40,7 @@ background_css = f"""
 
 /* Sidebar customization */
 [data-testid="stSidebar"] {{
-    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    background-color: #f0f4ff; /* blue */
     color: #5481c4; /* Match the main page color */
     font-family: Arial, sans-serif;
     font-size: 18px; /* Adjust font size */
