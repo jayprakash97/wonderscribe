@@ -35,12 +35,12 @@ def add_logo_to_sidebar(logo_path, width="250px"):
                 content: '';
                 display: block;
                 background-image: url("data:image/png;base64,{encoded_logo}");
-                background-size: {width}; /* Adjust the size of the logo */
+                background-size: {width};
                 background-repeat: no-repeat;
-                background-position: top center; /* Center the logo at the top */
-                height: 200px; /* Height of the logo container */
-                padding-top: 20px; /* Add space above the logo */
-                margin-bottom: 20px; /* Add space below the logo */
+                background-position: top center;
+                height: 200px; /* Adjust height to fit the logo */
+                padding-top: 20px;
+                margin-bottom: 20px;
             }}
         </style>
         """,
@@ -48,7 +48,7 @@ def add_logo_to_sidebar(logo_path, width="250px"):
     )
 
 # Add the WonderScribe logo to the sidebar
-add_logo_to_sidebar("pages/images/Updated_WonderS_logo.png", width="200px")
+add_logo_to_sidebar("pages/images/Updated_WonderS_logo.png", width="200px")  # Adjust width as needed
 
 # Page Title
 st.title("Welcome to WonderScribe")
