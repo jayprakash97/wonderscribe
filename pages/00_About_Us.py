@@ -25,7 +25,7 @@ background_css = f"""
     max-width: 800px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     font-family: Arial, sans-serif;
-    color: #333;
+    color: #5481c4;
     line-height: 1.6;
 }}
 .custom-box h3 {{
