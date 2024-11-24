@@ -1,10 +1,8 @@
 import streamlit as st
+import base64
 
 # Set up the page configuration
 st.set_page_config(page_title="WonderScribe", page_icon="📖", layout="wide")
-
-# Display the logo
-st.image("pages/images/Updated_WonderS_logo.png", width=300)
 
 # Background image URL (ensure this is the raw link from GitHub)
 background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk2_page_1.jpg"
@@ -25,25 +23,32 @@ background_css = f"""
 
 # Apply the CSS
 st.markdown(background_css, unsafe_allow_html=True)
-# CSS for the transparent background image
-background_css = f"""
-<style>
-[data-testid="stAppViewContainer"] > .main {{
-    background-image: url("{background_image_url}");
-    background-size: cover;  /* Cover the full viewport */
-    background-position: center;  
-    background-repeat: no-repeat;
-    background-attachment: fixed;  /* Keep the background fixed during scroll */
-    filter: opacity(0.5);  /* Adjust transparency (0.0 is fully transparent, 1.0 is fully visible) */
-}}
-[data-testid="stAppViewContainer"] {{
-    background-color: rgba(255, 255, 255, 0.8);  /* Add a light overlay (adjust rgba values as needed) */
-}}
-</style>
-"""
 
-# Apply the CSS
-st.markdown(background_css, unsafe_allow_html=True)
+# Function to add the logo to the sidebar
+def add_logo_to_sidebar(logo_path, width="250px"):
+    with open(logo_path, "rb") as f:
+        encoded_logo = base64.b64encode(f.read()).decode("utf-8")
+    st.sidebar.markdown(
+        f"""
+        <style>
+            [data-testid="stSidebar"]::before {{
+                content: '';
+                display: block;
+                background-image: url("data:image/png;base64,{encoded_logo}");
+                background-size: {width}; /* Adjust the size of the logo */
+                background-repeat: no-repeat;
+                background-position: top center; /* Center the logo at the top */
+                height: 200px; /* Height of the logo container */
+                padding-top: 20px; /* Add space above the logo */
+                margin-bottom: 20px; /* Add space below the logo */
+            }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+# Add the WonderScribe logo to the sidebar
+add_logo_to_sidebar("pages/images/Updated_WonderS_logo.png", width="200px")
 
 # Page Title
 st.title("Welcome to WonderScribe")
