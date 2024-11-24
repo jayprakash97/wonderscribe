@@ -79,7 +79,7 @@ add_logo(logo, "250px")
 
 # Page Title
 st.markdown(
-    "<h1 style='color: #5f20eb; text-align: center;'>Our Team</h1>",
+    "<h1 style='color: #5481c4; text-align: center;'>Our Team</h1>",
     unsafe_allow_html=True,
 )
 
