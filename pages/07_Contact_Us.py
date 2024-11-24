@@ -16,6 +16,13 @@ background_css = f"""
     background-repeat: no-repeat;
     background-attachment: fixed;
 }}
+
+/* Custom CSS for increasing font size in form labels */
+label {{
+    font-size: 20px; /* Increase font size for form labels */
+    font-weight: bold; /* Optional: make labels bold */
+    color: #333; /* Optional: set label text color */
+}}
 </style>
 """
 
