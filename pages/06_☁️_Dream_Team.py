@@ -126,11 +126,12 @@ members = [
 for member in members:
     col1, col2 = st.columns([1, 3])  # Adjust column width for better layout
     with col1:
-        # Use st.image for displaying local images
-        st.image(member["image"], use_column_width=True, caption=f"{member['name']}")
+        # Use st.image for displaying local images without captions
+        st.image(member["image"], use_column_width=True)  # Removed the caption argument
     with col2:
         st.markdown(f"### {member['name']}")
         st.markdown(f"**Role:** {member['role']}")
         st.markdown(f"**Bio:** {member['bio']}")
         st.markdown(f"**Email:** [{member['email']}](mailto:{member['email']})")
     st.write("---")
+
