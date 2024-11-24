@@ -54,7 +54,10 @@ def add_logo_to_sidebar(logo_path, width="250px"):
 add_logo_to_sidebar("pages/images/Updated_WonderS_logo.png")
 
 # Title for the page
-st.title("Contact the WonderScribe Team")
+st.markdown(
+    "<h1 style='color: #5481c4; text-align: center; font-size: 3em;'>Contact the WonderScribe Team</h1>",
+    unsafe_allow_html=True,
+)
 
 # Contact form
 with st.form("form_key"):
