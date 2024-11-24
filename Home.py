@@ -48,9 +48,13 @@ def add_logo_to_sidebar(logo_path, width="250px"):
 # Add the WonderScribe logo to the sidebar
 add_logo_to_sidebar("pages/images/Updated_WonderS_logo.png", width="200px")
 
-# Remove the st.image call to ensure the logo is not on the main page
+
 # Page Title
-st.title("Welcome to WonderScribe")
+st.markdown(
+    "<h1 style='text-align: center; color: #5481c4;'>Welcome to WonderScribe</h1>",
+    unsafe_allow_html=True,
+)
+
 
 # Introduction Text
 st.write(
