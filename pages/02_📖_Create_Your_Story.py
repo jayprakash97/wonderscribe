@@ -11,10 +11,7 @@ from botocore.exceptions import NoCredentialsError, ClientError
 st.set_page_config(page_title="Interactive Storybook", page_icon="📖", layout="wide")
 
 # Background image URL
-background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk2_page_1.jpg"
-
-# CSS for setting the background image
-# CSS for background image and semi-transparent box
+# CSS for background image and sidebar customization (No gradient)
 background_css = f"""
 <style>
 [data-testid="stAppViewContainer"] {{
@@ -23,8 +20,10 @@ background_css = f"""
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-color: #f0f4ff; /* Light blue solid color for fallback */
 }}
 
+/* Custom box styling */
 .custom-box {{
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
@@ -43,10 +42,11 @@ background_css = f"""
 .custom-box ul {{
     padding-left: 20px;
 }}
+
 /* Sidebar customization */
 [data-testid="stSidebar"] {{
-    background-color: #f0f4ff; /* blue */
-    color: #5481c4; /* Match the main page color */
+    background-color: #f0f4ff; /* Solid light blue background */
+    color: #5481c4; /* Text color matching the main page */
     font-family: Arial, sans-serif;
     font-size: 18px; /* Adjust font size */
 }}
@@ -59,34 +59,9 @@ background_css = f"""
 </style>
 """
 
-# Apply CSS styles
+# Apply the CSS
 st.markdown(background_css, unsafe_allow_html=True)
 
-# Function to add the logo to the top of the sidebar
-def add_logo_to_sidebar_top(logo_path, width="250px"):
-    with open(logo_path, "rb") as f:
-        encoded_logo = base64.b64encode(f.read()).decode("utf-8")
-    st.sidebar.markdown(
-        f"""
-        <style>
-            [data-testid="stSidebar"]::before {{
-                content: '';
-                display: block;
-                background-image: url("data:image/png;base64,{encoded_logo}");
-                background-size: contain; /* Ensure the logo scales proportionally */
-                background-repeat: no-repeat;
-                background-position: top center;
-                height: 250px; /* Increase height to fit the full logo */
-                padding-top: 20px; /* Add space above the logo */
-                margin-bottom: 20px; /* Add space below the logo */
-            }}
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-
-# Add the WonderScribe logo to the top of the sidebar
-add_logo_to_sidebar_top("pages/images/Updated_WonderS_logo.png", width="250px")
 # ============
 
 # S3 Client setup
@@ -171,7 +146,7 @@ def main():
         st.session_state.cache_cleared = False
 
     #=================
-        # Set the page configuration with a wide layout for a book-like feel
+    # Set the page configuration with a wide layout for a book-like feel
     # Add custom CSS for the storybook theme
     
     st.markdown("""
