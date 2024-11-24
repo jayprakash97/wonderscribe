@@ -75,7 +75,7 @@ def add_logo(logo, width):
     )
 
 # Add the WonderScribe logo
-add_logo(logo, "350px")
+add_logo(logo, "250px")
 
 # Page Title
 st.markdown(
