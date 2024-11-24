@@ -23,7 +23,7 @@ background_css = f"""
 st.markdown(background_css, unsafe_allow_html=True)
 
 # Function to add a logo to the sidebar
-def add_logo_to_sidebar(logo_path, width="150px"):
+def add_logo_to_sidebar(logo_path, width="250px"):
     # Read and encode the image in Base64
     with open(logo_path, "rb") as f:
         encoded_logo = base64.b64encode(f.read()).decode("utf-8")
