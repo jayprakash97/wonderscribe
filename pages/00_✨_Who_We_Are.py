@@ -42,28 +42,31 @@ background_css = f"""
 # Apply CSS styles
 st.markdown(background_css, unsafe_allow_html=True)
 
-# Function to add the logo to the sidebar
-def add_logo_to_sidebar(logo_path, width="200px"):
+# Function to add the logo to the top of the sidebar
+def add_logo_to_sidebar_top(logo_path, width="200px"):
     with open(logo_path, "rb") as f:
         encoded_logo = base64.b64encode(f.read()).decode("utf-8")
     st.sidebar.markdown(
         f"""
         <style>
-            [data-testid="stSidebar"] {{
+            [data-testid="stSidebar"]::before {{
+                content: '';
+                display: block;
                 background-image: url("data:image/png;base64,{encoded_logo}");
                 background-size: {width};
                 background-repeat: no-repeat;
                 background-position: top center;
-                padding-top: 20px;
-                height: 200px;
+                height: 150px; /* Adjust height of the logo */
+                padding-top: 20px; /* Space above the logo */
+                margin-bottom: 30px; /* Space below the logo to avoid overlap */
             }}
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-# Add the WonderScribe logo to the sidebar
-add_logo_to_sidebar("pages/images/Updated_WonderS_logo.png", width="250px")  # Adjust width as needed
+# Add the WonderScribe logo to the top of the sidebar
+add_logo_to_sidebar_top("pages/images/Updated_WonderS_logo.png", width="250px")
 
 # Page title
 st.title("WonderScribe, where stories come to life!")
