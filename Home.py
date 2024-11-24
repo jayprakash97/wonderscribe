@@ -37,8 +37,8 @@ def add_logo_to_sidebar(logo_path, width="250px"):
                 background-repeat: no-repeat;
                 background-position: top center; /* Center the logo at the top */
                 height: 152px; /* Adjust height to fit the logo */
-                padding-top: 20px;
-                margin-bottom: 20px;
+                padding-top: 40px;
+                margin-bottom: 40px;
             }}
         </style>
         """,
