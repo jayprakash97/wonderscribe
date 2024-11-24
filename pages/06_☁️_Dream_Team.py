@@ -69,7 +69,7 @@ def add_logo_to_sidebar(logo_path, width="200px"):
 add_logo_to_sidebar("pages/images/Updated_WonderS_logo.png", width="200px")
 
 # Function to process and resize images to 1:1 ratio
-def process_image(image_path, size=(300, 300)):
+def process_image(image_path, size=(400, 400)):
     img = Image.open(image_path)
     # Crop image to square
     min_dimension = min(img.size)
