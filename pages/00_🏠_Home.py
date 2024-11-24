@@ -36,7 +36,7 @@ def add_logo_to_sidebar(logo_path, width="250px"):
                 background-size: {width}; /* Adjust the size of the logo */
                 background-repeat: no-repeat;
                 background-position: top center; /* Center the logo at the top */
-                height: 250px; /* Adjust height to fit the logo */
+                height: 200px; /* Adjust height to fit the logo */
                 padding-top: 20px;
                 margin-bottom: 20px;
             }}
