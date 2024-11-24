@@ -3,50 +3,38 @@ import base64
 from PIL import Image
 
 # Set page configuration
-st.set_page_config(page_title="About WonderScribe", page_icon="📖", layout="wide")
+st.set_page_config(page_title="Members - WonderScribe", page_icon="📖", layout="wide")
 
 # Background image URL
 background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk_blue_page_1.jpg"
 
-# CSS for background image and semi-transparent box
+# CSS for gradient and background image
 background_css = f"""
 <style>
 [data-testid="stAppViewContainer"] {{
     background-image: url("{background_image_url}");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-size: cover;  /* Ensure it covers the full viewport */
+    background-position: center;  /* Center the image */
+    background-repeat: no-repeat;  /* Do not repeat the image */
+    background-attachment: fixed;  /* Keep the background fixed during scrolling */
+    color: white;  /* Default text color for readability */
 }}
 
 .custom-box {{
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 800px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    font-family: Arial, sans-serif;
-    color: #5481c4;
-    line-height: 1.6;
-}}
-.custom-box h3 {{
-    text-align: center;
-    margin-top: 20px;
-}}
-.custom-box ul {{
-    padding-left: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Space inside the box */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+    color: black; /* Text color inside the content box */
+    margin-top: 20px; /* Space above the box */
 }}
 
-/* Sidebar customization */
-[data-testid="stSidebar"] {{
-    background-color: #f5f5f5; /* Light background color */
-    color: #4b7170; /* Text color for sidebar */
-    font-family: Arial, sans-serif;
-    font-size: 18px; /* Font size for sidebar */
+[data-testid="stSidebar"] * {{
+    color: #8c52ff; /* Purple text for sidebar */
 }}
-[data-testid="stSidebar"] .stMarkdown {{
-    text-align: center; /* Center text inside the sidebar */
+
+[data-testid="stAppViewContainer"] .stMarkdown {{
+    color: gray;
 }}
 </style>
 """
@@ -54,7 +42,7 @@ background_css = f"""
 # Apply CSS styles
 st.markdown(background_css, unsafe_allow_html=True)
 
-# Function to add the logo to the top of the sidebar
+# Function to add the logo to the sidebar
 def add_logo_to_sidebar_top(logo_path, width="250px"):
     with open(logo_path, "rb") as f:
         encoded_logo = base64.b64encode(f.read()).decode("utf-8")
@@ -65,10 +53,11 @@ def add_logo_to_sidebar_top(logo_path, width="250px"):
                 content: '';
                 display: block;
                 background-image: url("data:image/png;base64,{encoded_logo}");
-                background-size: {width}; /* Adjust the size of the logo */
+                background-size: contain; /* Ensure the logo scales proportionally */
                 background-repeat: no-repeat;
                 background-position: top center;
-                height: 200px; /* Adjust height for the logo */
+                height: 250px; /* Increase height to fit the full logo */
+                padding-top: 20px; /* Add space above the logo */
                 margin-bottom: 20px; /* Add space below the logo */
             }}
         </style>
@@ -77,13 +66,7 @@ def add_logo_to_sidebar_top(logo_path, width="250px"):
     )
 
 # Add the WonderScribe logo to the top of the sidebar
-add_logo_to_sidebar_top("pages/images/Updated_WonderS_logo.png", width="200px")
-
-# Page title
-st.markdown(
-    "<h1 style='color: #5481c4; text-align: center; font-size: 3em;'>WonderScribe, where stories come to life!</h1>",
-    unsafe_allow_html=True,
-)
+add_logo_to_sidebar_top("pages/images/Updated_WonderS_logo.png", width="250px")
 
 # Function to process and resize images to 1:1 ratio
 def process_image(image_path, size=(800, 800)):
@@ -100,24 +83,13 @@ def process_image(image_path, size=(800, 800)):
     resized_img = cropped_img.resize(size)
     return resized_img
 
-# Content wrapped in a div with class "custom-box"
+# Page Title
 st.markdown(
-    """
-    <div class="custom-box">
-        <p>We are a passionate team of innovators on a mission to empower young imaginations through the magic of storytelling. At WonderScribe, we believe that every child has a story to tell, and our platform makes it possible for children to become the authors, illustrators, and narrators of their own adventures. Using cutting-edge generative AI, we create a unique, interactive storytelling experience that brings together text, images, and audio to craft personalized, immersive tales. With WonderScribe, kids and parents can co-create stories that reflect their dreams, personalities, and cultures, fostering creativity, literacy, and self-expression in a fun and engaging way.</p>
-        <h3>We aim to make storytelling:</h3>
-        <ul>
-            <li><strong>Interactive:</strong> Children don’t just read stories—they create them.</li>
-            <li><strong>Inclusive:</strong> Our platform celebrates diverse narratives and cultures, ensuring every child feels represented.</li>
-            <li><strong>Accessible:</strong> Designed for children everywhere, regardless of their background or language.</li>
-        </ul> 
-        <p>Join us on this exciting journey as we reimagine the world of storytelling, one personalized tale at a time. Let WonderScribe inspire your child’s imagination and unlock the power of their creativity!</p>
-    </div>
-    """,
+    "<h1 style='color: #5481c4; text-align: center;'>Our Team</h1>",
     unsafe_allow_html=True,
 )
 
-# Display team members with processed images
+# Define group members
 members = [
     {
         "name": "Jay Prakash",
@@ -129,14 +101,36 @@ members = [
     {
         "name": "Jailynne Estevez",
         "role": "Program Management, UI/UX Design, Presentation Development",
-        "bio": "Jailynne brings creativity and precision to WonderScribe, playing a key role in crafting a user-friendly and engaging platform for children and parents.",
+        "bio": "Jailynne brings creativity and precision to WonderScribe, playing a key role in crafting a user-friendly and engaging platform for children and parents. She has helped design an intuitive interface that ensures a seamless storytelling experience while also leading the development of presentations, scripts, and pitches to effectively showcase the project’s value. Jailynne’s efforts extend beyond design and communication, as she actively collaborates with the team to bridge technical development with user needs. Her dedication to WonderScribe’s mission has been pivotal in creating a platform that fosters creativity, learning, and imagination for all.",
         "image": "pages/images/JEN.jpeg",
         "email": "jestevez@berkeley.edu",
     },
+    {
+        "name": "Mian Haseeb",
+        "role": "ML Engineering, GenAI",
+        "bio": "Mian is the visionary behind WonderScribe, originally conceiving the idea to revolutionize storytelling through the power of Generative AI. Mian is one of the machine learning engineers for WonderScribe, driving the integration of cutting-edge generative AI models. From fine-tuning the RAG framework to deploying advanced text and image generation models, Mian’s work ensures that WonderScribe delivers creative, engaging, and contextually relevant stories. His passion for AI innovation and storytelling shines through in every technical detail.",
+        "image": "pages/images/MianHaseeb.jfif",
+        "email": "mhaseeb@berkeley.edu",
+    },
+    {
+        "name": "Natsnet Demoz",
+        "role": "Data & Analytics, UI/UX Design, Model Development",
+        "bio": "Natsnet’s dual focus on data exploration and design brings WonderScribe’s creative vision to life. She leads exploratory data analysis, ensuring the platform leverages child-friendly and culturally diverse datasets. Additionally, her contributions to user interface design make WonderScribe an intuitive and engaging platform for children and parents alike. Her ability to merge data insights with user-centric design is a key driver of the project’s success.",
+        "image": "pages/images/Natsnet Demoz.jpg",
+        "email": "ndemoz@berkeley.edu",
+    },
+    {
+        "name": "Wilford Bradford",
+        "role": "SME, Model Development",
+        "bio": "Wil lends his expertise as a subject matter expert to refine WonderScribe’s storytelling framework. His work focuses on aligning the platform’s AI capabilities with user expectations, ensuring every story element resonates with children and their imaginations. Wil also collaborates on model development, emphasizing inclusivity and quality across WonderScribe’s texts and images",
+        "image": "pages/images/WilfordBradford.jfif",
+        "email": "wbradford@berkeley.edu",
+    },
 ]
 
+# Display team members with processed images
 for member in members:
-    col1, col2 = st.columns([1, 3])
+    col1, col2 = st.columns([1, 3])  # Adjust column width for better layout
     with col1:
         processed_image = process_image(member["image"])
         st.image(processed_image, use_column_width=True)
