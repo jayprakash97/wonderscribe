@@ -36,6 +36,19 @@ background_css = f"""
 .custom-box ul {{
     padding-left: 20px;
 }}
+/* Sidebar customization */
+[data-testid="stSidebar"] {{
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    color: #5481c4; /* Match the main page color */
+    font-family: Arial, sans-serif;
+    font-size: 18px; /* Adjust font size */
+}}
+[data-testid="stSidebar"] * {{
+    color: #5481c4; /* Sidebar text color */
+}}
+[data-testid="stSidebar"] .stMarkdown {{
+    text-align: center; /* Center text inside sidebar */
+}}
 </style>
 """
 
