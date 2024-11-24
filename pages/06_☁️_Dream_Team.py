@@ -108,7 +108,7 @@ members = [
     },
     {
         "name": "Natsnet Demoz",
-        "role": "ML, Data & Analytics, UI/UX Design, Model Development",
+        "role": "Data & Analytics, UI/UX Design, Model Development",
         "bio": "Natsnet’s dual focus on data exploration and design brings WonderScribe’s creative vision to life. She ensures the platform leverages child-friendly and culturally diverse datasets.",
         "image": "pages/images/Natsnet Demoz.jfif",
         "email": "ndemoz@berkeley.edu",
@@ -116,7 +116,7 @@ members = [
     {
         "name": "Wilford Bradford",
         "role": "SME, Model Development",
-        "bio": "Wil lends his expertise as a subject matter expert to refine WonderScribe’s storytelling framework. His work focuses on aligning the platform’s AI capabilities with user expectations.",
+        "bio": "Wil lends his expertise as a subject matter expert to refine WonderScribe’s storytelling framework. His work focuses on aligning the platform’s AI capabilities with user expectations, ensuring every story element resonates with children and their imaginations. Wil also collaborates on model development, emphasizing inclusivity and quality across WonderScribe’s texts and images",
         "image": "pages/images/WilfordBradford.jfif",
         "email": "wbradford@berkeley.edu",
     },
