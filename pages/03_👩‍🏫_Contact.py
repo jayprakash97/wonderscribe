@@ -112,10 +112,9 @@ st.markdown(
 
 st.image("pages/images/Updated_WonderS_logo.png", width=300)
 
-st.title("Contact with WonderScribe Team")
+st.title("Contact the WonderScribe Team")
 
 with st.form("form_key"):
-    Department = st.selectbox("Department", options=["Sales", "Human Resources", "Information Technology", "Public Relation", "Complaince", "Marketing", "Data Engineering", "Data Science", "Data Analytics"])
     Full_name = st.text_input("Enter your full name. (First Name, Middle Name, Last Name)")
     Company = st.text_input("Enter your Company Name")
     Country = st.text_input("Enter your Country Name")
