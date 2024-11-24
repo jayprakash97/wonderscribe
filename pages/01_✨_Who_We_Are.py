@@ -38,7 +38,7 @@ background_css = f"""
 }}
 /* Sidebar customization */
 [data-testid="stSidebar"] {{
-    background-color: ivory; /* Solid ivory white */
+    background-color: #5481c4; /* blue */
     color: #5481c4; /* Match the main page color */
     font-family: Arial, sans-serif;
     font-size: 18px; /* Adjust font size */
