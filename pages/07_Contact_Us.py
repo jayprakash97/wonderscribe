@@ -6,7 +6,7 @@ st.set_page_config(page_title="Contact", page_icon="👩‍🏫", layout="wide")
 # Background image URL (ensure this is the raw link from GitHub)
 background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk_blue_page_1.jpg"
 
-# CSS for setting the background image
+# CSS for setting the background image and sidebar customization
 background_css = f"""
 <style>
 [data-testid="stAppViewContainer"] {{
@@ -23,6 +23,20 @@ label {{
     font-weight: bold; /* Optional: make labels bold */
     color: #333; /* Optional: set label text color */
 }}
+
+/* Sidebar customization */
+[data-testid="stSidebar"] {{
+    background-color: #f0f4ff; /* Light blue */
+    color: #5481c4; /* Match the main page color */
+    font-family: Arial, sans-serif;
+    font-size: 18px; /* Adjust font size */
+}}
+[data-testid="stSidebar"] * {{
+    color: #5481c4; /* Sidebar text color */
+}}
+[data-testid="stSidebar"] .stMarkdown {{
+    text-align: center; /* Center text inside sidebar */
+}}
 </style>
 """
 
@@ -38,7 +52,9 @@ def add_logo_to_sidebar(logo_path, width="250px"):
     st.sidebar.markdown(
         f"""
         <style>
-            [data-testid="stSidebar"] {{
+            [data-testid="stSidebar"]::before {{
+                content: '';
+                display: block;
                 background-image: url("data:image/png;base64,{encoded_logo}");
                 background-size: {width};
                 background-repeat: no-repeat;
