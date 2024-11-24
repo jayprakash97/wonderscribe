@@ -8,22 +8,56 @@ st.set_page_config(page_title="WonderScribe", page_icon="📖", layout="wide")
 background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk2_page_1.jpg"
 
 # CSS for setting the background image
+# CSS for background image and semi-transparent box
 background_css = f"""
 <style>
-/* Apply the background image to the main app container */
 [data-testid="stAppViewContainer"] {{
     background-image: url("{background_image_url}");
-    background-size: cover;  /* Ensure it covers the full viewport */
-    background-position: center;  /* Center the image */
-    background-repeat: no-repeat;  /* Do not repeat the image */
-    background-attachment: fixed;  /* Keep the background fixed during scrolling */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}}
+
+.custom-box {{
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    color: #5481c4;
+    line-height: 1.6;
+}}
+.custom-box h3 {{
+    text-align: center;
+    margin-top: 20px;
+}}
+.custom-box ul {{
+    padding-left: 20px;
+}}
+/* Sidebar customization */
+[data-testid="stSidebar"] {{
+    background-color: #f0f4ff; /* blue */
+    color: #5481c4; /* Match the main page color */
+    font-family: Arial, sans-serif;
+    font-size: 18px; /* Adjust font size */
+}}
+[data-testid="stSidebar"] * {{
+    color: #5481c4; /* Sidebar text color */
+}}
+[data-testid="stSidebar"] .stMarkdown {{
+    text-align: center; /* Center text inside sidebar */
 }}
 </style>
 """
+
+# Apply CSS styles
 st.markdown(background_css, unsafe_allow_html=True)
 
-# Function to add the logo to the sidebar
-def add_logo_to_sidebar(logo_path, width="250px"):
+# Function to add the logo to the top of the sidebar
+def add_logo_to_sidebar_top(logo_path, width="250px"):
     with open(logo_path, "rb") as f:
         encoded_logo = base64.b64encode(f.read()).decode("utf-8")
     st.sidebar.markdown(
@@ -33,20 +67,20 @@ def add_logo_to_sidebar(logo_path, width="250px"):
                 content: '';
                 display: block;
                 background-image: url("data:image/png;base64,{encoded_logo}");
-                background-size: {width}; /* Adjust the size of the logo */
+                background-size: contain; /* Ensure the logo scales proportionally */
                 background-repeat: no-repeat;
-                background-position: top center; /* Center the logo at the top */
-                height: 152px; /* Adjust height to fit the logo */
-                padding-top: 20px;
-                margin-bottom: 20px;
+                background-position: top center;
+                height: 250px; /* Increase height to fit the full logo */
+                padding-top: 20px; /* Add space above the logo */
+                margin-bottom: 20px; /* Add space below the logo */
             }}
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-# Add the WonderScribe logo to the sidebar
-add_logo_to_sidebar("pages/images/Updated_WonderS_logo.png", width="200px")
+# Add the WonderScribe logo to the top of the sidebar
+add_logo_to_sidebar_top("pages/images/Updated_WonderS_logo.png", width="250px")
 
 # Center and middle align the title and introduction text
 st.markdown(
