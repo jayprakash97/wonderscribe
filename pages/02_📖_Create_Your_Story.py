@@ -159,7 +159,7 @@ def fetch_and_decode_images(captions, _force_refresh=False):
 
 # Main app
 def main():
-    st.markdown("<h1 style='text-align: center; color: #5481c4;'>Welcome to WonderScribe</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #5481c4;'>WonderScribe Welcomes You</h1>", unsafe_allow_html=True)
 
     # Story form
     with st.form("form_key"):
