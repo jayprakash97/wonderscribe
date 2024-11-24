@@ -36,7 +36,7 @@ def add_logo_to_sidebar(logo_path, width="250px"):
                 background-size: {width}; /* Adjust the size of the logo */
                 background-repeat: no-repeat;
                 background-position: top center; /* Center the logo at the top */
-                height: 200px; /* Adjust height to fit the logo */
+                height: 152px; /* Adjust height to fit the logo */
                 padding-top: 20px;
                 margin-bottom: 20px;
             }}
@@ -48,27 +48,47 @@ def add_logo_to_sidebar(logo_path, width="250px"):
 # Add the WonderScribe logo to the sidebar
 add_logo_to_sidebar("pages/images/Updated_WonderS_logo.png", width="200px")
 
-
-# Page Title
+# Center and middle align the title and introduction text
 st.markdown(
-    "<h1 style='text-align: center; color: #5481c4;'>Welcome to WonderScribe</h1>",
+    """
+    <style>
+    .center-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Vertically center */
+        align-items: center;    /* Horizontally center */
+        height: 90vh;           /* Full viewport height (adjust as needed) */
+        text-align: center;     /* Center-align text */
+    }
+    .center-content h1 {
+        color: #5481c4;         /* Customize title color */
+        font-size: 3em;         /* Adjust font size */
+        margin-bottom: 20px;    /* Space below the title */
+    }
+    .center-content p {
+        color: #4b7170;         /* Customize paragraph color */
+        font-size: 1.25em;      /* Adjust font size */
+        line-height: 1.6;       /* Improve line spacing */
+    }
+    </style>
+    <div class="center-content">
+        <h1>Welcome to WonderScribe</h1>
+        <p>
+            At WonderScribe, we use cutting-edge technology, including AI and advanced language models, 
+            to create a unique storytelling experience. Our platform allows kids to become co-authors 
+            of their adventures, customizing tales to reflect their dreams, personalities, and imaginations.
+        </p>
+        <p>
+            We aim to make reading fun, interactive, and accessible to all children, no matter where they are. 
+            Through our innovative platform, we hope to foster a love of reading, spark creativity, and encourage 
+            every child to believe in the magic of their own stories.
+        </p>
+        <p>
+            Join us on this exciting journey and watch your child's imagination soar!
+        </p>
+    </div>
+    """,
     unsafe_allow_html=True,
-)
-
-
-# Introduction Text
-st.write(
-    """
-    At WonderScribe, we use cutting-edge technology, including AI and advanced language models, 
-    to create a unique storytelling experience. Our platform allows kids to become co-authors 
-    of their adventures, customizing tales to reflect their dreams, personalities, and imaginations.
-
-    We aim to make reading fun, interactive, and accessible to all children, no matter where they are. 
-    Through our innovative platform, we hope to foster a love of reading, spark creativity, and encourage 
-    every child to believe in the magic of their own stories.
-
-    Join us on this exciting journey and watch your child's imagination soar!
-    """
 )
 
 # Additional CSS for styling (optional improvements)
