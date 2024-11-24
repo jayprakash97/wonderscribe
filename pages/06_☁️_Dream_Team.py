@@ -43,7 +43,7 @@ background_css = f"""
 st.markdown(background_css, unsafe_allow_html=True)
 
 # Function to add the logo to the sidebar
-def add_logo_to_sidebar(logo_path, width="200px"):
+def add_logo_to_sidebar_top(logo_path, width="250px"):
     with open(logo_path, "rb") as f:
         encoded_logo = base64.b64encode(f.read()).decode("utf-8")
     st.sidebar.markdown(
@@ -53,20 +53,20 @@ def add_logo_to_sidebar(logo_path, width="200px"):
                 content: '';
                 display: block;
                 background-image: url("data:image/png;base64,{encoded_logo}");
-                background-size: {width}; /* Adjust the size of the logo */
+                background-size: contain; /* Ensure the logo scales proportionally */
                 background-repeat: no-repeat;
-                background-position: top center; /* Center the logo at the top */
-                height: 152px; /* Adjust height to fit the logo */
-                padding-top: 20px;
-                margin-bottom: 20px;
+                background-position: top center;
+                height: 250px; /* Increase height to fit the full logo */
+                padding-top: 20px; /* Add space above the logo */
+                margin-bottom: 20px; /* Add space below the logo */
             }}
         </style>
         """,
         unsafe_allow_html=True,
     )
 
-# Add the WonderScribe logo
-add_logo_to_sidebar("pages/images/Updated_WonderS_logo.png", width="200px")
+# Add the WonderScribe logo to the top of the sidebar
+add_logo_to_sidebar_top("pages/images/Updated_WonderS_logo.png", width="250px")
 
 # Function to process and resize images to 1:1 ratio
 def process_image(image_path, size=(800, 800)):
