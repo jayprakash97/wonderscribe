@@ -72,19 +72,14 @@ st.markdown(
 
     <div class="custom-box">
         <h1>Welcome to WonderScribe, where stories come to life!</h1>
-        <p>We are a passionate team of innovators on a mission to empower young imaginations through the magic of storytelling. At WonderScribe, we believe that every child has a story to tell, and our platform makes it possible for children to become the authors, illustrators, and narrators of their own adventures.</p>
-        
-        <p>Using cutting-edge generative AI, we create a unique, interactive storytelling experience that brings together text, images, and audio to craft personalized, immersive tales. With WonderScribe, kids and parents can co-create stories that reflect their dreams, personalities, and cultures, fostering creativity, literacy, and self-expression in a fun and engaging way.</p>
-        
-        <h3>We aim to make storytelling:</h3>
-        <ul>
-            <li><strong>Interactive:</strong> Children don’t just read stories—they create them.</li>
-            <li><strong>Inclusive:</strong> Our platform celebrates diverse narratives and cultures, ensuring every child feels represented.</li>
-            <li><strong>Accessible:</strong> Designed for children everywhere, regardless of their background or language.</li>
-        </ul>
-        
-        <p>Join us on this exciting journey as we reimagine the world of storytelling, one personalized tale at a time. Let WonderScribe inspire your child’s imagination and unlock the power of their creativity!</p>
-    </div>
+        <p>We are a passionate team of innovators on a mission to empower young imaginations through the magic of storytelling. At WonderScribe, we believe that every child has a story to tell, and our platform makes it possible for children to become the authors, illustrators, and narrators of their own adventures. Using cutting-edge generative AI, we create a unique, interactive storytelling experience that brings together text, images, and audio to craft personalized, immersive tales. With WonderScribe, kids and parents can co-create stories that reflect their dreams, personalities, and cultures, fostering creativity, literacy, and self-expression in a fun and engaging way.
+
+We aim to make storytelling:
+
+Interactive: Children don’t just read stories—they create them.
+Inclusive: Our platform celebrates diverse narratives and cultures, ensuring every child feels represented.
+Accessible: Designed for children everywhere, regardless of their background or language.
+Join us on this exciting journey as we reimagine the world of storytelling, one personalized tale at a time. Let WonderScribe inspire your child’s imagination and unlock the power of their creativity!</p>
     """,
     unsafe_allow_html=True,
 )
