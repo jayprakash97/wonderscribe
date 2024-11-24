@@ -1,5 +1,6 @@
 import streamlit as st
 import base64
+from PIL import Image
 
 # Set page configuration
 st.set_page_config(page_title="Members - WonderScribe", page_icon="📖", layout="wide")
@@ -10,7 +11,6 @@ background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/ma
 # CSS for gradient and background image
 background_css = f"""
 <style>
-/* Apply the background image to the main app container */
 [data-testid="stAppViewContainer"] {{
     background-image: url("{background_image_url}");
     background-size: cover;  /* Ensure it covers the full viewport */
@@ -20,7 +20,6 @@ background_css = f"""
     color: white;  /* Default text color for readability */
 }}
 
-/* Add a semi-transparent box for content */
 .custom-box {{
     background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
     border-radius: 10px; /* Rounded corners */
@@ -30,29 +29,16 @@ background_css = f"""
     margin-top: 20px; /* Space above the box */
 }}
 
-/* Sidebar customization */
 [data-testid="stSidebar"] * {{
     color: #8c52ff; /* Purple text for sidebar */
 }}
 
-/* Adjust text color for readability */
 [data-testid="stAppViewContainer"] .stMarkdown {{
     color: gray;
 }}
-
-/* Ensure all images have a 1:1 aspect ratio */
-.square-image {{
-    width: 100%;
-    height: 0;
-    padding-bottom: 100%; /* Maintain 1:1 ratio */
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px; /* Optional rounded corners */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}}
 </style>
 """
+
 # Apply CSS styles
 st.markdown(background_css, unsafe_allow_html=True)
 
@@ -81,6 +67,21 @@ def add_logo_to_sidebar(logo_path, width="200px"):
 
 # Add the WonderScribe logo
 add_logo_to_sidebar("pages/images/Updated_WonderS_logo.png", width="200px")
+
+# Function to process and resize images to 1:1 ratio
+def process_image(image_path, size=(300, 300)):
+    img = Image.open(image_path)
+    # Crop image to square
+    min_dimension = min(img.size)
+    cropped_img = img.crop((
+        (img.width - min_dimension) // 2,
+        (img.height - min_dimension) // 2,
+        (img.width + min_dimension) // 2,
+        (img.height + min_dimension) // 2,
+    ))
+    # Resize to the specified size
+    resized_img = cropped_img.resize(size)
+    return resized_img
 
 # Page Title
 st.markdown(
@@ -127,16 +128,12 @@ members = [
     },
 ]
 
-# Display team members with 1:1 aspect ratio for images
+# Display team members with processed images
 for member in members:
     col1, col2 = st.columns([1, 3])  # Adjust column width for better layout
     with col1:
-        st.markdown(
-            f"""
-            <div class="square-image" style="background-image: url('{member['image']}');"></div>
-            """,
-            unsafe_allow_html=True,
-        )
+        processed_image = process_image(member["image"])
+        st.image(processed_image, use_column_width=True)
     with col2:
         st.markdown(f"### {member['name']}")
         st.markdown(f"**Role:** {member['role']}")
