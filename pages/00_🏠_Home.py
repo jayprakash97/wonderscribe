@@ -125,30 +125,30 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Additional CSS for styling (optional improvements)
-st.markdown(
-    """
-    <style>
-    /* Sidebar Styling */
-    [data-testid="stSidebarContent"] {
-        #background-color: #7dd8ff;  /* Light blue */
-    }
-    [data-testid="stSidebar"] * {
-        color: #b3ccff !important;  /* Light text color */
-    }
+# # Additional CSS for styling (optional improvements)
+# st.markdown(
+#     """
+#     <style>
+#     /* Sidebar Styling */
+#     [data-testid="stSidebarContent"] {
+#         #background-color: #7dd8ff;  /* Light blue */
+#     }
+#     [data-testid="stSidebar"] * {
+#         color: #b3ccff !important;  /* Light text color */
+#     }
 
-    /* Default font and text styling */
-    p, li, span {
-        color: #4b7170;  /* Dark green-gray */
-        font-size: 18px;  /* Default font size */
-    }
+#     /* Default font and text styling */
+#     p, li, span {
+#         color: #4b7170;  /* Dark green-gray */
+#         font-size: 18px;  /* Default font size */
+#     }
 
-    /* Background Gradient Styling */
-    .stApp {
-        background: linear-gradient(135deg, #8c52ff, #5ce1e6);  /* Purple to blue gradient */
-        background-attachment: fixed;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+#     /* Background Gradient Styling */
+#     .stApp {
+#         background: linear-gradient(135deg, #8c52ff, #5ce1e6);  /* Purple to blue gradient */
+#         background-attachment: fixed;
+#     }
+#     </style>
+#     """,
+#     unsafe_allow_html=True,
+# )
