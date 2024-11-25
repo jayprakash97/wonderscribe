@@ -195,7 +195,7 @@ def fetch_and_decode_images(captions, _force_refresh=False):
 
             st.write('line 196')
             if data["image_data_decode1"] == "INVALID_PROMPT":
-                invalid_image = "pages/images/invalid_img.jpg"
+                invalid_image = "pages/images/pic_next_page.png"
                 decoded_images.append(encode_image_to_base64(invalid_image))
                 st.write('line 200')
             else:
