@@ -3,67 +3,93 @@ import requests
 import json
 import evaluate
 import pandas as pd
+import base64
 
-st.set_page_config(page_title="RAG Model Evaluation",  page_icon="📰", layout="wide")
+# Set page configuration
+st.set_page_config(page_title="RAG Model Evaluation", page_icon="📰", layout="wide")
 
-# Custom CSS to apply the background gradient and create a box
-page_bg = """
+# Background image URL
+background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk_blue_page_1.jpg"
+
+# CSS for background image, custom box, and sidebar
+background_css = f"""
 <style>
-/* Apply background gradient to the main container */
-[data-testid="stAppViewContainer"] {
-    background: linear-gradient(135deg, #8c52ff, #5ce1e6);
+[data-testid="stAppViewContainer"] {{
+    background-image: url("{background_image_url}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     background-attachment: fixed;
-}
+}}
 
-/* Optional: Adjust text color and other styles */
-[data-testid="stAppViewContainer"] .stMarkdown {
-    color: white;  /* Adjust text color for contrast */
-}
-
-/* Style for the content box */
-.custom-box {
-    background-color: #eaf1ff; /* Light background color for the box */
-    border-radius: 10px; /* Rounded corners */
-    padding: 20px; /* Spacing inside the box */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a raised effect */
-    color: black; /* Text color inside the box */
-    margin-top: 20px; /* Space above the box */
-}
-
-/* Position the logo in the top-left corner */
-img[alt="WonderScribeLogo"] {
-    position: absolute;
-    top: 40px;
-    left: 40px;
-    width: 150px; /* Adjust width if needed */
-    z-index: 10;
-}
-
-/* Add padding to avoid overlap with the content */
-[data-testid="stAppViewContainer"] {
-    padding-top: 80px; /* Add padding to avoid logo overlapping */
-}
+.custom-box {{
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    color: #5481c4;
+    line-height: 1.6;
+}}
+.custom-box h3 {{
+    text-align: center;
+    margin-top: 20px;
+}}
+.custom-box ul {{
+    padding-left: 20px;
+}}
+/* Sidebar customization */
+[data-testid="stSidebar"] {{
+    background-color: #f0f4ff; /* Light blue */
+    color: #5481c4; /* Match the main page color */
+    font-family: Arial, sans-serif;
+    font-size: 18px; /* Adjust font size */
+}}
+[data-testid="stSidebar"] * {{
+    color: #5481c4; /* Sidebar text color */
+}}
+[data-testid="stSidebar"] .stMarkdown {{
+    text-align: center; /* Center text inside sidebar */
+}}
 </style>
 """
-# Apply the custom CSS
-st.markdown(page_bg, unsafe_allow_html=True)
+
+# Apply CSS styles
+st.markdown(background_css, unsafe_allow_html=True)
+
+# Function to add the WonderScribe logo to the top of the sidebar
+def add_logo_to_sidebar_top(logo_path, width="250px"):
+    with open(logo_path, "rb") as f:
+        encoded_logo = base64.b64encode(f.read()).decode("utf-8")
+    st.sidebar.markdown(
+        f"""
+        <style>
+            [data-testid="stSidebar"]::before {{
+                content: '';
+                display: block;
+                background-image: url("data:image/png;base64,{encoded_logo}");
+                background-size: contain; /* Ensure the logo scales proportionally */
+                background-repeat: no-repeat;
+                background-position: top center;
+                height: 250px; /* Increase height to fit the full logo */
+                padding-top: 20px; /* Add space above the logo */
+                margin-bottom: 20px; /* Add space below the logo */
+            }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+# Add the WonderScribe logo to the sidebar
+add_logo_to_sidebar_top("pages/images/Updated_WonderS_logo.png", width="250px")
+
+# Title for the page
 st.markdown(
-    """
-    <style>
-    /* Style for the sidebar content */
-    [data-testid="stSidebarContent"] {
-        background-color: #7dd8ff; /*#7dd8ff; Sidebar background color */
-        
-    }
-    /* Set color for all text inside the sidebar */
-    [data-testid="stSidebar"] * {
-        color: #8c52ff !important;  /* Text color */
-    }
-    </style>
-    """,
+    "<h1 style='color: #5481c4; text-align: center; font-size: 3em;'>RAG Model Evaluation</h1>",
     unsafe_allow_html=True,
 )
-
 
 validation_query_response = {
   0: {"query": "friendships between boy and girl",
