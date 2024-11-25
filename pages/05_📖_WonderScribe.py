@@ -409,13 +409,15 @@ def main():
             else:
                 st.write("List is empty")
 
-            if decoded_images:
-                st.write(decoded_images[0])
-            else:
-                st.write("Image List is empty")
+            # if decoded_images:
+            #     st.write(decoded_images[0])
+            # else:
+            #     st.write("Image List is empty")
 
             if audioStoryFiles:
                 st.write(audioStoryFiles[0])
+                st.write(audioStoryFiles[3])
+                st.write(audioStoryFiles[6])
             else:
                 st.write("Audio List is empty")
                 
