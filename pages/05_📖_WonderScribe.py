@@ -500,9 +500,7 @@ def main():
                     st.button("Next", on_click=next_page)
                     st.session_state.submit_btn = True
     except Exception as e:
-        st.write('line 506')
         st.error(f"An error occurred: {str(e)}")
-    #===============
 
 if __name__ == "__main__":
     if "submit_btn" not in st.session_state:
