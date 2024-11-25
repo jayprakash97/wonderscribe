@@ -403,6 +403,7 @@ def main():
             # Reset the cache_cleared flag. Don't clear the cache
             st.session_state.cache_cleared = False
             st.write('line 405')
+            st.write("story_texts[0]", story_texts[0])
             story_pages = [
                 {
                     "text": story_texts[0],
