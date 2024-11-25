@@ -14,7 +14,6 @@ st.set_page_config(page_title="Interactive Storybook", page_icon="📖", layout=
 background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk_blue_page_1.jpg"
 #background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk2_page_1.jpg"
 
-# CSS for setting the background
 background_css = f"""
 <style>
 [data-testid="stAppViewContainer"] {{
@@ -23,11 +22,47 @@ background_css = f"""
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    filter: opacity(0.8);
+    background-color: #f0f4ff; /* Solid fallback color */
+}}
+
+.custom-box {{
     background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+    color: #5481c4;
+    line-height: 1.6;
+}}
+.custom-box h3 {{
+    text-align: center;
+    margin-top: 20px;
+}}
+.custom-box ul {{
+    padding-left: 20px;
+}}
+
+/* Sidebar customization */
+[data-testid="stSidebar"] {{
+    background-color: #f0f4ff; /* Light blue solid color */
+    color: #5481c4; /* Match the main page color */
+    font-family: Arial, sans-serif;
+    font-size: 18px; /* Adjust font size */
+}}
+[data-testid="stSidebar"] * {{
+    color: #5481c4; /* Sidebar text color */
+}}
+[data-testid="stSidebar"] .stMarkdown {{
+    text-align: center; /* Center text inside sidebar */
 }}
 </style>
 """
+
+# Apply CSS styles
+st.markdown(background_css, unsafe_allow_html=True)
+
 
 # Sidebar CSS
 sidebar_css = """
