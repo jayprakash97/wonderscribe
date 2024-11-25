@@ -12,7 +12,6 @@ st.set_page_config(page_title="Interactive Storybook", page_icon="📖", layout=
 
 # Background image URL
 background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk_blue_page_1.jpg"
-#background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk2_page_1.jpg"
 
 background_css = f"""
 <style>
@@ -65,36 +64,36 @@ st.markdown(background_css, unsafe_allow_html=True)
 
 
 # Sidebar CSS
-sidebar_css = """
-<style>
-[data-testid="stSidebar"] {
-    #background-color: #7dd8ff;
-    border-right: 2px solid #bfa989;
-}
+# sidebar_css = """
+# <style>
+# [data-testid="stSidebar"] {
+#     #background-color: #7dd8ff;
+#     border-right: 2px solid #bfa989;
+# }
 
-[data-testid="stSidebar"] h1 {
-    color: #4e342e;
-    font-size: 1.5em;
-    font-family: 'Merriweather', serif;
-    font-weight: bold;
-}
+# [data-testid="stSidebar"] h1 {
+#     color: #4e342e;
+#     font-size: 1.5em;
+#     font-family: 'Merriweather', serif;
+#     font-weight: bold;
+# }
 
-[data-testid="stSidebar"] button {
-    background-color: #d4c1a7;
-    border-radius: 10px;
-    border: 2px solid #bfa989;
-    padding: 10px;
-    font-size: 1.2em;
-    color: #4e342e;
-    margin-bottom: 15px;
-}
+# [data-testid="stSidebar"] button {
+#     background-color: #d4c1a7;
+#     border-radius: 10px;
+#     border: 2px solid #bfa989;
+#     padding: 10px;
+#     font-size: 1.2em;
+#     color: #4e342e;
+#     margin-bottom: 15px;
+# }
 
-[data-testid="stSidebar"] button:hover {
-    background-color: #e0d3b8;
-    color: #4e342e;
-}
-</style>
-"""
+# [data-testid="stSidebar"] button:hover {
+#     background-color: #e0d3b8;
+#     color: #4e342e;
+# }
+# </style>
+# """
 # ==============
 # Custom CSS to apply the background gradient and create a box
 # page_bg = """
@@ -137,8 +136,8 @@ sidebar_css = """
 # """
 # ==============
 # Apply CSS
-st.markdown(background_css, unsafe_allow_html=True)
-st.markdown(sidebar_css, unsafe_allow_html=True)
+# st.markdown(background_css, unsafe_allow_html=True)
+# st.markdown(sidebar_css, unsafe_allow_html=True)
 
 # ============
 # Apply the custom CSS
