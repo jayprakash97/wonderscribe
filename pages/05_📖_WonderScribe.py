@@ -503,9 +503,9 @@ def main():
             if st.session_state.page_index < len(story_pages) - 1:
                 st.button("Next", on_click=next_page)
                 st.session_state.submit_btn = True
-    except Exception as e:
-        st.write('line 506')
-        st.error(f"An error occurred: {str(e)}")
+except Exception as e:
+    st.write('line 506')
+    st.error(f"An error occurred: {str(e)}")
     #===============
 
 if __name__ == "__main__":
