@@ -253,24 +253,24 @@ def main():
     st.markdown("""
     <style>
         /* Overall background styling */
-        body {
-            #background-color: #f5f0e1;
-            font-family: 'Merriweather', serif;
-            #color: #4e342e;
-            [data-testid="stAppViewContainer"] {
-            background: linear-gradient(135deg,#8c52ff, #5ce1e6);
-            background-attachment: fixed;
-            # background-color: #7dd8ff;  /* #c0dc8f Light gray-green #d2e7ae; Purple=#8c52ff, #5f20eb*/
-        }
+        # body {
+        #     #background-color: #f5f0e1;
+        #     font-family: 'Merriweather', serif;
+        #     #color: #4e342e;
+        #     [data-testid="stAppViewContainer"] {
+        #     background: linear-gradient(135deg,#8c52ff, #5ce1e6);
+        #     background-attachment: fixed;
+        #     # background-color: #7dd8ff;  /* #c0dc8f Light gray-green #d2e7ae; Purple=#8c52ff, #5f20eb*/
+        # }
 
  
-        /* Sidebar styling to resemble a table of contents */
-        .css-1d391kg {
-            #background-color: #e8e0d2 !important;
-            background-color: #7dd8ff; /*#7dd8ff; Sidebar background color */
-            #background-color: #7dd8ff !important;
-            border-right: 2px solid #bfa989;
-        }
+        # /* Sidebar styling to resemble a table of contents */
+        # .css-1d391kg {
+        #     #background-color: #e8e0d2 !important;
+        #     background-color: #7dd8ff; /*#7dd8ff; Sidebar background color */
+        #     #background-color: #7dd8ff !important;
+        #     border-right: 2px solid #bfa989;
+        # }
  
         /* Sidebar Title */
         .css-1544g2n {
