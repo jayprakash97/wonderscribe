@@ -399,10 +399,10 @@ def main():
                                                         'Key': storyFile},
                                                 ExpiresIn=3600)
             audioStoryFiles.append(output)
-
+            st.write('line 402')
             # Reset the cache_cleared flag. Don't clear the cache
             st.session_state.cache_cleared = False
-         
+            st.write('line 405')
             story_pages = [
                 {
                     "text": story_texts[0],
@@ -454,12 +454,13 @@ def main():
                     "audio": audioStoryFiles[6]
                 }
             ]
- 
+            st.write('line 457')
             #st.markdown(story_pages[0]["image"])
             # Initialize session state for the current story page index
             if 'page_index' not in st.session_state:
                 st.session_state.page_index = 0
- 
+                
+            st.write('line 463')
             # Functions for navigating between pages
             def next_page():
                 if st.session_state.page_index < len(story_pages) - 1:
