@@ -137,30 +137,30 @@ sidebar_css = """
 # """
 # ==============
 # Apply CSS
-# st.markdown(background_css, unsafe_allow_html=True)
+st.markdown(background_css, unsafe_allow_html=True)
 st.markdown(sidebar_css, unsafe_allow_html=True)
 
 # ============
 # Apply the custom CSS
-st.markdown(page_bg, unsafe_allow_html=True)
-st.markdown(
-    """
-    <style>
-    /* Style for the sidebar content */
-    [data-testid="stSidebarContent"] {
-        background-color: #7dd8ff; /*#7dd8ff; Sidebar background color */
+# st.markdown(page_bg, unsafe_allow_html=True)
+# st.markdown(
+#     """
+#     <style>
+#     /* Style for the sidebar content */
+#     [data-testid="stSidebarContent"] {
+#         background-color: #7dd8ff; /*#7dd8ff; Sidebar background color */
         
-    }
-    /* Set color for all text inside the sidebar */
-    [data-testid="stSidebar"] * {
-        color: #8c52ff !important;  /* Text color */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True,
-)
+#     }
+#     /* Set color for all text inside the sidebar */
+#     [data-testid="stSidebar"] * {
+#         color: #8c52ff !important;  /* Text color */
+#     }
+#     </style>
+#     """,
+#     unsafe_allow_html=True,
+# )
 
-st.image("pages/images/WonderScribeLogo.png", width=150)
+# st.image("pages/images/WonderScribeLogo.png", width=150)
 # ============
 
 # S3 Client setup
