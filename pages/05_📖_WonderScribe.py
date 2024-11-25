@@ -193,13 +193,13 @@ def fetch_and_decode_images(captions, _force_refresh=False):
         if response.status_code == 200:
             data = response.json()
 
-            st.write('line 196')
+            # st.write('line 196')
             if data["image_data_decode1"] == "INVALID_PROMPT":
                 invalid_image = "pages/images/pic_next_page.png"
                 decoded_images.append(encode_image_to_base64(invalid_image))
-                st.write('line 200')
+                # st.write('line 200')
             else:
-                st.write('line 202')
+                # st.write('line 202')
                 decoded_images.append(data["image_data_decode1"])
     return decoded_images
 
@@ -305,7 +305,7 @@ def main():
         st.session_state.validation_errors = []
 
     #=================
-    st.write('line 308')
+    # st.write('line 308')
     with st.form("form_key"):
         st.write("Craft personalized stories that bring adventure to life and ignite imagination and creativity.")
         gender = st.selectbox("Your Gender", ["Male", "Female", "Non Binary", "Don't want to share"])
@@ -355,7 +355,7 @@ def main():
             
         menu_options = ["About", "Storybook"]
         st.session_state.current_page = "Storybook"
-        st.write('line 361')
+        # st.write('line 361')
 
         if submit_btn:
             st.cache_data.clear()
@@ -363,9 +363,8 @@ def main():
             st.success("Cache has been cleared! Refresh the page to fetch new data.")
             st.session_state.submit_btn = True
             st.session_state.page_index = 0
-            st.write('line 369')
-        
-        st.write('line 370')     
+            # st.write('line 369')
+            
         if st.session_state.submit_btn and st.session_state.current_page == "Storybook":
             # Create payload
             payload = {
@@ -382,23 +381,21 @@ def main():
 
             # Fetch data
             story_texts, captions, storyfiles = fetch_story_data(payload)
-            st.write('line 389')
+            # st.write('line 389')
             decoded_images = fetch_and_decode_images(captions)
 
-        #===============
-            st.write('line 392')
             audioStoryFiles = []
             for storyFile in storyfiles:
-                st.write('line 395')
+                # st.write('line 395')
                 output = s3client.generate_presigned_url('get_object',
                                                     Params={'Bucket': 'wonderstorytexttoaudiofile',
                                                             'Key': storyFile},
                                                     ExpiresIn=3600)
                 audioStoryFiles.append(output)
-                st.write('line 402')
+                
                 # Reset the cache_cleared flag. Don't clear the cache
             st.session_state.cache_cleared = False
-            st.write('line 405')  
+          
             story_pages = [
                 {
                     "text": story_texts[0],
@@ -450,13 +447,13 @@ def main():
                     "audio": audioStoryFiles[6]
                 }
             ]
-            st.write('line 457')
+            # st.write('line 457')
             #st.markdown(story_pages[0]["image"])
             # Initialize session state for the current story page index
             if 'page_index' not in st.session_state:
                 st.session_state.page_index = 0
                 
-            st.write('line 463')
+            # st.write('line 463')
             # Functions for navigating between pages
             def next_page():
                 if st.session_state.page_index < len(story_pages) - 1:
@@ -473,7 +470,7 @@ def main():
  
             st.title("📖 My Storybook")
             image = image_decode(current_page["image"])
-            st.write('line 479')
+            # st.write('line 479')
             col1, col2 = st.columns(2)
  
             with col1:
