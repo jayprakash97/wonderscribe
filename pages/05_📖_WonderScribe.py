@@ -406,6 +406,12 @@ def main():
             st.write("story_texts[0]", story_texts[0])
             if story_texts:
                 st.write(story_texts[0])
+                st.write(story_texts[1])
+                st.write(story_texts[2])
+                st.write(story_texts[3])
+                st.write(story_texts[4])
+                st.write(story_texts[5])
+                st.write(story_texts[6])
             else:
                 st.write("List is empty")
 
