@@ -404,6 +404,21 @@ def main():
             st.session_state.cache_cleared = False
             st.write('line 405')
             st.write("story_texts[0]", story_texts[0])
+            if story_texts:
+                st.write(story_texts[0])
+            else:
+                st.write("List is empty")
+
+            if decoded_images:
+                st.write(decoded_images[0])
+            else:
+                st.write("Image List is empty")
+
+            if audioStoryFiles:
+                st.write(audioStoryFiles[0])
+            else:
+                st.write("Audio List is empty")
+                
             story_pages = [
                 {
                     "text": story_texts[0],
