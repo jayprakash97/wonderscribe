@@ -270,8 +270,10 @@ def main():
     # st.write('line 308')
     with st.form("form_key"):
         st.write("Craft personalized stories that bring adventure to life and ignite imagination and creativity.")
+        main_character = st.text_input("What will be the name of the main Character in your story?", placeholder="Who will be the star in your story?")
+        character_type = st.selectbox("What will be the name of the 'Character Type Genre' in your story?",options=["Human-Centric Stories", "Animal-Centric Stories", "Plant-Based Stories", " Object-Centric Stories","Non-Living Entity Stories" ))
+       
         gender = st.selectbox("Your Gender", ["Male", "Female", "Non Binary", "Don't want to share"])
-        main_character = st.text_input("What will be the name of the main Character?", placeholder="Who will be the star in your story?")
         audience = st.selectbox("Audience", ["Children", "Young Adult", "Adult", "Senior"])
         story_setting = st.selectbox("Story Setting", options=["Magical Kingdoms", "Underwater Kingdoms", "Pirate Ships", "Exotic locations", "Imaginary Worlds", "Digital words", "Other"])
         story_type = st.selectbox("Story Type", options=["Fantasy", "Fairy Tales", "Mythology", "Bedtime stories", "Adventure", "Mystery", "Love", "Horror"])
@@ -281,6 +283,28 @@ def main():
         story_lang = st.selectbox("Story Language", options=["English", "Spanish", "French", "German", "Mandarin", "Hindi", "Urdu", "Arabic", "Italian", "Vietnamese","Tagalog"])
 
         submit_btn = st.form_submit_button("submit")
+
+
+        ===========
+             gender = st.selectbox("Your Gender", options=["Male", "Female", "Non Binary", "Don't want to share"])
+        main_character = st.text_input("What will be the name of the main character?", placeholder="Who will star in your story?")
+        age = st.text_input("Age of the main character", placeholder="How old is the star of your story?")
+        height = st.text_input("Hieght of the main character", placeholder="Height of the star of your story?")
+        hair_color = st.text_input("Hair_color of the main character", placeholder="Hair color of the star of your story?")
+        eye_color = st.text_input("eye_color of the main character", placeholder="Eye color of the star of your story?")
+        outfit = st.text_input("outfit of the main character", placeholder="outfit of the star of your story?")
+        ethnicity = st.text_input("ethnicity of the main character", placeholder="Ethnicity of the star of your story?")
+        audience = st.selectbox("Audience", options=["children", "young adult", "adult", "senior"])
+        story_setting = st.selectbox("Story Setthing", options=["Magical Kingdoms", "Underwater Kingdoms", "Pirate ships", "Exotic locations", "Imaginary world", "Digital words", "Others"])
+        story_type = st.selectbox("Story Type", options=["Fantasy", "Fairy Tales", "Mythology", "Bedtime stories", "Adventure", "Mystery", "Love", "Horror", ])
+        story_theme = st.text_input("What would be topic of the story?", placeholder="Leave brief idea of a story")
+        moral_lesson = st.text_input("What would be the moral of this story?", placeholder="Enter moral lesson from this story")
+        story_length = st.selectbox("Story Length (in words) ", options=["300", "400", "500"])
+        story_lang = st.selectbox("Story lang", options=["English", "Spanish", "French", "Mandarin","German", "Hindi","Vietnamese", "Tagalog", "Urdu", "Arabic", "Italian"])
+        character_type = st.selectbox("Please specify the character's type", options=["human", "animal", "plant", "inanimate object"])
+        submit_btn = st.form_submit_button("Submit")
+
+        ============
 
     try:
         if submit_btn:
