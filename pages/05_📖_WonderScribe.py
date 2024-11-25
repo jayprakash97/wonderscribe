@@ -62,106 +62,33 @@ background_css = f"""
 # Apply CSS styles
 st.markdown(background_css, unsafe_allow_html=True)
 
+# Function to add the logo to the top of the sidebar
+def add_logo_to_sidebar_top(logo_path, width="250px"):
+    with open(logo_path, "rb") as f:
+        encoded_logo = base64.b64encode(f.read()).decode("utf-8")
+    st.sidebar.markdown(
+        f"""
+        <style>
+            [data-testid="stSidebar"]::before {{
+                content: '';
+                display: block;
+                background-image: url("data:image/png;base64,{encoded_logo}");
+                background-size: contain; /* Ensure the logo scales proportionally */
+                background-repeat: no-repeat;
+                background-position: top center;
+                height: 250px; /* Increase height to fit the full logo */
+                padding-top: 20px; /* Add space above the logo */
+                margin-bottom: 20px; /* Add space below the logo */
+            }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
-# Sidebar CSS
-# sidebar_css = """
-# <style>
-# [data-testid="stSidebar"] {
-#     #background-color: #7dd8ff;
-#     border-right: 2px solid #bfa989;
-# }
-
-# [data-testid="stSidebar"] h1 {
-#     color: #4e342e;
-#     font-size: 1.5em;
-#     font-family: 'Merriweather', serif;
-#     font-weight: bold;
-# }
-
-# [data-testid="stSidebar"] button {
-#     background-color: #d4c1a7;
-#     border-radius: 10px;
-#     border: 2px solid #bfa989;
-#     padding: 10px;
-#     font-size: 1.2em;
-#     color: #4e342e;
-#     margin-bottom: 15px;
-# }
-
-# [data-testid="stSidebar"] button:hover {
-#     background-color: #e0d3b8;
-#     color: #4e342e;
-# }
-# </style>
-# """
-# ==============
-# Custom CSS to apply the background gradient and create a box
-# page_bg = """
-# <style>
-# /* Apply background gradient to the main container */
-# [data-testid="stAppViewContainer"] {
-#     background: linear-gradient(135deg, #8c52ff, #5ce1e6);
-#     background-attachment: fixed;
-# }
-
-# /* Optional: Adjust text color and other styles */
-# [data-testid="stAppViewContainer"] .stMarkdown {
-#     color: white;  /* Adjust text color for contrast */
-# }
-
-# /* Style for the content box */
-# .custom-box {
-#     background-color: #eaf1ff; /* Light background color for the box */
-#     border-radius: 10px; /* Rounded corners */
-#     padding: 20px; /* Spacing inside the box */
-#     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a raised effect */
-#     color: black; /* Text color inside the box */
-#     margin-top: 20px; /* Space above the box */
-# }
-
-# /* Position the logo in the top-left corner */
-# img[alt="WonderScribeLogo"] {
-#     position: absolute;
-#     top: 40px;
-#     left: 40px;
-#     width: 150px; /* Adjust width if needed */
-#     z-index: 10;
-# }
-
-# /* Add padding to avoid overlap with the content */
-# [data-testid="stAppViewContainer"] {
-#     padding-top: 80px; /* Add padding to avoid logo overlapping */
-# }
-# </style>
-# """
-# ==============
-# Apply CSS
-# st.markdown(background_css, unsafe_allow_html=True)
-# st.markdown(sidebar_css, unsafe_allow_html=True)
+# Add the WonderScribe logo to the top of the sidebar
+add_logo_to_sidebar_top("pages/images/Updated_WonderS_logo.png", width="250px")
 
 # ============
-# Apply the custom CSS
-# st.markdown(page_bg, unsafe_allow_html=True)
-# st.markdown(
-#     """
-#     <style>
-#     /* Style for the sidebar content */
-#     [data-testid="stSidebarContent"] {
-#         background-color: #7dd8ff; /*#7dd8ff; Sidebar background color */
-        
-#     }
-#     /* Set color for all text inside the sidebar */
-#     [data-testid="stSidebar"] * {
-#         color: #8c52ff !important;  /* Text color */
-#     }
-#     </style>
-#     """,
-#     unsafe_allow_html=True,
-# )
-
-# st.image("pages/images/WonderScribeLogo.png", width=150)
-# ============
-
 # S3 Client setup
 s3client = boto3.client("s3")
 
