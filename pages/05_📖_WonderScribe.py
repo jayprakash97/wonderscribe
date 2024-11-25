@@ -184,7 +184,7 @@ def fetch_and_decode_images(captions, _force_refresh=False):
             payload2 = {
                 "api_Path": "getImage",
                 "storyPrompt": caption,
-                "previousPrompt": captions[index - 1]     # if index > 0 else "",
+                "previousPrompt": captions[index - 1]     
             }
             
         json_data = payload2            
@@ -193,10 +193,13 @@ def fetch_and_decode_images(captions, _force_refresh=False):
         if response.status_code == 200:
             data = response.json()
 
+            st.write('line 196')
             if data["image_data_decode1"] == "INVALID_PROMPT":
                 invalid_image = "pages/images/invalid_img.jpg"
                 decoded_images.append(encode_image_to_base64(invalid_image))
+                st.write('line 200')
             else:
+                st.write('line 202')
                 decoded_images.append(data["image_data_decode1"])
     return decoded_images
 
@@ -210,7 +213,7 @@ def main():
         st.session_state.cache_cleared = False
 
     #=================
-        # Set the page configuration with a wide layout for a book-like feel
+    # Set the page configuration with a wide layout for a book-like feel
     # Add custom CSS for the storybook theme
     
     st.markdown("""
@@ -302,11 +305,11 @@ def main():
         st.session_state.validation_errors = []
 
     #=================
-        
+    st.write('line 308')
     with st.form("form_key"):
-        st.write("Craft personalized stories that bring adventure to life.")
+        st.write("Craft personalized stories that bring adventure to life and ignite imagination and creativity.")
         gender = st.selectbox("Your Gender", ["Male", "Female", "Non Binary", "Don't want to share"])
-        main_character = st.text_input("Main Character Name", placeholder="Enter the name of the main character")
+        main_character = st.text_input("What will be the name of the main Character?", placeholder="Who will be the star in your story?")
         audience = st.selectbox("Audience", ["Children", "Young Adult", "Adult", "Senior"])
         story_setting = st.selectbox("Story Setting", options=["Magical Kingdoms", "Underwater Kingdoms", "Pirate Ships", "Exotic locations", "Imaginary Worlds", "Digital words", "Other"])
         story_type = st.selectbox("Story Type", options=["Fantasy", "Fairy Tales", "Mythology", "Bedtime stories", "Adventure", "Mystery", "Love", "Horror"])
@@ -325,7 +328,6 @@ def main():
             # Validate main character
             if not main_character or len(main_character.strip()) < 2:
                 st.session_state.validation_errors.append("Main character name must be at least two characters long")
-                # errors.append("Main character name must be at least 2 characters.")
             elif not main_character.replace(" ", "").isalpha():
                 st.session_state.validation_errors.append("Main character name should only contain letters")
 
@@ -344,15 +346,19 @@ def main():
             # Display all validation errors if any
     
             if st.session_state.validation_errors:
+                st.write('line 349')
                 error_message = "Please fix the following errors:\n" + "\n".join(f".{error}" for error in st.session_state.validation_errors)
+                st.write('line 351')
                 st.error(error_message)
+                st.write('line 353')
                 st.stop() # Stop further execution if there are validation errors
 
             # if no validation errors, proceed with form submission
             st.session_state.submit_btn = True
-
+            st.write('line 358')
         menu_options = ["About", "Storybook"]
         st.session_state.current_page = "Storybook"
+        st.write('line 361')
 
         if submit_btn:
             st.cache_data.clear()
@@ -360,7 +366,9 @@ def main():
             st.success("Cache has been cleared! Refresh the page to fetch new data.")
             st.session_state.submit_btn = True
             st.session_state.page_index = 0
-
+            st.write('line 369')
+        
+        st.write('line 370')     
         if st.session_state.submit_btn and st.session_state.current_page == "Storybook":
             # Create payload
             payload = {
@@ -376,12 +384,16 @@ def main():
                 }
 
         # Fetch data
+        st.write('line 387')
         story_texts, captions, storyfiles = fetch_story_data(payload)
+        st.write('line 389')
         decoded_images = fetch_and_decode_images(captions)
 
         #===============
+        st.write('line 392')
         audioStoryFiles = []
         for storyFile in storyfiles:
+            st.write('line 395')
             output = s3client.generate_presigned_url('get_object',
                                                 Params={'Bucket': 'wonderstorytexttoaudiofile',
                                                         'Key': storyFile},
@@ -464,6 +476,7 @@ def main():
  
             st.title("📖 My Storybook")
             image = image_decode(current_page["image"])
+            st.write('line 479')
             col1, col2 = st.columns(2)
  
             with col1:
@@ -490,6 +503,7 @@ def main():
                     st.button("Next", on_click=next_page)
                     st.session_state.submit_btn = True
     except Exception as e:
+        st.write('line 506')
         st.error(f"An error occurred: {str(e)}")
         #===============
 
