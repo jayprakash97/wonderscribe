@@ -401,140 +401,112 @@ def main():
             audioStoryFiles.append(output)
             st.write('line 402')
             # Reset the cache_cleared flag. Don't clear the cache
-            st.session_state.cache_cleared = False
-            st.write('line 405')
-            st.write("story_texts[0]", story_texts[0])
-            if story_texts:
-                st.write(story_texts[0])
-                st.write(story_texts[1])
-                st.write(story_texts[2])
-                st.write(story_texts[3])
-                st.write(story_texts[4])
-                st.write(story_texts[5])
-                st.write(story_texts[6])
-            else:
-                st.write("List is empty")
-
-            # if decoded_images:
-            #     st.write(decoded_images[1])
-            # else:
-            #     st.write("Image List is empty")
-
-            if audioStoryFiles:
-                st.write(audioStoryFiles[1])
-                st.write(audioStoryFiles[1])
-                st.write(audioStoryFiles[2])
-                st.write(audioStoryFiles[3])
-                st.write(audioStoryFiles[4])
-                st.write(audioStoryFiles[5])
-                st.write(audioStoryFiles[6])
-            else:
-                st.write("Audio List is empty")
+        st.session_state.cache_cleared = False
+        st.write('line 405')  
+        story_pages = [
+            {
+                "text": story_texts[0],
+                #"image": "img1.png",
+                "image": decoded_images[0],
+                "caption": captions[0],
+                "audio": audioStoryFiles[0]
+            },
+            {
+                "text": story_texts[1],
+                #"image": "img2.png",
+                "image": decoded_images[1],
+                "caption": captions[1],
+                "audio": audioStoryFiles[1]
+            },
+            {
+                "text": story_texts[2],
+                #"image": "img3.png",
+                "image": decoded_images[2],
+                "caption": captions[2],
+                "audio": audioStoryFiles[2]
+            },
+            {
+                "text": story_texts[3],
+                #"image": "img4.png",
+                "image": decoded_images[3],
+                "caption": captions[3],
+                "audio": audioStoryFiles[3]
+            },
+            {
+                "text": story_texts[4],
+                #"image": "img4.png",
+                "image": decoded_images[4],
+                "caption": captions[4],
+                "audio": audioStoryFiles[4]
+            },
+            {
+                "text": story_texts[5],
+                #"image": "img4.png",
+                "image": decoded_images[5],
+                "caption": captions[5],
+                "audio": audioStoryFiles[5]
+            },
+            {
+                "text": story_texts[6],
+                #"image": "img4.png",
+                "image": decoded_images[6],
+                "caption": captions[6],
+                "audio": audioStoryFiles[6]
+            }
+        ]
+        st.write('line 457')
+        #st.markdown(story_pages[0]["image"])
+        # Initialize session state for the current story page index
+        if 'page_index' not in st.session_state:
+            st.session_state.page_index = 0
                 
-            story_pages = [
-                {
-                    "text": story_texts[0],
-                    #"image": "img1.png",
-                    "image": decoded_images[0],
-                    "caption": captions[0],
-                    "audio": audioStoryFiles[0]
-                },
-                {
-                    "text": story_texts[1],
-                    #"image": "img2.png",
-                    "image": decoded_images[1],
-                    "caption": captions[1],
-                    "audio": audioStoryFiles[1]
-                },
-                {
-                    "text": story_texts[2],
-                    #"image": "img3.png",
-                    "image": decoded_images[2],
-                    "caption": captions[2],
-                    "audio": audioStoryFiles[2]
-                },
-                {
-                    "text": story_texts[3],
-                    #"image": "img4.png",
-                    "image": decoded_images[3],
-                    "caption": captions[3],
-                    "audio": audioStoryFiles[3]
-                },
-                {
-                    "text": story_texts[4],
-                    #"image": "img4.png",
-                    "image": decoded_images[4],
-                    "caption": captions[4],
-                    "audio": audioStoryFiles[4]
-                },
-                {
-                    "text": story_texts[5],
-                    #"image": "img4.png",
-                    "image": decoded_images[5],
-                    "caption": captions[5],
-                    "audio": audioStoryFiles[5]
-                },
-                {
-                    "text": story_texts[6],
-                    #"image": "img4.png",
-                    "image": decoded_images[6],
-                    "caption": captions[6],
-                    "audio": audioStoryFiles[6]
-                }
-            ]
-            st.write('line 457')
-            #st.markdown(story_pages[0]["image"])
-            # Initialize session state for the current story page index
-            if 'page_index' not in st.session_state:
-                st.session_state.page_index = 0
-                
-            st.write('line 463')
-            # Functions for navigating between pages
-            def next_page():
-                if st.session_state.page_index < len(story_pages) - 1:
-                    st.session_state.page_index += 1
-                    st.session_state.submit_btn = True
+        st.write('line 463')
+        # Functions for navigating between pages
+        def next_page():
+            if st.session_state.page_index < len(story_pages) - 1:
+                st.session_state.page_index += 1
+                st.session_state.submit_btn = True
  
-            def prev_page():
-                if st.session_state.page_index > 0:
-                    st.session_state.page_index -= 1
-                    st.session_state.submit_btn = True
+        def prev_page():
+            if st.session_state.page_index > 0:
+                st.session_state.page_index -= 1
+                st.session_state.submit_btn = True
  
-            # Get the current page's content
-            current_page = story_pages[st.session_state.page_index]
+        # Get the current page's content
+        current_page = story_pages[st.session_state.page_index]
  
-            st.title("📖 My Storybook")
-            image = image_decode(current_page["image"])
-            st.write('line 479')
-            col1, col2 = st.columns(2)
+        st.title("📖 My Storybook")
+        image = image_decode(current_page["image"])
+        st.write('line 479')
+        col1, col2 = st.columns(2)
  
-            with col1:
-                #st.markdown(f'<div class="storybook-text">{current_page["text"]}</div>', unsafe_allow_html=True)
-                #st.markdown(f'<div class="storybook-text" style="height: {image.height}px;"><p>{current_page["text"]}</p></div>', unsafe_allow_html=True)
-                st.markdown(f'<div class="storybook-text"><p>{current_page["text"]}</p></div>', unsafe_allow_html=True)
-                st.audio(current_page["audio"], format='audio/mp3')
-            with col2:
-                # Use custom HTML and CSS for image with the desired style
-                #st.markdown(f'<img src="{current_page["image"]}" alt="{current_page["caption"]}" class="storybook-image">', unsafe_allow_html=True)
-                st.image(image, caption=current_page["caption"], use_column_width=True)
+        with col1:
+            #st.markdown(f'<div class="storybook-text">{current_page["text"]}</div>', unsafe_allow_html=True)
+            #st.markdown(f'<div class="storybook-text" style="height: {image.height}px;"><p>{current_page["text"]}</p></div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="storybook-text"><p>{current_page["text"]}</p></div>', unsafe_allow_html=True)
+            st.audio(current_page["audio"], format='audio/mp3')
+        with col2:
+            # Use custom HTML and CSS for image with the desired style
+            #st.markdown(f'<img src="{current_page["image"]}" alt="{current_page["caption"]}" class="storybook-image">', unsafe_allow_html=True)
+            st.image(image, caption=current_page["caption"], use_column_width=True)
  
-            # Create Previous and Next buttons for navigation
-            col1, col2, col3 = st.columns([1, 2, 1])
+        # Create Previous and Next buttons for navigation
+        col1, col2, col3 = st.columns([1, 2, 1])
 
-            st.write("Page No:", st.session_state.page_index + 1)
-            with col1:
-                if st.session_state.page_index > 0:
-                    st.button("Previous", on_click=prev_page)
-                    st.session_state.submit_btn = True
+        st.write("Page No:", st.session_state.page_index + 1)
+        with col1:
+            if st.session_state.page_index > 0:
+                st.button("Previous", on_click=prev_page)
+                st.session_state.submit_btn = True
  
-            with col3:
-                if st.session_state.page_index < len(story_pages) - 1:
-                    st.button("Next", on_click=next_page)
-                    st.session_state.submit_btn = True
-    except Exception as e:
-        st.write('line 506')
-        st.error(f"An error occurred: {str(e)}")
-        #===============
+        with col3:
+            if st.session_state.page_index < len(story_pages) - 1:
+                st.button("Next", on_click=next_page)
+                st.session_state.submit_btn = True
+except Exception as e:
+    st.write('line 506')
+    st.error(f"An error occurred: {str(e)}")
+#===============
 
 if __name__ == "__main__":
     if "submit_btn" not in st.session_state:
