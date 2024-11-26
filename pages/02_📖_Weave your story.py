@@ -341,6 +341,11 @@ def main():
         if st.session_state.submit_btn and st.session_state.current_page == "Storybook":
             # Create payload
             payload = {
+                "character_type": character_type,
+                "age": age,
+                "height": height,
+                "hair_color": hair_color,
+                "eye_color": eye_color,
                 "audience": audience,
                 "story_type": story_type,
                 "main_character": main_character,
@@ -356,6 +361,15 @@ def main():
             story_texts, captions, storyfiles = fetch_story_data(payload)
             # st.write('line 389')
             decoded_images = fetch_and_decode_images(captions)
+
+            ========
+            character_prompt = f""" {character_type} character_type {main_character} gender is {gender}, age is {age}, height is {height}, hair color is {hair_color}, eye color is {eye_color}"""
+            #story_text = [story_text + character_prompt for story_text in story_texts]
+            caption_with_character_apprearance = [caption + character_prompt for caption_with_character_apprearance in captions]
+            #decoded_images = fetch_and_decode_images(story_text)
+            decoded_images = fetch_and_decode_images(caption_with_character_apprearance)
+         
+            ==========
 
             audioStoryFiles = []
             for storyFile in storyfiles:
