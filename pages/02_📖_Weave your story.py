@@ -271,7 +271,7 @@ def main():
     with st.form("form_key"):
         st.write("Craft personalized stories that bring adventure to life and ignite imagination and creativity.")
         main_character = st.text_input("What will be the name of the main Character in your story?", placeholder="Who will be the star in your story?")
-        character_type = st.selectbox("What will be the name of the 'Character Type Genre' in your story?",options=["Human-Centric Stories", "Animal-Centric Stories", "Plant-Based Stories", " Object-Centric Stories","Non-Living Entity Stories"])
+        character_type = st.selectbox("What will be the 'Character Type Genre' in your story?",options=["Human-Centric Stories", "Animal-Centric Stories", "Plant-Based Stories", " Object-Centric Stories","Non-Living Entity Stories"])
         gender = st.selectbox("What gender will the main character in your story be?", ["Male", "Female", "Non Binary", "Don't want to share"])
         age = st.text_input("How old will the main character be in your story?", placeholder="Please enter the age of main character in numbers.")
         height = st.selectbox("What will be the height and build of the main character in your story", options=["tall and slim", "tall and muscular", "short and slim", "short and muscular", "normal", "average build", "stocky"])
@@ -363,9 +363,9 @@ def main():
             decoded_images = fetch_and_decode_images(captions)
 
             # ========
-            character_prompt = f""" {character_type} character_type {main_character} gender is {gender}, age is {age}, height is {height}, hair color is {hair_color}, eye color is {eye_color}"""
+            character_prompt = f""" {character_type} character_type {main_character} whoes gender is {gender}, age is {age}, height is {height}, hair color is {hair_color}, eye color is {eye_color}"""
             #story_text = [story_text + character_prompt for story_text in story_texts]
-            caption_with_character_feature = [caption + character_prompt for caption_with_character_apprearance in captions]
+            caption_with_character_feature = [caption_with_character_feature + character_prompt for caption_with_character_apprearance in captions]
             st.write("caption_with_character_feature", {caption_with_character_feature})
             #decoded_images = fetch_and_decode_images(story_text)
             decoded_images = fetch_and_decode_images(caption_with_character_feature)
