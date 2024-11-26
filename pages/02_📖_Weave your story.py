@@ -273,8 +273,10 @@ def main():
         main_character = st.text_input("What will be the name of the main Character in your story?", placeholder="Who will be the star in your story?")
         character_type = st.selectbox("What will be the name of the 'Character Type Genre' in your story?",options=["Human-Centric Stories", "Animal-Centric Stories", "Plant-Based Stories", " Object-Centric Stories","Non-Living Entity Stories"])
         gender = st.selectbox("What gender will the main character in your story be?", ["Male", "Female", "Non Binary", "Don't want to share"])
-        age = st.text_input("What will be the age of the main character", placeholder="How old is the star of your story?")
-       
+        age = st.text_input("How old will the main character be in your story?", placeholder="Please enter the age of main character in numbers.")
+        height = st.selectbox("What will be the height and build of the main character in your story", options=["tall and slim", "tall and muscular, "short and slip", "short and muscular", "normal", "average build", "stocky"])
+        hair_color = st.selectbox("What will be the hair color of the main character in your story", options= ["black","brown", "blonde", "golden","red","gray", "white"])
+        eye_color = st.selectbox("What color will the main character's eyes be?", options=["brown", "blue", "green", "hazel", "gray", "amber"]) 
         audience = st.selectbox("Who will be the target audience for your story?", ["Children", "Young Adult", "Adult", "Senior"])
         story_setting = st.selectbox("What will the story's setting be to shape its tone and character interactions?", options=["Magical Kingdoms", "Underwater Kingdoms", "Pirate Ships", "Fairy Tale Lands", "Forests and Jungles", "Modern Cities","Mountains and Caves", "Haunted Houses", "Imaginary Worlds", "Theme Parks or Circuses", "Extraterrestrial/Space"])
         story_type = st.selectbox("Story Type", options=["Fantasy", "Fairy Tales", "Mythology", "Bedtime stories", "Adventure", "Mystery", "Love", "Horror"])
@@ -285,22 +287,9 @@ def main():
 
         submit_btn = st.form_submit_button("submit")
 
-
-          # age = st.text_input("Age of the main character", placeholder="How old is the star of your story?")
-        # height = st.text_input("Hieght of the main character", placeholder="Height of the star of your story?")
-        # hair_color = st.text_input("Hair_color of the main character", placeholder="Hair color of the star of your story?")
-        # eye_color = st.text_input("eye_color of the main character", placeholder="Eye color of the star of your story?")
         # outfit = st.text_input("outfit of the main character", placeholder="outfit of the star of your story?")
         # ethnicity = st.text_input("ethnicity of the main character", placeholder="Ethnicity of the star of your story?")
-        # audience = st.selectbox("Audience", options=["children", "young adult", "adult", "senior"])
-        # story_setting = st.selectbox("Story Setthing", options=["Magical Kingdoms", "Underwater Kingdoms", "Pirate ships", "Exotic locations", "Imaginary world", "Digital words", "Others"])
-        # story_type = st.selectbox("Story Type", options=["Fantasy", "Fairy Tales", "Mythology", "Bedtime stories", "Adventure", "Mystery", "Love", "Horror", ])
-        # story_theme = st.text_input("What would be topic of the story?", placeholder="Leave brief idea of a story")
-        # moral_lesson = st.text_input("What would be the moral of this story?", placeholder="Enter moral lesson from this story")
-        # story_length = st.selectbox("Story Length (in words) ", options=["300", "400", "500"])
-        # story_lang = st.selectbox("Story lang", options=["English", "Spanish", "French", "Mandarin","German", "Hindi","Vietnamese", "Tagalog", "Urdu", "Arabic", "Italian"])
-        # character_type = st.selectbox("Please specify the character's type", options=["human", "animal", "plant", "inanimate object"])
-        # submit_btn = st.form_submit_button("Submit")
+ 
 
         # ============
 
