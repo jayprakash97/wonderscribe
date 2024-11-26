@@ -127,7 +127,7 @@ def fetch_story_data(payload, _force_refresh=False):
 
 # Fetch and decode images
 @st.cache_data
-def fetch_and_decode_images(captions, _force_refresh=False):
+def fetch_and_decode_images(payload, captions, _force_refresh=False):
     if _force_refresh:
         st.cache_data.clear()
     AWS_API_URL = "https://wacnqhon34.execute-api.us-east-1.amazonaws.com/dev/"
@@ -137,12 +137,14 @@ def fetch_and_decode_images(captions, _force_refresh=False):
     for index, caption in enumerate(captions):
         if index == 0:
             payload2 = {
+                "payload": payload, 
                 "api_Path": "getImage",
                 "storyPrompt": caption,
                 "previousPrompt": ''
             }
         else:
             payload2 = {
+                "payload": payload, 
                 "api_Path": "getImage",
                 "storyPrompt": caption,
                 "previousPrompt": captions[index - 1]     
@@ -360,7 +362,7 @@ def main():
             # Fetch data
             story_texts, captions, storyfiles = fetch_story_data(payload)
             # st.write('line 389')
-            decoded_images = fetch_and_decode_images(captions)
+            decoded_images = fetch_and_decode_images(payload, captions)
 
             # ========
             # character_prompt = f""" {character_type} character_type {main_character} whoes gender is {gender}, age is {age}, height is {height}, hair color is {hair_color}, eye color is {eye_color}"""
