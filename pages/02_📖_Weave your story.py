@@ -274,7 +274,7 @@ def main():
         character_type = st.selectbox("What will be the name of the 'Character Type Genre' in your story?",options=["Human-Centric Stories", "Animal-Centric Stories", "Plant-Based Stories", " Object-Centric Stories","Non-Living Entity Stories"])
         gender = st.selectbox("What gender will the main character in your story be?", ["Male", "Female", "Non Binary", "Don't want to share"])
         age = st.text_input("How old will the main character be in your story?", placeholder="Please enter the age of main character in numbers.")
-        height = st.selectbox("What will be the height and build of the main character in your story", options=["tall and slim", "tall and muscular, "short and slip", "short and muscular", "normal", "average build", "stocky"])
+        height = st.selectbox("What will be the height and build of the main character in your story", options=["tall and slim", "tall and muscular", "short and slim", "short and muscular", "normal", "average build", "stocky"])
         hair_color = st.selectbox("What will be the hair color of the main character in your story", options= ["black","brown", "blonde", "golden","red","gray", "white"])
         eye_color = st.selectbox("What color will the main character's eyes be?", options=["brown", "blue", "green", "hazel", "gray", "amber"]) 
         audience = st.selectbox("Who will be the target audience for your story?", ["Children", "Young Adult", "Adult", "Senior"])
