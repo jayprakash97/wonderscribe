@@ -365,10 +365,11 @@ def main():
             # ========
             character_prompt = f""" {character_type} character_type {main_character} whoes gender is {gender}, age is {age}, height is {height}, hair color is {hair_color}, eye color is {eye_color}"""
             #story_text = [story_text + character_prompt for story_text in story_texts]
+            st.write('character_prompt', character_prompt)
             caption_with_character_feature = [caption_with_character_feature + character_prompt for caption_with_character_apprearance in captions]
             st.write("caption_with_character_feature", {caption_with_character_feature})
             #decoded_images = fetch_and_decode_images(story_text)
-            decoded_images = fetch_and_decode_images(caption_with_character_feature)
+            # decoded_images = fetch_and_decode_images(captions)
          
             # ==========
 
