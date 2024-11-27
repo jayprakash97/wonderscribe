@@ -283,7 +283,7 @@ def main():
         story_setting = st.selectbox("What will the story's setting be to shape its tone and character interactions?", options=["Magical Kingdoms", "Underwater Kingdoms", "Pirate Ships", "Fairy Tale Lands", "Forests and Jungles", "Modern Cities","Mountains and Caves", "Haunted Houses", "Imaginary Worlds", "Theme Parks or Circuses", "Extraterrestrial/Space"])
         story_type = st.selectbox("Story Type", options=["Fantasy", "Fairy Tales", "Mythology", "Bedtime stories", "Adventure", "Mystery", "Love", "Horror"])
         story_theme = st.text_input("Please provide a detailed description of the topic that will be used to create your story. It should be at least 10 characters long and have more than two words.?", placeholder="Enter brief idea of a story. 'Example - Friendship between two girls' ")
-        moral_lesson = st.text_input("What moral lesson would you like your story to focus on?", placeholder="Enter a moral lesson from this story")
+        moral_lesson = st.text_input("What moral lesson would you like your story to focus on?", placeholder="Enter a moral lesson from this story. 'Example - build trust and support each other' ")
         story_length = st.selectbox("Story Length (in words)", options=["300", "400", "500","700"])
         story_lang = st.selectbox("What language would you like your story to be written in?", options=["English", "Spanish", "French", "German", "Mandarin", "Hindi", "Urdu", "Arabic", "Italian", "Vietnamese","Tagalog"])
 
