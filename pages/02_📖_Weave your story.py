@@ -477,7 +477,7 @@ def main():
             # Create Previous and Next buttons for navigation
             col1, col2, col3 = st.columns([1, 2, 1])
 
-            st.write("Page No:", st.session_state.page_index + 1, "out of 7")
+            st.write("Page No: ", st.session_state.page_index + 1, " out of 7")
             with col1:
                 if st.session_state.page_index > 0:
                     st.button("Previous", on_click=prev_page)
