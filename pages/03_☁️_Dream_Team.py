@@ -135,8 +135,8 @@ members = [
         "name": "Mian Haseeb",
         "role": "ML Engineering, GenAI",
         "bio": "Mian is the visionary behind WonderScribe, originally conceiving the idea to revolutionize storytelling through the power of Generative AI. Mian is one of the machine learning engineers for WonderScribe, driving the integration of cutting-edge generative AI models. From fine-tuning the RAG framework to deploying advanced text and image generation models, Mian’s work ensures that WonderScribe delivers creative, engaging, and contextually relevant stories. His passion for AI innovation and storytelling shines through in every technical detail.",
-        "image": "pages/images/MianHaseeb.jfif",
-        "email": "mhaseeb@berkeley.edu",
+        "image": "pages/images/MianHaseeb.jpg",
+        "email": "mianh1@berkeley.edu",
     },
     {
         "name": "Natsnet Demoz",
