@@ -159,7 +159,7 @@ for member in members:
     col1, col2 = st.columns([1, 3])  # Adjust column width for better layout
     with col1:
         processed_image = process_image(member["image"])
-        st.image(processed_image, use_column_width=True)
+        st.image(processed_image, use_container_width=True)
     with col2:
         st.markdown(f"### {member['name']}")
         st.markdown(f"**Role:** {member['role']}")
