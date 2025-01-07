@@ -472,7 +472,7 @@ def main():
             with col2:
                 # Use custom HTML and CSS for image with the desired style
                 #st.markdown(f'<img src="{current_page["image"]}" alt="{current_page["caption"]}" class="storybook-image">', unsafe_allow_html=True)
-                st.image(image, caption=current_page["caption"], use_column_width=True)
+                st.image(image, caption=current_page["caption"], use_container_width=True)
  
             # Create Previous and Next buttons for navigation
             col1, col2, col3 = st.columns([1, 2, 1])
