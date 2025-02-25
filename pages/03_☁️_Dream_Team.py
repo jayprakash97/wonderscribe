@@ -125,32 +125,18 @@ members = [
         "email": "jprakash@berkeley.edu",
     },
     {
-        "name": "Jailynne Estevez",
+        "name": "Sriram  Hariharan",
         "role": "Program Management, UI/UX Design, Presentation Development",
         "bio": "Jailynne brings creativity and precision to WonderScribe, playing a key role in crafting a user-friendly and engaging platform for children and parents. She has helped design an intuitive interface that ensures a seamless storytelling experience while also leading the development of presentations, scripts, and pitches to effectively showcase the project’s value. Jailynne’s efforts extend beyond design and communication, as she actively collaborates with the team to bridge technical development with user needs. Her dedication to WonderScribe’s mission has been pivotal in creating a platform that fosters creativity, learning, and imagination for all.",
         "image": "pages/images/JEN.jpeg",
         "email": "jestevez@berkeley.edu",
     },
     {
-        "name": "Mian Haseeb",
+        "name": "Jude Francis",
         "role": "ML Engineering, GenAI",
         "bio": "Mian is the visionary behind WonderScribe, originally conceiving the idea to revolutionize storytelling through the power of Generative AI. Mian is one of the machine learning engineers for WonderScribe, driving the integration of cutting-edge generative AI models. From fine-tuning the RAG framework to deploying advanced text and image generation models, Mian’s work ensures that WonderScribe delivers creative, engaging, and contextually relevant stories. His passion for AI innovation and storytelling shines through in every technical detail.",
         "image": "pages/images/MianHaseeb.jpg",
         "email": "mianh1@berkeley.edu",
-    },
-    {
-        "name": "Natsnet Demoz",
-        "role": "Data & Analytics, UI/UX Design, Model Development",
-        "bio": "Natsnet’s dual focus on data exploration and design brings WonderScribe’s creative vision to life. She leads exploratory data analysis, ensuring the platform leverages child-friendly and culturally diverse datasets. Additionally, her contributions to user interface design make WonderScribe an intuitive and engaging platform for children and parents alike. Her ability to merge data insights with user-centric design is a key driver of the project’s success.",
-        "image": "pages/images/Natsnet Demoz.jpg",
-        "email": "ndemoz@berkeley.edu",
-    },
-    {
-        "name": "Wilford Bradford",
-        "role": "SME, Model Development",
-        "bio": "Wil lends his expertise as a subject matter expert to refine WonderScribe’s storytelling framework. His work focuses on aligning the platform’s AI capabilities with user expectations, ensuring every story element resonates with children and their imaginations. Wil also collaborates on model development, emphasizing inclusivity and quality across WonderScribe’s texts and images",
-        "image": "pages/images/WilfordBradford.jfif",
-        "email": "wbradford@berkeley.edu",
     },
 ]
 
