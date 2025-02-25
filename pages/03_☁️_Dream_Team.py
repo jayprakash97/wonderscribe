@@ -119,23 +119,23 @@ st.markdown(
 members = [
     {
         "name": "Jay Prakash",
-        "role": "Product Management and GenAI Solutions Architect",
+        "role": "Technical Product Manager and GenAI Solutions Architect, Data & Insights",
         "bio": "Jay Prakash is a visionary leader at WonderScribe, combining expertise in product management and Generative AI solutions to drive the platform's innovative capabilities. He architects and optimizes WonderScribe’s AWS infrastructure, seamlessly integrating technologies such as API Gateway, Lambda, and Bedrock to deliver exceptional storytelling experiences. With a strong focus on scalability, security, and efficiency, Jay ensures the platform’s foundation supports its mission to inspire creativity and enhance digital literacy. His technical acumen and strategic insights play a pivotal role in shaping WonderScribe’s success.",
         "image": "pages/images/Jay_Headshots2.jpg",
-        "email": "jprakash@berkeley.edu",
+        "email": "jprakas5@its.jnj.com",
     },
     {
         "name": "Sriram  Hariharan",
-        "role": "Program Management, UI/UX Design, Presentation Development",
-        "bio": "Jailynne brings creativity and precision to WonderScribe, playing a key role in crafting a user-friendly and engaging platform for children and parents. She has helped design an intuitive interface that ensures a seamless storytelling experience while also leading the development of presentations, scripts, and pitches to effectively showcase the project’s value. Jailynne’s efforts extend beyond design and communication, as she actively collaborates with the team to bridge technical development with user needs. Her dedication to WonderScribe’s mission has been pivotal in creating a platform that fosters creativity, learning, and imagination for all.",
-        "image": "pages/images/JEN.jpeg",
+        "role": Sr. Product Manager, Data & Insights ",
+        # "bio": "Jailynne brings creativity and precision to WonderScribe, playing a key role in crafting a user-friendly and engaging platform for children and parents. She has helped design an intuitive interface that ensures a seamless storytelling experience while also leading the development of presentations, scripts, and pitches to effectively showcase the project’s value. Jailynne’s efforts extend beyond design and communication, as she actively collaborates with the team to bridge technical development with user needs. Her dedication to WonderScribe’s mission has been pivotal in creating a platform that fosters creativity, learning, and imagination for all.",
+        # "image": "pages/images/JEN.jpeg",
         "email": "jestevez@berkeley.edu",
     },
     {
         "name": "Jude Francis",
-        "role": "ML Engineering, GenAI",
-        "bio": "Mian is the visionary behind WonderScribe, originally conceiving the idea to revolutionize storytelling through the power of Generative AI. Mian is one of the machine learning engineers for WonderScribe, driving the integration of cutting-edge generative AI models. From fine-tuning the RAG framework to deploying advanced text and image generation models, Mian’s work ensures that WonderScribe delivers creative, engaging, and contextually relevant stories. His passion for AI innovation and storytelling shines through in every technical detail.",
-        "image": "pages/images/MianHaseeb.jpg",
+        "role": "Product Director, Data & Insights",
+        # "bio": "Mian is the visionary behind WonderScribe, originally conceiving the idea to revolutionize storytelling through the power of Generative AI. Mian is one of the machine learning engineers for WonderScribe, driving the integration of cutting-edge generative AI models. From fine-tuning the RAG framework to deploying advanced text and image generation models, Mian’s work ensures that WonderScribe delivers creative, engaging, and contextually relevant stories. His passion for AI innovation and storytelling shines through in every technical detail.",
+        # "image": "pages/images/MianHaseeb.jpg",
         "email": "mianh1@berkeley.edu",
     },
 ]
