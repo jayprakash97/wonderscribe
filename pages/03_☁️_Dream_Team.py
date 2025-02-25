@@ -126,7 +126,7 @@ members = [
     },
     {
         "name": "Sriram  Hariharan",
-        "role": Sr. Product Manager, Data & Insights ",
+        "role": "Sr. Product Manager, Data & Insights ",
         # "bio": "Jailynne brings creativity and precision to WonderScribe, playing a key role in crafting a user-friendly and engaging platform for children and parents. She has helped design an intuitive interface that ensures a seamless storytelling experience while also leading the development of presentations, scripts, and pitches to effectively showcase the project’s value. Jailynne’s efforts extend beyond design and communication, as she actively collaborates with the team to bridge technical development with user needs. Her dedication to WonderScribe’s mission has been pivotal in creating a platform that fosters creativity, learning, and imagination for all.",
         # "image": "pages/images/JEN.jpeg",
         "email": "jestevez@berkeley.edu",
