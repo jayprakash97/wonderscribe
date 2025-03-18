@@ -122,7 +122,7 @@ members = [
         "role": "Technical Product Manager and GenAI Solutions Architect, Data & Insights",
         "bio": "Jay Prakash is a visionary leader at WonderScribe, combining expertise in product management and Generative AI solutions to drive the platform's innovative capabilities. He architects and optimizes WonderScribe’s AWS infrastructure, seamlessly integrating technologies such as API Gateway, Lambda, and Bedrock to deliver exceptional storytelling experiences. With a strong focus on scalability, security, and efficiency, Jay ensures the platform’s foundation supports its mission to inspire creativity and enhance digital literacy. His technical acumen and strategic insights play a pivotal role in shaping WonderScribe’s success.",
         "image": "pages/images/Jay_Headshots2.jpg",
-        "email": "jprakash@berkeley.edu", "jprakas5@its.jnj.com",
+        "email": "jprakash@berkeley.edu", "jprakas5@its.jnj.com"
     }
     # {
     #     "name": "Sriram  Hariharan",
