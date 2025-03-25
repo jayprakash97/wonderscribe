@@ -277,7 +277,7 @@ def main():
         audience = st.selectbox("Who will be the target audience for your story?", ["Children", "toddler", "Young Adult", "Adult", "Senior"])
         story_setting = st.selectbox("What will the story's setting be to shape its tone and character interactions?", options=["Magical Kingdoms", "Underwater Kingdoms", "Pirate Ships", "Fairy Tale Lands", "Forests and Jungles", "Modern Cities","Mountains and Caves", "Haunted Houses", "Imaginary Worlds", "Theme Parks or Circuses", "Extraterrestrial/Space"])
         story_type = st.selectbox("Story Type", options=["Fantasy", "Fairy Tales", "Mythology", "Bedtime stories", "Adventure", "Mystery", "Love", "Horror"])
-        story_lang = st.selectbox("What language would you like your story to be written in?", options=["English", "Spanish", "French", "German", "Mandarin", "Hindi", "Urdu", "Arabic", "Italian", "Vietnamese","Tagalog"])
+        story_lang = st.selectbox("What language would you like your story to be written in?", options=["English", "Spanish", "French", "German", "Mandarin", "Hindi", "Urdu", "Arabic", "Italian", "Vietnamese","Tagalog", "Tamil"])
         character_type = st.selectbox("What will be the 'Character Type Genre' in your story?",options=["Human-Centric Stories", "Animal-Centric Stories", "Plant-Based Stories", " Object-Centric Stories","Non-Living Entity Stories"])
         main_character = st.text_input("What will be the name of the main Character in your story?", placeholder="Who will be the star in your story?")
         gender = st.selectbox("What gender will the main character in your story be?", ["Female", "Male", "Non Binary", "Don't want to share"])
