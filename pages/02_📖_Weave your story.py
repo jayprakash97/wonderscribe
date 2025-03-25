@@ -386,68 +386,68 @@ def main():
                 
                 # Reset the cache_cleared flag. Don't clear the cache
             st.session_state.cache_cleared = False
-            story_pages = []
-            for i in range(len(story_texts)):
-               story_pages.append({
-               "text": story_texts[i],
-               "image": decoded_images[i] if i < len(decoded_images) else None,
-               "caption": captions[i] if i < len(captions) else "",
-               "audio": audioStoryFiles[i] if i < len(audioStoryFiles) else None
-               })
+            # story_pages = []
+            # for i in range(len(story_texts)):
+            #    story_pages.append({
+            #    "text": story_texts[i],
+            #    "image": decoded_images[i] if i < len(decoded_images) else None,
+            #    "caption": captions[i] if i < len(captions) else "",
+            #    "audio": audioStoryFiles[i] if i < len(audioStoryFiles) else None
+            #    })
  
-            # story_pages = [
-            #     {
-            #         "text": story_texts[0],
-            #         #"image": "img1.png",
-            #         "image": decoded_images[0],
-            #         "caption": captions[0],
-            #         "audio": audioStoryFiles[0]
-            #     },
-            #     {
-            #         "text": story_texts[1],
-            #         #"image": "img2.png",
-            #         "image": decoded_images[1],
-            #         "caption": captions[1],
-            #         "audio": audioStoryFiles[1]
-                # },
-                # {
-                #     "text": story_texts[2],
-                #     #"image": "img3.png",
-                #     "image": decoded_images[2],
-                #     "caption": captions[2],
-                #     "audio": audioStoryFiles[2]
-                # },
-                # {
-                #     "text": story_texts[3],
+            story_pages = [
+                {
+                    "text": story_texts[0],
+                    #"image": "img1.png",
+                    "image": decoded_images[0],
+                    "caption": captions[0],
+                    "audio": audioStoryFiles[0]
+                },
+                {
+                    "text": story_texts[1],
+                    #"image": "img2.png",
+                    "image": decoded_images[1],
+                    "caption": captions[1],
+                    "audio": audioStoryFiles[1]
+                },
+                {
+                    "text": story_texts[2],
+                    #"image": "img3.png",
+                    "image": decoded_images[2],
+                    "caption": captions[2],
+                    "audio": audioStoryFiles[2]
+                },
+                {
+                    "text": story_texts[3],
+                    #"image": "img4.png",
+                    "image": decoded_images[3],
+                    "caption": captions[3],
+                    "audio": audioStoryFiles[3]
+                },
+                {
+                    "text": story_texts[4],
+                    #"image": "img4.png",
+                    "image": decoded_images[4],
+                    "caption": captions[4],
+                    "audio": audioStoryFiles[4]
+                },
+                {
+                    "text": story_texts[5],
+                    #"image": "img4.png",
+                    "image": decoded_images[5],
+                    "caption": captions[5],
+                    "audio": audioStoryFiles[5]
+                },
+                {
+                    "text": story_texts[6],
                 #     #"image": "img4.png",
-                #     "image": decoded_images[3],
-                #     "caption": captions[3],
-                #     "audio": audioStoryFiles[3]
-                # },
-                # {
-                #     "text": story_texts[4],
-                #     #"image": "img4.png",
-                #     "image": decoded_images[4],
-                #     "caption": captions[4],
-                #     "audio": audioStoryFiles[4]
-                # },
-                # {
-                #     "text": story_texts[5],
-                #     #"image": "img4.png",
-                #     "image": decoded_images[5],
-                #     "caption": captions[5],
-                #     "audio": audioStoryFiles[5]
-                # },
-                # {
-                #     "text": story_texts[6],
-            #     #     #"image": "img4.png",
-            #         "image": decoded_images[6],
-            #         "caption": captions[6],
-            #         "audio": audioStoryFiles[6]
-            #     }
-            # ]
-            # */
-            # st.write('line 457')
+                    "image": decoded_images[6],
+                    "caption": captions[6],
+                    "audio": audioStoryFiles[6]
+                }
+            ]
+            
+            st.write('line 457')
             #st.markdown(story_pages[0]["image"])
             # Initialize session state for the current story page index
             if 'page_index' not in st.session_state:
