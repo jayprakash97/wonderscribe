@@ -285,7 +285,7 @@ def main():
         height = st.selectbox("What will be the height and build of the main character in your story", options=["tall and fit", "tall and slim", "tall and muscular", "short and slim", "short and muscular", "normal", "average build", "stocky"])
         hair_color = st.selectbox("What will be the hair color of the main character in your story", options= ["black","brown", "blonde", "golden","red","gray", "white"])
         eye_color = st.selectbox("What color will the main character's eyes be?", options=["brown", "blue", "green", "hazel", "gray", "amber"]) 
-        story_length = st.selectbox("Story Length (in words)", options=["300", "400", "500","700"])
+        story_length = st.selectbox("Story Length (in words)", options=["300", "400", "500","700", "1500","2000"])
        
         submit_btn = st.form_submit_button("submit")
 
