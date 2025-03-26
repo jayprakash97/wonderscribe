@@ -386,66 +386,81 @@ def main():
                 
                 # Reset the cache_cleared flag. Don't clear the cache
             st.session_state.cache_cleared = False
-            # story_pages = []
-            # for i in range(len(story_texts)):
-            #    story_pages.append({
-            #    "text": story_texts[i],
-            #    "image": decoded_images[i] if i < len(decoded_images) else None,
-            #    "caption": captions[i] if i < len(captions) else "",
-            #    "audio": audioStoryFiles[i] if i < len(audioStoryFiles) else None
-            #    })
+            expected_parts = 7
+            story_pages = []
+            total_pages = min(len(story_texts), len(decoded_images), len(captions), len(audioStoryFiles))
+
+            if total_pages < expected_parts:
+                st.error(f"Oops! Only {total_pages} out of {expected_parts} story parts received. Please try again or modify your input.")
+                print("Incomplete story data:", {
+                    "story_texts": len(story_texts),
+                    "decoded_images": len(decoded_images),
+                    "captions": len(captions),
+                    "audio_files": len(audioStoryFiles)
+                })
+
+            for i in range(total_pages):
+                story_pages.append({
+                    "text": story_texts[i],
+                    "image": decoded_images[i],
+                    "caption": captions[i],
+                    "audio": audioStoryFiles[i]
+                })
+
+            # if total_pages < expected_parts:
+            #     st.info(f"Showing {total_pages} story pages out of the expected 7.")
  
-            story_pages = [
-                {
-                    "text": story_texts[0],
-                    #"image": "img1.png",
-                    "image": decoded_images[0],
-                    "caption": captions[0],
-                    "audio": audioStoryFiles[0]
-                },
-                {
-                    "text": story_texts[1],
-                    #"image": "img2.png",
-                    "image": decoded_images[1],
-                    "caption": captions[1],
-                    "audio": audioStoryFiles[1]
-                },
-                {
-                    "text": story_texts[2],
-                    #"image": "img3.png",
-                    "image": decoded_images[2],
-                    "caption": captions[2],
-                    "audio": audioStoryFiles[2]
-                },
-                {
-                    "text": story_texts[3],
-                    #"image": "img4.png",
-                    "image": decoded_images[3],
-                    "caption": captions[3],
-                    "audio": audioStoryFiles[3]
-                },
-                {
-                    "text": story_texts[4],
-                    #"image": "img4.png",
-                    "image": decoded_images[4],
-                    "caption": captions[4],
-                    "audio": audioStoryFiles[4]
-                },
-                {
-                    "text": story_texts[5],
-                    #"image": "img4.png",
-                    "image": decoded_images[5],
-                    "caption": captions[5],
-                    "audio": audioStoryFiles[5]
-                },
-                {
-                    "text": story_texts[6],
-                #     #"image": "img4.png",
-                    "image": decoded_images[6],
-                    "caption": captions[6],
-                    "audio": audioStoryFiles[6]
-                }
-            ]
+            # story_pages = [
+            #     {
+            #         "text": story_texts[0],
+            #         #"image": "img1.png",
+            #         "image": decoded_images[0],
+            #         "caption": captions[0],
+            #         "audio": audioStoryFiles[0]
+            #     },
+            #     {
+            #         "text": story_texts[1],
+            #         #"image": "img2.png",
+            #         "image": decoded_images[1],
+            #         "caption": captions[1],
+            #         "audio": audioStoryFiles[1]
+            #     },
+            #     {
+            #         "text": story_texts[2],
+            #         #"image": "img3.png",
+            #         "image": decoded_images[2],
+            #         "caption": captions[2],
+            #         "audio": audioStoryFiles[2]
+            #     },
+            #     {
+            #         "text": story_texts[3],
+            #         #"image": "img4.png",
+            #         "image": decoded_images[3],
+            #         "caption": captions[3],
+            #         "audio": audioStoryFiles[3]
+            #     },
+            #     {
+            #         "text": story_texts[4],
+            #         #"image": "img4.png",
+            #         "image": decoded_images[4],
+            #         "caption": captions[4],
+            #         "audio": audioStoryFiles[4]
+            #     },
+            #     {
+            #         "text": story_texts[5],
+            #         #"image": "img4.png",
+            #         "image": decoded_images[5],
+            #         "caption": captions[5],
+            #         "audio": audioStoryFiles[5]
+            #     },
+            #     {
+            #         "text": story_texts[6],
+            #     #     #"image": "img4.png",
+            #         "image": decoded_images[6],
+            #         "caption": captions[6],
+            #         "audio": audioStoryFiles[6]
+            #     }
+            # ]
             
             st.write('line 457')
             #st.markdown(story_pages[0]["image"])
