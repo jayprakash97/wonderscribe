@@ -271,9 +271,9 @@ def main():
     #=================
     # st.write('line 308')
     with st.form("form_key"):
-        audio_value = st.audio_input("What is ARC application")
         st.write("Craft personalized stories that bring adventure to life and ignite imagination and creativity.")
         story_theme = st.text_input("Please provide a detailed description of the topic that will be used to create your story. It should be at least 10 characters long and have more than two words.?", placeholder="Enter brief idea of a story. 'Example - Friendship between two girls' ")
+        audio_value = st.audio_input("What is story theme")
         moral_lesson = st.text_input("What moral lesson would you like your story to focus on?", placeholder="Enter a moral lesson from this story. 'Example - build trust and support each other' ")
         audience = st.selectbox("Who will be the target audience for your story?", ["Children", "toddler", "Young Adult", "Adult", "Senior"])
         story_setting = st.selectbox("What will the story's setting be to shape its tone and character interactions?", options=["Magical Kingdoms", "Underwater Kingdoms", "Pirate Ships", "Fairy Tale Lands", "Forests and Jungles", "Modern Cities","Mountains and Caves", "Haunted Houses", "Imaginary Worlds", "Theme Parks or Circuses", "Extraterrestrial/Space"])
