@@ -271,6 +271,7 @@ def main():
     #=================
     # st.write('line 308')
     with st.form("form_key"):
+        audio_value = st.audio_input("What is ARC application")
         st.write("Craft personalized stories that bring adventure to life and ignite imagination and creativity.")
         story_theme = st.text_input("Please provide a detailed description of the topic that will be used to create your story. It should be at least 10 characters long and have more than two words.?", placeholder="Enter brief idea of a story. 'Example - Friendship between two girls' ")
         moral_lesson = st.text_input("What moral lesson would you like your story to focus on?", placeholder="Enter a moral lesson from this story. 'Example - build trust and support each other' ")
