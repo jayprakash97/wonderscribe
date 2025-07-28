@@ -1,14 +1,11 @@
 import streamlit as st
-from PIL import Image
 import requests
 import json
 import base64
-from io import BytesIO
-import boto3
-from botocore.exceptions import NoCredentialsError, ClientError
+from datetime import datetime
 
 # Set the page configuration
-st.set_page_config(page_title="Interactive Storybook", page_icon="📖", layout="wide")
+st.set_page_config(page_title="ETLP Chat AI", page_icon="🤖", layout="wide")
 
 # Background image URL
 background_image_url = "https://raw.githubusercontent.com/Natsnet/WS_Back_img/main/WonderScribe_bk_blue_page_1.jpg"
@@ -21,7 +18,7 @@ background_css = f"""
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-color: #f0f4ff; /* Solid fallback color */
+    background-color: #f0f4ff;
 }}
 
 .custom-box {{
@@ -35,26 +32,51 @@ background_css = f"""
     color: #5481c4;
     line-height: 1.6;
 }}
-.custom-box h3 {{
-    text-align: center;
-    margin-top: 20px;
+
+.chat-container {{
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
 }}
-.custom-box ul {{
-    padding-left: 20px;
+
+.user-message {{
+    background-color: #e3f2fd;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
+    border-left: 4px solid #2196f3;
+}}
+
+.bot-message {{
+    background-color: #f1f8e9;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px 0;
+    border-left: 4px solid #4caf50;
+}}
+
+.timestamp {{
+    font-size: 0.8em;
+    color: #666;
+    text-align: right;
 }}
 
 /* Sidebar customization */
 [data-testid="stSidebar"] {{
-    background-color: #f0f4ff; /* Light blue solid color */
-    color: #5481c4; /* Match the main page color */
+    background-color: #f0f4ff;
+    color: #5481c4;
     font-family: Arial, sans-serif;
-    font-size: 18px; /* Adjust font size */
+    font-size: 18px;
 }}
 [data-testid="stSidebar"] * {{
-    color: #5481c4; /* Sidebar text color */
+    color: #5481c4;
 }}
 [data-testid="stSidebar"] .stMarkdown {{
-    text-align: center; /* Center text inside sidebar */
+    text-align: center;
 }}
 </style>
 """
@@ -73,12 +95,12 @@ def add_logo_to_sidebar_top(logo_path, width="250px"):
                 content: '';
                 display: block;
                 background-image: url("data:image/png;base64,{encoded_logo}");
-                background-size: contain; /* Ensure the logo scales proportionally */
+                background-size: contain;
                 background-repeat: no-repeat;
                 background-position: top center;
-                height: 250px; /* Increase height to fit the full logo */
-                padding-top: 20px; /* Add space above the logo */
-                margin-bottom: 20px; /* Add space below the logo */
+                height: 250px;
+                padding-top: 20px;
+                margin-bottom: 20px;
             }}
         </style>
         """,
@@ -88,434 +110,216 @@ def add_logo_to_sidebar_top(logo_path, width="250px"):
 # Add the WonderScribe logo to the top of the sidebar
 add_logo_to_sidebar_top("pages/images/Updated_WonderS_logo.png", width="250px")
 
-# ============
-# S3 Client setup
-s3client = boto3.client("s3")
-
-# Decode base64 image
-def image_decode(image_data_decode):
-    image_data = base64.b64decode(image_data_decode)
-    return Image.open(BytesIO(image_data))
-
-def encode_image_to_base64(image_path):
+def query_knowledge_base(user_question):
+# Function to query the knowledge base using existing lambda infrastructure
+    """
+    Use existing getStory endpoint to query knowledge base - no lambda changes needed!
+    """
     try:
-        with open(image_path, "rb") as image_file:
-            # Read the binary data and encode to base64
-            encoded_string = base64.b64encode(image_file.read())
+        AWS_API_URL = "https://wacnqhon34.execute-api.us-east-1.amazonaws.com/dev/"
+        headers = {"Content-Type": "application/json"}
         
-            #convert bytes to string for easier handling
-            return encoded_string.decode('utf-8')
+        # Use the existing getStory endpoint but with Q&A focused parameters
+        payload = {
+            "character_type": "Human-Centric Stories",
+            "age": "25",
+            "height": "normal",
+            "hair_color": "brown",
+            "eye_color": "brown",
+            "audience": "Adult",
+            "story_type": "informational",
+            "main_character": "Assistant",
+            "story_theme": user_question,  # This becomes the knowledge base query
+            "moral_lesson": "provide accurate information",
+            "setting": "question and answer context",
+            "word_count": "300",
+            "story_lang": "English",
+            "api_Path": "getStory"
+        }
         
-    except exception as e:
-        print(f"Error encoding image: {e}")
-        return None
-        
-
-# Fetch story data
-@st.cache_data
-def fetch_story_data(payload, _force_refresh=False):
-    if _force_refresh:
-        st.cache_data.clear()
-    AWS_API_URL = "https://wacnqhon34.execute-api.us-east-1.amazonaws.com/dev/"
-    headers = {"Content-Type": "application/json"}
-
-    response = requests.post(AWS_API_URL, headers=headers, json=payload)
-    if response.status_code == 200:
-        data = response.json()
-        return data["story_texts"], data["captions"], data["storyfiles"]
-    return [], [], []
-
-# Fetch and decode images
-@st.cache_data
-def fetch_and_decode_images(payload, captions, _force_refresh=False):
-    if _force_refresh:
-        st.cache_data.clear()
-    AWS_API_URL = "https://wacnqhon34.execute-api.us-east-1.amazonaws.com/dev/"
-    headers = {"Content-Type": "application/json"}
-    decoded_images = []
-    
-    for index, caption in enumerate(captions):
-        if index == 0:
-            payload2 = {
-                "payload": payload, 
-                "api_Path": "getImage",
-                "storyPrompt": caption,
-                "previousPrompt": ''
-            }
-        else:
-            payload2 = {
-                "payload": payload, 
-                "api_Path": "getImage",
-                "storyPrompt": caption,
-                "previousPrompt": captions[index - 1]     
-            }
-            
-        json_data = payload2            
-        response = requests.post(AWS_API_URL, headers=headers, json=json_data)
+        response = requests.post(AWS_API_URL, headers=headers, json=payload)
         
         if response.status_code == 200:
             data = response.json()
-
-            # st.write('line 196')
-            if data["image_data_decode1"] == "INVALID_PROMPT":
-                invalid_image = "pages/images/pic_next_page.png"
-                decoded_images.append(encode_image_to_base64(invalid_image))
-                # st.write('line 200')
+            story_texts = data.get("story_texts", [])
+            
+            if story_texts:
+                # Combine all story parts and clean up for chatbot response
+                full_response = " ".join(story_texts)
+                
+                # Clean up the response to be more chatbot-like
+                cleaned_response = clean_story_response(full_response, user_question)
+                return cleaned_response
             else:
-                # st.write('line 202')
-                decoded_images.append(data["image_data_decode1"])
-    return decoded_images
-
-# Main app
-def main():
-
-    st.markdown("<h1 style='text-align: center; color: #5481c4;'>Welcome to ETLP Chat</h1>", unsafe_allow_html=True)
-    # st.title("📖 Welcome to WonderScribe!")
-    # st.write("Craft personalized stories that bring adventure to life.")
-    
-    if 'cache_cleared' not in st.session_state:
-        st.session_state.cache_cleared = False
-
-    #=================
-    # Set the page configuration with a wide layout for a book-like feel
-    # Add custom CSS for the storybook theme
-    
-    st.markdown("""
-    <style>
-        /* Overall background styling */
-        # body {
-        #     #background-color: #f5f0e1;
-        #     font-family: 'Merriweather', serif;
-        #     #color: #4e342e;
-        #     [data-testid="stAppViewContainer"] {
-        #     background: linear-gradient(135deg,#8c52ff, #5ce1e6);
-        #     background-attachment: fixed;
-        #     # background-color: #7dd8ff;  /* #c0dc8f Light gray-green #d2e7ae; Purple=#8c52ff, #5f20eb*/
-        # }
-
- 
-        # /* Sidebar styling to resemble a table of contents */
-        # .css-1d391kg {
-        #     #background-color: #e8e0d2 !important;
-        #     background-color: #7dd8ff; /*#7dd8ff; Sidebar background color */
-        #     #background-color: #7dd8ff !important;
-        #     border-right: 2px solid #bfa989;
-        # }
- 
-        /* Sidebar Title */
-        .css-1544g2n {
-            color: #4e342e !important;
-            font-size: 1.5em;
-            font-family: 'Merriweather', serif;
-            font-weight: bold;
-        }
- 
-        /* Menu buttons in the sidebar */
-        .css-1vbd788 {
-            background-color: #d4c1a7;
-            border-radius: 10px;
-            border: 2px solid #bfa989;
-            padding: 10px;
-            font-size: 1.2em;
-            color: #4e342e !important;
-            margin-bottom: 15px;
-        }
- 
-        .css-1vbd788:hover {
-            background-color: #e0d3b8;
-            color: #4e342e !important;
-        }
- 
-        /* Main content area - text background with borders */
-        .storybook-text {
-            background-color: #faf3e7;
-            padding: 30px;
-            border-radius: 15px;
-            border: 3px solid #bfa989;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-            font-family: 'Merriweather', serif;
-            font-size: 18px;
-            line-height: 1.6;
-            text-align: justify;
-        }
- 
-        /* Image styling */
-        .storybook-image {
-            border-radius: 15px;
-            border: 3px solid #bfa989;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
-            max-width: 100%;
-            height: auto;
-        }
- 
-        /* Styling for the page navigation buttons */
-        .stButton > button {
-            background-color: #d4c1a7;
-            color: #4e342e;
-            border: 2px solid #bfa989;
-            border-radius: 8px;
-            padding: 10px 20px;
-            font-size: 1.2em;
-        }
- 
-        .stButton > button:hover {
-            background-color: #e0d3b8;
-            color: #4e342e;
-        }
-    </style>
-    """, unsafe_allow_html=True)
-
-    if 'validation_errors' not in st.session_state:
-        st.session_state.validation_errors = []
-
-    #=================
-    # st.write('line 308')
-    with st.form("form_key"):
-        st.write("How may I help? Please ask your question.")
-        # story_theme = st.text_input("Please provide a detailed description of the topic that will be used to create your story. It should be at least 10 characters long and have more than two words.?", placeholder="Enter brief idea of a story. 'Example - Friendship between two girls' ")
-        # audio_value = st.audio_input("What is story theme")
-        # # moral_lesson = st.text_input("What moral lesson would you like your story to focus on?", placeholder="Enter a moral lesson from this story. 'Example - build trust and support each other' ")
-        # audience = st.selectbox("Who will be the target audience for your story?", ["Children", "toddler", "Young Adult", "Adult", "Senior"])
-        # story_setting = st.selectbox("What will the story's setting be to shape its tone and character interactions?", options=["Magical Kingdoms", "Underwater Kingdoms", "Pirate Ships", "Fairy Tale Lands", "Forests and Jungles", "Modern Cities","Mountains and Caves", "Haunted Houses", "Imaginary Worlds", "Theme Parks or Circuses", "Extraterrestrial/Space"])
-        # story_type = st.selectbox("Story Type", options=["Fantasy", "Fairy Tales", "Mythology", "Bedtime stories", "Adventure", "Mystery", "Love", "Horror"])
-        # story_lang = st.selectbox("What language would you like your story to be written in?", options=["English", "Spanish", "French", "German", "Mandarin", "Hindi", "Urdu", "Arabic", "Italian", "Vietnamese","Tagalog", "Tamil", "Bengali"])
-        # character_type = st.selectbox("What will be the 'Character Type Genre' in your story?",options=["Human-Centric Stories", "Animal-Centric Stories", "Plant-Based Stories", " Object-Centric Stories","Non-Living Entity Stories"])
-        # main_character = st.text_input("What will be the name of the main Character in your story?", placeholder="Who will be the star in your story?")
-        # gender = st.selectbox("What gender will the main character in your story be?", ["Female", "Male", "Non Binary", "Don't want to share"])
-        # age = st.text_input("How old will the main character be in your story?", placeholder="Please enter the age of main character in numbers.")
-        # height = st.selectbox("What will be the height and build of the main character in your story", options=["tall and fit", "tall and slim", "tall and muscular", "short and slim", "short and muscular", "normal", "average build", "stocky"])
-        # hair_color = st.selectbox("What will be the hair color of the main character in your story", options= ["black","brown", "blonde", "golden","red","gray", "white"])
-        # eye_color = st.selectbox("What color will the main character's eyes be?", options=["brown", "blue", "green", "hazel", "gray", "amber"]) 
-        # story_length = st.selectbox("Story Length (in words)", options=["300", "400", "500","700", "1500","2000"])
-       
-        submit_btn = st.form_submit_button("submit")
-
-        # outfit = st.text_input("outfit of the main character", placeholder="outfit of the star of your story?")
-        # ethnicity = st.text_input("ethnicity of the main character", placeholder="Ethnicity of the star of your story?")
- 
-
-        # ============
-
-    try:
-        if submit_btn:
-            # Clear previous validation errors
-            st.session_state.validation_errors = []
-        
-            # Validate main character
-            if not main_character or len(main_character.strip()) < 2:
-                st.session_state.validation_errors.append("Main character name must be at least two characters long")
-            elif not main_character.replace(" ", "").isalpha():
-                st.session_state.validation_errors.append("Main character name should only contain letters")
-
-            # Validate story theme
-            if not story_theme or len(story_theme.strip()) < 10:
-                st.session_state.validation_errors.append("Story theme must be at least 10 characters long.")
-            elif len(story_theme.split()) < 2:
-                st.session_state.validation_errors.append("Story theme should contain at least two words.")
-
-            # Validate moral lesson
-            if not moral_lesson or len(moral_lesson.strip()) < 10:
-                st.session_state.validation_errors.append("Moral lesson must be at least 10 characters long.")
-            elif len(moral_lesson.split()) < 2:
-                st.session_state.validation_errors.append("Moral lesson should contain at least two words.")
-
-            # Display all validation errors if any
-    
-            if st.session_state.validation_errors:
-                error_message = "Please fix the following errors:\n" + "\n".join(f".{error}" for error in st.session_state.validation_errors)
-                st.error(error_message)
-                st.stop() # Stop further execution if there are validation errors
-
-            # if no validation errors, proceed with form submission
-            st.session_state.submit_btn = True
+                return "Sorry, I couldn't find relevant information to answer your question."
+        else:
+            return f"I'm having trouble accessing the information right now. Please try again later. (Status: {response.status_code})"
             
-        menu_options = ["About", "Storybook"]
-        st.session_state.current_page = "Storybook"
-        # st.write('line 361')
-
-        if submit_btn:
-            st.cache_data.clear()
-            st.session_state.cache_cleared = True
-            st.success("Cache has been cleared! Refresh the page to fetch new data.")
-            st.session_state.submit_btn = True
-            st.session_state.page_index = 0
-            # st.write('line 369')
-            
-        if st.session_state.submit_btn and st.session_state.current_page == "Storybook":
-            # Create payload
-            payload = {
-                "character_type": character_type,
-                "age": age,
-                "height": height,
-                "hair_color": hair_color,
-                "eye_color": eye_color,
-                "audience": audience,
-                "story_type": story_type,
-                "main_character": main_character,
-                "story_theme": story_theme,
-                "moral_lesson": moral_lesson,
-                "setting": story_setting,
-                "word_count": story_length,
-                "story_lang": story_lang,
-                "api_Path": "getStory"
-                }
-
-            # Fetch data
-            story_texts, captions, storyfiles = fetch_story_data(payload)
-            # st.write('line 389')
-            decoded_images = fetch_and_decode_images(payload, captions)
-
-            # ========
-            # character_prompt = f""" {character_type} character_type {main_character} whoes gender is {gender}, age is {age}, height is {height}, hair color is {hair_color}, eye color is {eye_color}"""
-            # #story_text = [story_text + character_prompt for story_text in story_texts]
-            # st.write('character_prompt', character_prompt)
-            # caption_with_character_feature = [caption_with_character_feature + character_prompt for caption_with_character_apprearance in captions]
-            # st.write("caption_with_character_feature", {caption_with_character_feature})
-            # #decoded_images = fetch_and_decode_images(story_text)
-            # # decoded_images = fetch_and_decode_images(captions)
-         
-            # ==========
-
-            audioStoryFiles = []
-            for storyFile in storyfiles:
-                # st.write('line 395')
-                output = s3client.generate_presigned_url('get_object',
-                                                    Params={'Bucket': 'wonderstorytexttoaudiofile',
-                                                            'Key': storyFile},
-                                                    ExpiresIn=3600)
-                audioStoryFiles.append(output)
-                
-                # Reset the cache_cleared flag. Don't clear the cache
-            st.session_state.cache_cleared = False
-            expected_parts = 7
-            story_pages = []
-            total_pages = min(len(story_texts), len(decoded_images), len(captions), len(audioStoryFiles))
-
-            if total_pages < expected_parts:
-                st.error(f"Oops! Only {total_pages} out of {expected_parts} story parts received. Please try again or modify your input.")
-                print("Incomplete story data:", {
-                    "story_texts": len(story_texts),
-                    "decoded_images": len(decoded_images),
-                    "captions": len(captions),
-                    "audio_files": len(audioStoryFiles)
-                })
-
-            for i in range(total_pages):
-                story_pages.append({
-                    "text": story_texts[i],
-                    "image": decoded_images[i],
-                    "caption": captions[i],
-                    "audio": audioStoryFiles[i]
-                })
-
-            # if total_pages < expected_parts:
-            #     st.info(f"Showing {total_pages} story pages out of the expected 7.")
- 
-            # story_pages = [
-            #     {
-            #         "text": story_texts[0],
-            #         #"image": "img1.png",
-            #         "image": decoded_images[0],
-            #         "caption": captions[0],
-            #         "audio": audioStoryFiles[0]
-            #     },
-            #     {
-            #         "text": story_texts[1],
-            #         #"image": "img2.png",
-            #         "image": decoded_images[1],
-            #         "caption": captions[1],
-            #         "audio": audioStoryFiles[1]
-            #     },
-            #     {
-            #         "text": story_texts[2],
-            #         #"image": "img3.png",
-            #         "image": decoded_images[2],
-            #         "caption": captions[2],
-            #         "audio": audioStoryFiles[2]
-            #     },
-            #     {
-            #         "text": story_texts[3],
-            #         #"image": "img4.png",
-            #         "image": decoded_images[3],
-            #         "caption": captions[3],
-            #         "audio": audioStoryFiles[3]
-            #     },
-            #     {
-            #         "text": story_texts[4],
-            #         #"image": "img4.png",
-            #         "image": decoded_images[4],
-            #         "caption": captions[4],
-            #         "audio": audioStoryFiles[4]
-            #     },
-            #     {
-            #         "text": story_texts[5],
-            #         #"image": "img4.png",
-            #         "image": decoded_images[5],
-            #         "caption": captions[5],
-            #         "audio": audioStoryFiles[5]
-            #     },
-            #     {
-            #         "text": story_texts[6],
-            #     #     #"image": "img4.png",
-            #         "image": decoded_images[6],
-            #         "caption": captions[6],
-            #         "audio": audioStoryFiles[6]
-            #     }
-            # ]
-            
-            st.write('line 457')
-            #st.markdown(story_pages[0]["image"])
-            # Initialize session state for the current story page index
-            if 'page_index' not in st.session_state:
-                st.session_state.page_index = 0
-                
-            # st.write('line 463')
-            # Functions for navigating between pages
-            def next_page():
-                if st.session_state.page_index < len(story_pages) - 1:
-                    st.session_state.page_index += 1
-                    st.session_state.submit_btn = True
- 
-            def prev_page():
-                if st.session_state.page_index > 0:
-                    st.session_state.page_index -= 1
-                    st.session_state.submit_btn = True
- 
-            # Get the current page's content
-            current_page = story_pages[st.session_state.page_index]
- 
-            st.title("📖 My Storybook")
-            image = image_decode(current_page["image"])
-            # st.write('line 479')
-            col1, col2 = st.columns(2)
- 
-            with col1:
-                #st.markdown(f'<div class="storybook-text">{current_page["text"]}</div>', unsafe_allow_html=True)
-                #st.markdown(f'<div class="storybook-text" style="height: {image.height}px;"><p>{current_page["text"]}</p></div>', unsafe_allow_html=True)
-                st.markdown(f'<div class="storybook-text"><p>{current_page["text"]}</p></div>', unsafe_allow_html=True)
-                st.audio(current_page["audio"], format='audio/mp3')
-            with col2:
-                # Use custom HTML and CSS for image with the desired style
-                #st.markdown(f'<img src="{current_page["image"]}" alt="{current_page["caption"]}" class="storybook-image">', unsafe_allow_html=True)
-                st.image(image, caption=current_page["caption"], use_container_width=True)
- 
-            # Create Previous and Next buttons for navigation
-            col1, col2, col3 = st.columns([1, 2, 1])
-
-            st.write("Page No: ", st.session_state.page_index + 1, " out of 7")
-            with col1:
-                if st.session_state.page_index > 0:
-                    st.button("Previous", on_click=prev_page)
-                    st.session_state.submit_btn = True
- 
-            with col3:
-                if st.session_state.page_index < len(story_pages) - 1:
-                    st.button("Next", on_click=next_page)
-                    st.session_state.submit_btn = True
     except Exception as e:
-        st.error(f"An error occurred: {str(e)}")
+        return f"I encountered an error while searching for information: {str(e)}"
+
+def clean_story_response(story_text, original_question):
+    """
+    Clean up the story response to make it more suitable for a chatbot
+    """
+    try:
+        # Remove obvious story elements and make it more conversational
+        cleaned = story_text
+        
+        # Remove common story beginnings
+        story_starters = [
+            "Once upon a time", "In the", "There lived", "In a", "Long ago",
+            "It was", "One day", "Assistant was", "The Assistant"
+        ]
+        
+        for starter in story_starters:
+            if cleaned.startswith(starter):
+                # Find the first sentence end and start from there
+                first_period = cleaned.find('. ')
+                if first_period > 0:
+                    cleaned = cleaned[first_period + 2:]
+                break
+        
+        # Replace character names with more appropriate terms
+        cleaned = cleaned.replace("Assistant", "the information")
+        cleaned = cleaned.replace("The Assistant", "The information")
+        
+        # Make it more direct and Q&A focused
+        sentences = cleaned.split('. ')
+        
+        # Try to find the most relevant sentences that directly answer the question
+        relevant_sentences = []
+        question_keywords = set(original_question.lower().split())
+        
+        for sentence in sentences:
+            sentence_words = set(sentence.lower().split())
+            # Check if sentence has good overlap with question keywords
+            overlap = len(question_keywords.intersection(sentence_words))
+            if overlap > 0 or len(sentence.strip()) > 20:  # Keep substantial sentences
+                relevant_sentences.append(sentence.strip())
+        
+        if relevant_sentences:
+            # Take the first few most relevant sentences
+            result = '. '.join(relevant_sentences[:3])
+            if not result.endswith('.'):
+                result += '.'
+            return result
+        else:
+            # Fallback to first part of original response
+            return '. '.join(sentences[:2]) + '.'
+            
+    except Exception:
+        # If cleaning fails, return original but truncated
+        return story_text[:500] + "..." if len(story_text) > 500 else story_text
+
+# Initialize session state for chat history
+if 'chat_history' not in st.session_state:
+    st.session_state.chat_history = []
+
+if 'user_input' not in st.session_state:
+    st.session_state.user_input = ""
+
+def add_to_chat_history(user_msg, bot_msg):
+    """Add messages to chat history with timestamp"""
+    timestamp = datetime.now().strftime("%H:%M:%S")
+    st.session_state.chat_history.append({
+        "user": user_msg,
+        "bot": bot_msg,
+        "timestamp": timestamp
+    })
+
+def clear_chat_history():
+    """Clear the chat history"""
+    st.session_state.chat_history = []
+    st.session_state.user_input = ""
+
+def main():
+    # Header
+    st.markdown("<h1 style='text-align: center; color: #5481c4;'>🤖 ETLP Chat AI Assistant</h1>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: #5481c4;'>Ask me anything! I'll search through our knowledge base to help you.</p>", unsafe_allow_html=True)
+    
+    # Sidebar with chat controls
+    st.sidebar.markdown("### Chat Controls")
+    if st.sidebar.button("🗑️ Clear Chat History"):
+        clear_chat_history()
+        st.rerun()
+    
+    st.sidebar.markdown("### Tips")
+    st.sidebar.markdown("""
+    - Ask specific questions for better results
+    - I can help with information from our knowledge base
+    - Try rephrasing if you don't get the expected answer
+    """)
+    
+    # Display chat history
+    if st.session_state.chat_history:
+        st.markdown("### Chat History")
+        chat_container = st.container()
+        
+        with chat_container:
+            for chat in st.session_state.chat_history:
+                # User message
+                st.markdown(f"""
+                <div class="user-message">
+                    <strong>You:</strong> {chat['user']}
+                    <div class="timestamp">{chat['timestamp']}</div>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                # Bot message
+                st.markdown(f"""
+                <div class="bot-message">
+                    <strong>AI Assistant:</strong> {chat['bot']}
+                    <div class="timestamp">{chat['timestamp']}</div>
+                </div>
+                """, unsafe_allow_html=True)
+    
+    # Input form
+    st.markdown("### Ask a Question")
+    with st.form("chat_form", clear_on_submit=True):
+        user_question = st.text_area(
+            "Your Question:",
+            placeholder="Ask me anything about our knowledge base...",
+            height=100,
+            key="question_input"
+        )
+        
+        col1, col2, col3 = st.columns([1, 1, 1])
+        with col2:
+            submitted = st.form_submit_button("🚀 Send Question", use_container_width=True)
+    
+    # Process the question when submitted
+    if submitted and user_question.strip():
+        # Show loading spinner
+        with st.spinner("🔍 Searching knowledge base..."):
+            # Get response from knowledge base using existing lambda
+            bot_response = query_knowledge_base(user_question.strip())
+        
+        # Add to chat history
+        add_to_chat_history(user_question.strip(), bot_response)
+        
+        # Rerun to update the display
+        st.rerun()
+    
+    elif submitted and not user_question.strip():
+        st.warning("Please enter a question before submitting.")
+    
+    # Sample questions
+    st.markdown("### Sample Questions")
+    sample_questions = [
+        "What is ETLP?",
+        "What is Exercise #1 about?"
+    ]
+    
+    cols = st.columns(len(sample_questions))
+    for i, question in enumerate(sample_questions):
+        with cols[i]:
+            if st.button(f"💡 {question}", key=f"sample_{i}"):
+                # Simulate form submission with sample question
+                with st.spinner("🔍 Searching knowledge base..."):
+                    bot_response = query_knowledge_base(question)
+                add_to_chat_history(question, bot_response)
+                st.rerun()
 
 if __name__ == "__main__":
-    if "submit_btn" not in st.session_state:
-        st.session_state.submit_btn = False
     main()
