@@ -87,10 +87,10 @@ add_logo_to_sidebar_top("pages/images/Updated_WonderS_logo.png", width="250px")
 st.markdown(
     """
     <div class="custom-box">
-    <p style="font-size:26px;"> Meet <b style="color:Green;">Empowered Technology Leaders</b> who foster supportive, collaborative environments within J&J organizations. 
+    <p style="font-size:22px;"> Meet <b style="color:Green;">Empowered Technology Leaders</b> who foster supportive, collaborative environments within J&J organizations. 
 These ETL leaders are trained through the ETLP program to:
 
-1. Enhance their technical and leadership skills through comprehensive learning content
+<p style="font-size:22px;"> 1. Enhance their technical and leadership skills through comprehensive learning content
 2. Amplify their leadership brand
 3. Broaden their network and gain insights from their cohort, fostering a supportive sense of belonging.</p>
     </div>
