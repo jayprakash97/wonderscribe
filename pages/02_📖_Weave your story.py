@@ -169,7 +169,7 @@ def fetch_and_decode_images(payload, captions, _force_refresh=False):
 # Main app
 def main():
 
-    st.markdown("<h1 style='text-align: center; color: #5481c4;'>WonderScribe welcomes you to create your own story</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: #5481c4;'>WonderScribe welcomes ETLP leaders to create your own story</h1>", unsafe_allow_html=True)
     # st.title("📖 Welcome to WonderScribe!")
     # st.write("Craft personalized stories that bring adventure to life.")
     
