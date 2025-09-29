@@ -128,14 +128,14 @@ members = [
         "bio": "Jay Prakash is a seasoned technical leader in developing and implementing solutions within pharma to improve patient care and drive business growth. He is also passionate about leveraging AI and GenAI to help the business grow, improve patient care, and create new innovations. Currently, Jay is part of Johnson & Johnson’s Data Science & Insights team for 4.5 year, where he leads end-to-end data management, advanced analytics, and data science initiatives supporting Commercial Business, Market Analysis, Patient Support Services, and more. He also serves as the primary contact for delivering integrated data analytics & reporting across Commercial, and Government pharmaceutical contracting operations across all Therapeutic Areas.",
         "image": "pages/images/Jay_Headshots2.jpg",
         "email": "jprakas5@its.jnj.com" # "jprakash@berkeley.edu", 
+    },
+    {
+        "name": "Komathi SunilKumar",
+        "role": "Senior Tech Product Manager - JJIT",
+        "bio": "Komathi is a highly motivated IT professional with over 17+ years of experience in IT specializing in AWS RDS engines, AWS Redshift, AWS BigData Platforms & AWS ECO Systems, Microsoft SQL Server, Talend Big Data Studio, MS BI SSIS, PowerShell, Python, Unix, Perl, Informix, C#, ASP.NET, PowerBuilder, Oracle, MySQL, PostgreSQL with wide experience in Analysis, Design, Implementation and testing of business requirements and also having desire to learn and work in a close-knit high performing team.",
+        "image": "pages/images/komathi_sunil2.jpg",
+        "email": "ksunilku@ITS.JNJ.com",
     }
-    # {
-    #     "name": "Komathi SunilKumar",
-    #     "role": "Senior Tech Product Manager - JJIT",
-    #     "bio": "Komathi is a highly motivated IT professional with over 17+ years of experience in IT specializing in AWS RDS engines, AWS Redshift, AWS BigData Platforms & AWS ECO Systems, Microsoft SQL Server, Talend Big Data Studio, MS BI SSIS, PowerShell, Python, Unix, Perl, Informix, C#, ASP.NET, PowerBuilder, Oracle, MySQL, PostgreSQL with wide experience in Analysis, Design, Implementation and testing of business requirements and also having desire to learn and work in a close-knit high performing team.",
-    #     "image": "pages/images/komathi_sunil2.jpg",
-    #     "email": "ksunilku@ITS.JNJ.com",
-    # },
     # {
     #     "name": "Jude Francis",
     #     "role": "Product Director, Data & Insights",
