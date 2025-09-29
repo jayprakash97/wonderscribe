@@ -86,13 +86,13 @@ add_logo_to_sidebar_top("pages/images/Updated_WonderS_logo.png", width="250px")
 # Content wrapped in a div with class "custom-box"
 st.markdown(
     """
-    <div class="custom-box" style="width: 80%; max-width: 800px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
-    <p style="font-size:22px;"> Meet <b style="color:Green;">Empowered Technology Leaders</b> who foster supportive and collaborative environments within J&J organizations. 
+    <div class="custom-box" > style="width: 80%; max-width: 800px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
+    <p style="font-size:18px;"> Meet <b style="color:Green;">Empowered Technology Leaders</b> who foster supportive and collaborative environments within J&J organizations. 
 These ETL leaders are trained to:
 
-<p style="font-size:22px;"> 1. Enhance their technical and leadership skills through comprehensive learning content
-<p style="font-size:22px;"> 2. Amplify their leadership brand
-<p style="font-size:22px;"> 3. Broaden their network and gain insights from their cohort, fostering a supportive sense of belonging.</p>
+<p style="font-size:16px;"> 1. Enhance their technical and leadership skills through comprehensive learning content
+<p style="font-size:16px;"> 2. Amplify their leadership brand
+<p style="font-size:16px;"> 3. Broaden their network and gain insights from their cohort, fostering a supportive sense of belonging.</p>
     </div>
     """,
     unsafe_allow_html=True,
