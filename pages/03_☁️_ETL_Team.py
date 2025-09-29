@@ -128,7 +128,7 @@ members = [
         "bio": "Jay Prakash is a seasoned technical leader in developing and implementing solutions within pharma to improve patient care and drive business growth. He is also passionate about leveraging AI and GenAI to help the business grow, improve patient care, and create new innovations. Currently, Jay is part of Johnson & Johnson’s Data Science & Insights team for 4.5 year, where he leads end-to-end data management, advanced analytics, and data science initiatives supporting Commercial Business, Market Analysis, Patient Support Services, and more. He also serves as the primary contact for delivering integrated data analytics & reporting across Commercial, and Government pharmaceutical contracting operations across all Therapeutic Areas.",
         "image": "pages/images/Jay_Headshots2.jpg",
         "email": "jprakas5@its.jnj.com" # "jprakash@berkeley.edu", 
-    },
+    }, 
     {
         "name": "Komathi SunilKumar",
         "role": "Senior Tech Product Manager - JJIT",
