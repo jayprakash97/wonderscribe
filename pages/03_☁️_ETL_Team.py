@@ -130,6 +130,13 @@ members = [
         "email": "jprakas5@its.jnj.com" # "jprakash@berkeley.edu", 
     }, 
     {
+        "name": "Andrea Cabeza",
+        "role": "Mgr Global Network Audit Compliance",
+        "bio": "Andrea oversees and ensures the integrity, compliance, and effectiveness of the company's global network operations. She leads audits across the global network to assess compliance with internal policies, regulatory requirements, and industry standards. She is also responsible for identifying potential risks within the network operations and recommending corrective actions to mitigate those risks. Additionally, she ensures that all operations adhere to applicable laws, regulations, and standards across different countries.",
+        "image": "pages/images/andrea.jpg",
+        "email": "acabeza3@ITS.JNJ.com",
+    },
+    {
         "name": "Komathi SunilKumar",
         "role": "Senior Tech Product Manager - JJIT",
         "bio": "Komathi is a highly motivated IT professional with over 17+ years of experience in IT specializing in AWS RDS engines, AWS Redshift, AWS BigData Platforms & AWS ECO Systems, Microsoft SQL Server, Talend Big Data Studio, MS BI SSIS, PowerShell, Python, Unix, Perl, Informix, C#, ASP.NET, PowerBuilder, Oracle, MySQL, PostgreSQL with wide experience in Analysis, Design, Implementation and testing of business requirements and also having desire to learn and work in a close-knit high performing team.",
