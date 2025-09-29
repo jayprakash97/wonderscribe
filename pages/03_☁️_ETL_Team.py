@@ -115,7 +115,7 @@ def process_image(image_path, size=(800, 800)):
 
 # Page Title
 st.markdown(
-    "<h1 style='color: #5481c4; text-align: center;'>Our Team</h1>",
+    "<h1 style='color: #5481c4; text-align: center;'>Empowered Technology Leaders 2025 Team</h1>",
     unsafe_allow_html=True,
 )
 
