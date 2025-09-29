@@ -133,7 +133,7 @@ members = [
         "name": "Komathi SunilKumar",
         "role": "Senior Tech Product Manager - JJIT",
         "bio": "Komathi is a highly motivated IT professional with over 17+ years of experience in IT specializing in AWS RDS engines, AWS Redshift, AWS BigData Platforms & AWS ECO Systems, Microsoft SQL Server, Talend Big Data Studio, MS BI SSIS, PowerShell, Python, Unix, Perl, Informix, C#, ASP.NET, PowerBuilder, Oracle, MySQL, PostgreSQL with wide experience in Analysis, Design, Implementation and testing of business requirements and also having desire to learn and work in a close-knit high performing team.",
-        "image": "pages/images/komathi_sunil2.jpeg",
+        "image": "pages/images/komathi_sunil2.jpg",
         "email": "ksunilku@ITS.JNJ.com",
     },
     # {
