@@ -408,60 +408,60 @@ def main():
                     "audio": audioStoryFiles[i]
                 })
 
-            # if total_pages < expected_parts:
-            #     st.info(f"Showing {total_pages} story pages out of the expected 7.")
+            if total_pages < expected_parts:
+                st.info(f"Showing {total_pages} story pages out of the expected 7.")
  
-            # story_pages = [
-            #     {
-            #         "text": story_texts[0],
-            #         #"image": "img1.png",
-            #         "image": decoded_images[0],
-            #         "caption": captions[0],
-            #         "audio": audioStoryFiles[0]
-            #     },
-            #     {
-            #         "text": story_texts[1],
-            #         #"image": "img2.png",
-            #         "image": decoded_images[1],
-            #         "caption": captions[1],
-            #         "audio": audioStoryFiles[1]
-            #     },
-            #     {
-            #         "text": story_texts[2],
-            #         #"image": "img3.png",
-            #         "image": decoded_images[2],
-            #         "caption": captions[2],
-            #         "audio": audioStoryFiles[2]
-            #     },
-            #     {
-            #         "text": story_texts[3],
-            #         #"image": "img4.png",
-            #         "image": decoded_images[3],
-            #         "caption": captions[3],
-            #         "audio": audioStoryFiles[3]
-            #     },
-            #     {
-            #         "text": story_texts[4],
-            #         #"image": "img4.png",
-            #         "image": decoded_images[4],
-            #         "caption": captions[4],
-            #         "audio": audioStoryFiles[4]
-            #     },
-            #     {
-            #         "text": story_texts[5],
-            #         #"image": "img4.png",
-            #         "image": decoded_images[5],
-            #         "caption": captions[5],
-            #         "audio": audioStoryFiles[5]
-            #     },
-            #     {
-            #         "text": story_texts[6],
-            #     #     #"image": "img4.png",
-            #         "image": decoded_images[6],
-            #         "caption": captions[6],
-            #         "audio": audioStoryFiles[6]
-            #     }
-            # ]
+            story_pages = [
+                {
+                    "text": story_texts[0],
+                    #"image": "img1.png",
+                    "image": decoded_images[0],
+                    "caption": captions[0],
+                    "audio": audioStoryFiles[0]
+                },
+                {
+                    "text": story_texts[1],
+                    #"image": "img2.png",
+                    "image": decoded_images[1],
+                    "caption": captions[1],
+                    "audio": audioStoryFiles[1]
+                },
+                {
+                    "text": story_texts[2],
+                    #"image": "img3.png",
+                    "image": decoded_images[2],
+                    "caption": captions[2],
+                    "audio": audioStoryFiles[2]
+                },
+                {
+                    "text": story_texts[3],
+                    #"image": "img4.png",
+                    "image": decoded_images[3],
+                    "caption": captions[3],
+                    "audio": audioStoryFiles[3]
+                },
+                {
+                    "text": story_texts[4],
+                    #"image": "img4.png",
+                    "image": decoded_images[4],
+                    "caption": captions[4],
+                    "audio": audioStoryFiles[4]
+                },
+                {
+                    "text": story_texts[5],
+                    #"image": "img4.png",
+                    "image": decoded_images[5],
+                    "caption": captions[5],
+                    "audio": audioStoryFiles[5]
+                },
+                {
+                    "text": story_texts[6],
+                #     #"image": "img4.png",
+                    "image": decoded_images[6],
+                    "caption": captions[6],
+                    "audio": audioStoryFiles[6]
+                }
+            ]
             
             st.write('line 457')
             #st.markdown(story_pages[0]["image"])
