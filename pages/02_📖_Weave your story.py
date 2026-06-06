@@ -469,7 +469,7 @@ def main():
             if 'page_index' not in st.session_state:
                 st.session_state.page_index = 0
                 
-            st.write('line 463')
+            # st.write('line 463')
             # Functions for navigating between pages
             def next_page():
                 if st.session_state.page_index < len(story_pages) - 1:
